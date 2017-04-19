@@ -6,7 +6,8 @@
     "bootstrap": "^3.3.7",
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.8",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "react-scripts": "0.9.5"
