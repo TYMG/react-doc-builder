@@ -16,7 +16,7 @@ class CorrespondenceForm extends Component {
       addr2:this.refs.addr2.value,
       addrCity: this.refs.addrCity.value
     }}, function(){
-        this.props.createDocument(this.state.correspondence)
+        this.props.createDocument(this.state.correspondence);
     });
     e.preventDefault();
   }
