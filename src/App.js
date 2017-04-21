@@ -16,7 +16,7 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      documentTypes:[]
+
     }
   }
 
@@ -39,7 +39,9 @@ class App extends Component {
 
   selectDocumentType(documentTypeSelected){
     this.setState({
-      documentType:{"DocType":documentTypeSelected.docType, "SubDocType":documentTypeSelected.subDocType}
+      currentSelection:documentTypeSelected
+    }, ()=>{
+      console.log("Values Set")
     });
   }
 
@@ -61,18 +63,18 @@ class App extends Component {
   }
 
   render() {
-    const docType = this.state.documentType;
-
+    const currSelection = this.state.currentSelection;
     let formType = <Home />;
-
-    if(docType === 'Correspondence'){
-      formType = <CorrespondenceForm createDocument={this.createDocument.bind(this)}/>;
-    }else if(docType === 'Endorser Addendum'){
-      formType = <EndorserAddendumForm createDocument={this.createDocument.bind(this)}/>;
-    }else if(docType === 'Master Promissory Note'){
-      formType = <MPNForm createDocument={this.createDocument.bind(this)}/>;
+    if(currSelection !== undefined){
+      const currSelectedDocType = currSelection.docType;
+      if(currSelection.docType === 'Correspondence'){
+        formType = <CorrespondenceForm createDocument={this.createDocument.bind(this)}/>;
+      }else if(currSelection.docType === 'Endorser Addendum'){
+        formType = <EndorserAddendumForm createDocument={this.createDocument.bind(this)}/>;
+      }else if(currSelection.docType === 'Master Promissory Note'){
+        formType = <MPNForm createDocument={this.createDocument.bind(this)}/>;
+      }
     }
-
     return (
       <div className="App">
         <div className="App-header">

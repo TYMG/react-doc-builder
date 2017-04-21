@@ -5,7 +5,9 @@ class DocumentTypeSelector extends Component {
         super();
         this.state = {
           documentType:'',
-          subtypes:[],
+          subDocumentType:'',
+          documentTypes:[],
+          documentSubTypes:[],
           subTypeDD:false
       }
     }
@@ -28,7 +30,11 @@ class DocumentTypeSelector extends Component {
 
   componentWillMount(){
     let docTypes = this.buildDocTypeArray();
+    docTypes.unshift(
+      <option key='Select'>Select</option>
+    );
     this.setState({
+      documentType:'Select',
       documentTypes:docTypes
     })
   }
@@ -42,18 +48,43 @@ class DocumentTypeSelector extends Component {
         if(selectedDocType === dt.name){
           if (dt.subtypes.length!==0) {
             subDocsTypes = this.buildSubDocTypeArray(dt)
+            subDocsTypes.unshift(
+              <option key='Select'>Select</option>
+            );
             subTypeDropDownActive = true
           }
         }
       })
       this.setState({
+        documentType:selectedDocType,
+        subDocumentType:'Select',
         subTypeDD:subTypeDropDownActive,
         subDocumentTypes:subDocsTypes
       } , function(){
         //This needs return the SubTypes
-        this.props.selectDocumentType(this.refs.docType.value);
+        this.props.selectDocumentType(
+          {
+            "docType":selectedDocType,
+            "subDocType":'Select'
+          });
       })
     }
+  }
+
+  subDocumentTypeSelection(){
+    const selectedSubDocType = this.refs.subDocType.value;
+      if(selectedSubDocType !== this.state.subDocumentType &&  selectedSubDocType !== 'Select'){
+        this.setState({
+          subDocumentType:selectedSubDocType,
+        } , function(){
+          //This needs return the SubTypes
+          this.props.selectDocumentType(
+            {
+              "docType":this.state.documentType,
+              "subDocType":selectedSubDocType
+            });
+        })
+      }
   }
 
   renderSubDocTypeSelectors(){
@@ -62,8 +93,8 @@ class DocumentTypeSelector extends Component {
       let subDocTypes = this.state.subDocumentTypes;
       return(
         <div>
-            <label>Sub Document Type:</label>
-            <select ref="subDocType">
+            <label>Sub Document Type:</label>&nbsp;
+            <select ref="subDocType" value={this.state.subDocumentType} onChange={this.subDocumentTypeSelection.bind(this)}>
               {subDocTypes}
             </select>
         </div>
@@ -79,7 +110,7 @@ class DocumentTypeSelector extends Component {
           <div>
             <div>
               <label>Document Type:</label>&nbsp;
-              <select ref="docType" onChange={this.documentTypeSelection.bind(this)}>
+              <select ref="docType" value={this.state.documentType} onChange={this.documentTypeSelection.bind(this)}>
                 {docTypes}
               </select>
             </div>
