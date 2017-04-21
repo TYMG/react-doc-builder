@@ -9,18 +9,37 @@ import MPNForm from './Components/MPNForm'
 import logo from './logo.svg';
 import './App.css';
 
+import documentTypeData from '../documentTypeData.json';
+
 class App extends Component {
 
   constructor(){
     super();
     this.state = {
-      documentType:""
+      documentTypes:[]
     }
+  }
+
+    componentWillMount(){
+      this.parseDocumentTypeData();
+    }
+
+  parseDocumentTypeData(){
+    let test = documentTypeData.documentTypes;
+    let docTypes = documentTypeData.documentTypes.map( docType =>{
+      let test2 = docType.fields;
+      return docType;
+    })
+    this.setState({
+      documentTypes:docTypes
+    }, function(){
+        console.log(this.state.documentTypes);
+    })
   }
 
   selectDocumentType(documentTypeSelected){
     this.setState({
-      documentType:documentTypeSelected
+      documentType:{"DocType":documentTypeSelected.docType, "SubDocType":documentTypeSelected.subDocType}
     });
   }
 
@@ -60,7 +79,7 @@ class App extends Component {
           <h2>Welcome to ACDOE Document Creator</h2>
         </div>
         <div>
-          <DocumentTypeSelector selectDocumentType={this.selectDocumentType.bind(this)}/>
+          <DocumentTypeSelector documentTypes={this.state.documentTypes} selectDocumentType={this.selectDocumentType.bind(this)}/>
         </div>
         <div>
           {formType}

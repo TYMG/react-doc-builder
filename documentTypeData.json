@@ -1,0 +1,82 @@
+{
+  "documentTypes":[
+  {
+      "name": "Endorser Addendum",
+      "subtypes": [],
+      "fields":[
+        {"field":{"ref":"endorserName","name":"Endorser Addendum"}},
+        {"field":{"ref":"endorserSsn","Name":"Endorser SSN"}},
+        {"field":{"ref":"dob","Name":"Endorser DOB"}},
+        {"field":{"ref":"permAddress" ,"Name": "Endorser Address Line 1"}},
+        {"field":{"ref":"permAddress_2","Name": "Endorser Address Line 2"}},
+        {"field":{"ref":"addrLineOrCityStateZip","Name": "Endorser Address City"}},
+        {"field":{"ref":"mailingAddress","Name": "Mailing Address Line 1"}},
+        {"field":{"ref":"mailingAddress_2","Name":"Mailing Address"}},
+        {"field":{"ref":"mailaddrLineOrCityStateZip","Name": "Mailing Address City"}},
+        {"field":{"ref":"endorserEveningPhone","Name":" Endorser Evening Phone"}},
+        {"field":{"ref":"endorserDlstate","Name": "Endorser Driver's License State"}},
+        {"field":{"ref":"endorserDlNum","Name": "Endorser Driver's License Number"}},
+        {"field":{"ref":"endorserEmail","Name": "Endorser Email"}},
+        {"field":{"ref":"endorserCitizenship","Name":"Citizenship Status"}},
+        {"field":{"ref":"endorserAlienReg","Name":"Alien Registration"}},
+        {"field":{"ref":"endorserEmployer","Name":"Endorser Employer"}},
+        {"field":{"ref":"endorserEmployerAddress","Name":"Endorser Employer Address"}},
+        {"field":{"ref":"endorserEmployerCityState","Name":"Endorser Employer City/State"}},
+        {"field":{"ref":"endorserEmployerWorkPhone","Name": "Endorser Employer Phone Number"}}
+      ]}
+    ,
+     {
+      "name" : "Master Promissory Note",
+      "subtypes": [{
+          "name":"Plus",
+          "fields":[]
+        },{
+          "name": "SubUnsub",
+          "fields":[]
+        }
+        ],
+        "fields":[]
+    }
+    ,{
+          "name": "Correspondence",
+          "subtypes": [{
+            "name":"AEC001",
+            "fields":[]
+          },{
+            "name":"BAC001",
+            "fields":[]
+          },
+          {
+            "name":"BEA001",
+            "fields":[]
+          },
+          {
+            "name":"EAC001",
+            "fields":[]
+          },{
+            "name":"RAC002",
+            "fields":[]
+          },{
+            "name":"RB9002",
+            "fields":[]
+          },{
+            "name":"RB9003",
+            "fields":[]
+          },{
+            "name":"RD9002",
+            "fields":[]
+          },{
+            "name":"RLE001",
+            "fields":[]
+          },{
+          "name":"WCA001",
+          "fields":[]
+          },{
+            "name":"WCR001",
+            "fields":[]
+          }
+        ],
+        "fields":[]
+    }
+  ]
+}
