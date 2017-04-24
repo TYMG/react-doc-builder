@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from 'request';
 import DocumentTypeSelector from './Components/DocumentTypeSelector'
 import Home from './Components/Home'
+import MasterForm from './Components/MasterForm'
 import EndorserAddendumForm from './Components/EndorserAddendumForm'
 import CorrespondenceForm from './Components/CorrespondenceForm'
 import MPNForm from './Components/MPNForm'
@@ -62,19 +63,33 @@ class App extends Component {
     // })
   }
 
-  render() {
+  renderForm(){
+    let form = <Home />;
     const currSelection = this.state.currentSelection;
-    let formType = <Home />;
     if(currSelection !== undefined){
       const currSelectedDocType = currSelection.docType;
-      if(currSelection.docType === 'Correspondence'){
-        formType = <CorrespondenceForm createDocument={this.createDocument.bind(this)}/>;
-      }else if(currSelection.docType === 'Endorser Addendum'){
-        formType = <EndorserAddendumForm createDocument={this.createDocument.bind(this)}/>;
-      }else if(currSelection.docType === 'Master Promissory Note'){
-        formType = <MPNForm createDocument={this.createDocument.bind(this)}/>;
-      }
+      const currSelectedSubDocType = currSelection.subDocType;
+      this.state.documentTypes.forEach( (dt,index) => {
+        if(dt.name === currSelectedDocType){
+          form = <MasterForm documentType={dt} subDocumentType={currSelectedSubDocType} createDocument={this.createDocument.bind(this)}/>
+        }
+      })
     }
+    return form;
+  }
+
+  render() {
+    let formType = this.renderForm();
+    // if(currSelection !== undefined){
+    //   const currSelectedDocType = currSelection.docType;
+    //   if(currSelection.docType === 'Correspondence'){
+    //     formType = <CorrespondenceForm createDocument={this.createDocument.bind(this)}/>;
+    //   }else if(currSelection.docType === 'Endorser Addendum'){
+    //     formType = <EndorserAddendumForm createDocument={this.createDocument.bind(this)}/>;
+    //   }else if(currSelection.docType === 'Master Promissory Note'){
+    //     formType = <MPNForm createDocument={this.createDocument.bind(this)}/>;
+    //   }
+    // }
     return (
       <div className="App">
         <div className="App-header">

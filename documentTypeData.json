@@ -4,37 +4,185 @@
       "name": "Endorser Addendum",
       "subtypes": [],
       "fields":[
-        {"field":{"ref":"endorserName","name":"Endorser Addendum"}},
-        {"field":{"ref":"endorserSsn","Name":"Endorser SSN"}},
-        {"field":{"ref":"dob","Name":"Endorser DOB"}},
-        {"field":{"ref":"permAddress" ,"Name": "Endorser Address Line 1"}},
-        {"field":{"ref":"permAddress_2","Name": "Endorser Address Line 2"}},
-        {"field":{"ref":"addrLineOrCityStateZip","Name": "Endorser Address City"}},
-        {"field":{"ref":"mailingAddress","Name": "Mailing Address Line 1"}},
-        {"field":{"ref":"mailingAddress_2","Name":"Mailing Address"}},
-        {"field":{"ref":"mailaddrLineOrCityStateZip","Name": "Mailing Address City"}},
-        {"field":{"ref":"endorserEveningPhone","Name":" Endorser Evening Phone"}},
-        {"field":{"ref":"endorserDlstate","Name": "Endorser Driver's License State"}},
-        {"field":{"ref":"endorserDlNum","Name": "Endorser Driver's License Number"}},
-        {"field":{"ref":"endorserEmail","Name": "Endorser Email"}},
-        {"field":{"ref":"endorserCitizenship","Name":"Citizenship Status"}},
-        {"field":{"ref":"endorserAlienReg","Name":"Alien Registration"}},
-        {"field":{"ref":"endorserEmployer","Name":"Endorser Employer"}},
-        {"field":{"ref":"endorserEmployerAddress","Name":"Endorser Employer Address"}},
-        {"field":{"ref":"endorserEmployerCityState","Name":"Endorser Employer City/State"}},
-        {"field":{"ref":"endorserEmployerWorkPhone","Name": "Endorser Employer Phone Number"}}
+        {"name":"Endorser","input":[
+           {"ref":"endorserName","name":"Endorser Addendum"},
+           {"ref":"endorserSsn","name":"Endorser SSN"},
+           {"ref":"dob","name":"Endorser DOB"},
+           {"ref":"permAddressLine1" ,"name": "Address Line 1"},
+           {"ref":"permAddressLine2","name": "Address Line 2"},
+           {"ref":"addrLineOrCityStateZip","name": "Endorser Address City"},
+           {"ref":"mailingAddress","name": "Mailing Address Line 1"},
+           {"ref":"mailingAddress_2","name":"Mailing Address"},
+           {"ref":"mailaddrLineOrCityStateZip","name": "Mailing Address City"},
+           {"ref":"endorserEveningPhone","name":" Endorser Evening Phone"},
+           {"ref":"endorserDlstate","name": "Endorser Driver's License State"},
+           {"ref":"endorserDlNum","name": "Endorser Driver's License Number"},
+           {"ref":"endorserEmail","name": "Endorser Email"},
+           {"ref":"endorserCitizenship","name":"Citizenship Status"},
+           {"ref":"endorserAlienReg","name":"Alien Registration"}
+          ]},
+        {"name":"Endorser Employer","input":[
+          {"ref":"endorserEmployer","name":"Endorser Employer"},
+          {"ref":"endorserEmployerAddress","name":"Endorser Employer Address"},
+          {"ref":"endorserEmployerCityState","name":"Endorser Employer City/State"},
+          {"ref":"endorserEmployerWorkPhone","name": "Endorser Employer Phone Number"}
+          ]},
+        {"name":"Reference 1","input":[
+            {"ref":"ref1FN","name":"First Name"},
+            {"ref":"ref1MI","name":"Middle Initial"},
+            {"ref":"ref1LN","name":"Last Name"},
+            {"ref":"ref1PermAddress" ,"name": "Address"},
+            {"ref":"ref1Email","name": "Email"},
+            {"ref":"ref1Phone","name": "ref1Phone"}
+          ]},
+        {"name":"Reference 2","input":[
+          {"ref":"ref2FN","name":"First Name"},
+          {"ref":"ref2MI","name":"Middle Initial"},
+          {"ref":"ref2LN","name":"Last Name"},
+          {"ref":"ref2PermAddress" ,"name": "Address"},
+          {"ref":"ref2Email","name": "Email"},
+          {"ref":"ref2Phone","name": "ref1Phone"}
+          ]},
+        {"name":"Borrower","input":[
+          {"ref":"borrowerName","name":"Name"},
+          {"ref":"borrowerSSN","name":"SSN"},
+          {"ref":"borrowerDOB","name":"DOB"},
+          {"ref":"borrowerPermAddressLine1" ,"name": "Address Line 1"},
+          {"ref":"borrowerPermAddressLine2" ,"name": "Address Line 2"},
+          {"ref":"borrowerPermAddressCityState" ,"name": "Address City State"},
+          {"ref":"borrowerMailingAddressLine1" ,"name": "Mailing Address Line 1"},
+          {"ref":"borrowerMailingAddressLine2" ,"name": "Mailing Address Line 2"},
+          {"ref":"borrowerMailingAddressCityState" ,"name": "Mailing Address City State"},
+          {"ref":"borrowerPhone","name": "Phone Number"}
+        ]},
+        {"name":"Student","input":[
+          {"ref":"studentName" ,"name": "Name"},
+          {"ref":"studentSsn" ,"name": "SSN"}
+          ]},
+        {"name":"Award","input":[
+          {"ref":"loadId" ,"name": "Loan Identification Number"},
+          {"ref":"loadAmount" ,"name": "Direct PLUS Loan Amount"}
+          ]},
+        {"name":"School","input":[
+          {"ref":"schoolName" ,"name": "School Number"},
+          {"ref":"schoolAddress" ,"name": "School Address"},
+          {"ref":"schoolCityState" ,"name": "School City State"}
+          ]}
       ]}
     ,
      {
       "name" : "Master Promissory Note",
       "subtypes": [{
           "name":"Plus",
-          "fields":[]
-        },{
+          "fields":[
+            {"name":"Borrower","input":[
+               {"ref":"selfId ","name":"I Am A"},
+               {"ref":"borrowerName","name":"Name"},
+               {"ref":"borrowerSsn","name":"SSN"},
+               {"ref":"borrowerDob","name":"DOB"},
+               {"ref":"permAddressLine1" ,"name": "Address Line 1"},
+               {"ref":"permAddressLine2","name": "Address Line 2"},
+               {"ref":"addrLineOrCityStateZip","name": "Address City State"},
+               {"ref":"mailingAddress","name": "Mailing Address Line 1"},
+               {"ref":"mailingAddress_2","name":"Mailing Address Line 2"},
+               {"ref":"mailaddrLineOrCityStateZip","name": "Mailing Address City"},
+               {"ref":"borrowerEveningPhone","name":"Evening Phone"},
+               {"ref":"borrowerDlstate","name": "Driver's License State"},
+               {"ref":"borrowerDlNum","name": "Driver's License Number"},
+               {"ref":"borrowerEmail","name": "Email"},
+               {"ref":"borrowerCitizenship","name":"Citizenship Status"},
+               {"ref":"borrowerAlienReg","name":"Alien Registration"}
+              ]},
+            {"name":"Borrower Employer","input":[
+              {"ref":"borrowerEmployer","name":"Borrower Employer"},
+              {"ref":"borrowerEmployerAddress","name":"Borrower Employer Address"},
+              {"ref":"borrowerEmployerCityState","name":"Borrower Employer City/State"},
+              {"ref":"borrowerEmployerWorkPhone","name": "Borrower Employer Phone Number"}
+              ]},
+            {"name":"Reference 1","input":[
+                {"ref":"ref1FN","name":"First Name"},
+                {"ref":"ref1MI","name":"Middle Initial"},
+                {"ref":"ref1LN","name":"Last Name"},
+                {"ref":"ref1PermAddress" ,"name": "Address"},
+                {"ref":"ref1Email","name": "Email"},
+                {"ref":"ref1Phone","name": "ref1Phone"}
+              ]},
+            {"name":"Reference 2","input":[
+              {"ref":"ref2FN","name":"First Name"},
+              {"ref":"ref2MI","name":"Middle Initial"},
+              {"ref":"ref2LN","name":"Last Name"},
+              {"ref":"ref2PermAddress" ,"name": "Address"},
+              {"ref":"ref2Email","name": "Email"},
+              {"ref":"ref2Phone","name": "ref1Phone"}
+              ]},
+            {"name":"Student","input":[
+              {"ref":"studentName" ,"name": "Name"},
+              {"ref":"studentDob" ,"name": "DOB"},
+              {"ref":"studentSsn" ,"name": "SSN"}
+              ]},
+            {"name":"School","input":[
+              {"ref":"schoolName" ,"name": "School Number"},
+              {"ref":"schoolAddress" ,"name": "School Address"},
+              {"ref":"schoolCityState" ,"name": "School City State"},
+              {"ref":"schoolCode","name":"School Code"}
+              ]}
+          ]},
+          {
           "name": "SubUnsub",
-          "fields":[]
-        }
-        ],
+          "fields":[
+            {"name":"Borrower","input":[
+               {"ref":"borrowerName","name":"Name"},
+               {"ref":"borrowerSsn","name":"SSN"},
+               {"ref":"borrowerDob","name":"DOB"},
+               {"ref":"permAddressLine1" ,"name": "Address Line 1"},
+               {"ref":"permAddressLine2","name": "Address Line 2"},
+               {"ref":"addrLineOrCityStateZip","name": "Address City State"},
+               {"ref":"mailingAddress","name": "Mailing Address Line 1"},
+               {"ref":"mailingAddress_2","name":"Mailing Address Line 2"},
+               {"ref":"mailaddrLineOrCityStateZip","name": "Mailing Address City"},
+               {"ref":"borrowerEveningPhone","name":"Evening Phone"},
+               {"ref":"borrowerDlstate","name": "Driver's License State"},
+               {"ref":"borrowerDlNum","name": "Driver's License Number"},
+               {"ref":"borrowerEmail","name": "Email"},
+               {"ref":"borrowerCitizenship","name":"Citizenship Status"},
+               {"ref":"borrowerAlienReg","name":"Alien Registration"}
+              ]},
+            {"name":"Borrower Employer","input":[
+              {"ref":"borrowerEmployer","name":"Borrower Employer"},
+              {"ref":"borrowerEmployerAddress","name":"Borrower Employer Address"},
+              {"ref":"borrowerEmployerCityState","name":"Borrower Employer City/State"},
+              {"ref":"borrowerEmployerWorkPhone","name": "Borrower Employer Phone Number"}
+              ]},
+            {"name":"Reference 1","input":[
+                {"ref":"ref1FN","name":"First Name"},
+                {"ref":"ref1MI","name":"Middle Initial"},
+                {"ref":"ref1LN","name":"Last Name"},
+                {"ref":"ref1PermAddress" ,"name": "Address"},
+                {"ref":"ref1Email","name": "Email"},
+                {"ref":"ref1Phone","name": "ref1Phone"}
+              ]},
+            {"name":"Reference 2","input":[
+              {"ref":"ref2FN","name":"First Name"},
+              {"ref":"ref2MI","name":"Middle Initial"},
+              {"ref":"ref2LN","name":"Last Name"},
+              {"ref":"ref2PermAddress" ,"name": "Address"},
+              {"ref":"ref2Email","name": "Email"},
+              {"ref":"ref2Phone","name": "ref1Phone"}
+              ]},
+            {"name":"Student","input":[
+              {"ref":"studentName" ,"name": "Name"},
+              {"ref":"studentDob" ,"name": "DOB"},
+              {"ref":"studentSsn" ,"name": "SSN"}
+              ]},
+            {"name":"School","input":[
+              {"ref":"schoolName" ,"name": "School Number"},
+              {"ref":"schoolAddress" ,"name": "School Address"},
+              {"ref":"schoolCityState" ,"name": "School City State"},
+              {"ref":"schoolCode","name":"School Code"},
+              {"ref":"mpdid","name":"MPN ID"}
+              ]}
+          ]
+        }],
         "fields":[]
     }
     ,{
