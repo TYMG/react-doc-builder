@@ -189,39 +189,347 @@
           "name": "Correspondence",
           "subtypes": [{
             "name":"AEC001",
-            "fields":[]
-          },{
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"accountNumber","name":"Account Number"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerAddressLine3","name": "Address Line 3"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"}
+                ]},
+              {"name":"Student","input":[
+                {"ref":"studentName","name":"Student Name"}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"schoolName","name":"School Name"}
+              ]}
+            ]},
+          {
             "name":"BAC001",
-            "fields":[]
-          },
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"accountNumber","name":"Account Number"},
+                {"ref":"loanApprovedAmount", "name":"Loan Approved Amount"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerAddressLine3","name": "Address Line 3"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"}
+                ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"creditBureauName","name":"Name"},
+                   {"ref":"creditBureauAddress1" ,"name": "Address"},
+                   {"ref":"creditBureauCity","name": "City"},
+                   {"ref":"creditBureauState","name": "State"},
+                   {"ref":"creditBureauZip","name":"Zipcode"},
+                   {"ref":"creditBureauPhone","name": "Phone"}
+                  ]},
+              {"name":"Student","input":[
+                {"ref":"studentName","name":"Student Name"}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"schoolName","name":"School Name"}
+              ]}
+            ]},
           {
             "name":"BEA001",
-            "fields":[]
-          },
-          {
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"accountNumber","name":"Account Number"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerAddressLine3","name": "Address Line 3"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"}
+                ]},
+              {"name":"Student","input":[
+                {"ref":"studentName","name":"Student Name"}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"schoolName","name":"School Name"}
+              ]},
+              {"name":"Endorser","input":[
+                  {"ref":"endorserName","name":"Endorser Name"}
+              ]}
+            ]},
+            {
             "name":"EAC001",
-            "fields":[]
-          },{
+            "fields":[
+
+                {"name":"Correspondence Info","input":[
+                  {"ref":"requestDate","name":"Request Date"},
+                  {"ref":"accountNumber","name":"Account Number"}
+                  ]},
+                {"name":"Endorser","input":[
+                   {"ref":"endorserName","name":"Name"},
+                   {"ref":"endorserAddressLine1" ,"name": "Address Line 1"},
+                   {"ref":"endorserAddressLine2","name": "Address Line 2"},
+                   {"ref":"endorserAddressLine3","name": "Address Line 3"},
+                   {"ref":"endorserCity","name": "City"},
+                   {"ref":"endorserState","name": "State"},
+                   {"ref":"endorserZip","name":"Zipcode"}
+                  ]},
+                  {"name":"Credit Bureau","input":[
+                     {"ref":"creditBureauName","name":"Name"},
+                     {"ref":"creditBureauAddress1" ,"name": "Address"},
+                     {"ref":"creditBureauCity","name": "City"},
+                     {"ref":"creditBureauState","name": "State"},
+                     {"ref":"creditBureauZip","name":"Zipcode"},
+                     {"ref":"creditBureauPhone","name": "Phone"}
+                    ]},
+                {"name":"Student","input":[
+                  {"ref":"studentName","name":"Student Name"}
+                  ]},
+                {"name":"School","input":[
+                    {"ref":"schoolName","name":"School Name"}
+                ]},
+                {"name":"Borrower","input":[
+                    {"ref":"borrowerName","name":"Borrower Name"}
+                ]}
+              ]
+            },
+          {
             "name":"RAC002",
-            "fields":[]
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"accountNumber","name":"Account Number"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"}
+                ]},
+              {"name":"Student","input":[
+                {"ref":"studentName","name":"Student Name"}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"schoolName","name":"School Name"}
+              ]}
+            ]
           },{
             "name":"RB9002",
-            "fields":[]
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"accountNumber","name":"Account Number"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"}
+                ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"creditBureauName","name":"Name"},
+                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
+                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
+                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
+                   {"ref":"creditBureauPhone","name": "Phone"}
+                  ]},
+              {"name":"Student","input":[
+                {"ref":"studentName","name":"Student Name"}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"schoolName","name":"School Name"}
+              ]},
+              {"name":"Reason","input":[
+                  {"ref":"reason1","name":"Reason 1"},
+                    {"ref":"reason2","name":"Reason 2"},
+                      {"ref":"reason3","name":"Reason 3"},
+                        {"ref":"reason4","name":"Reason 4"},
+                          {"ref":"reason5","name":"Reason 5"}
+              ]}
+            ]
           },{
             "name":"RB9003",
-            "fields":[]
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"accountNumber","name":"Account Number"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"}
+                ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"creditBureauName","name":"Name"},
+                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
+                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
+                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
+                   {"ref":"creditBureauPhone","name": "Phone"}
+                  ]},
+              {"name":"Student","input":[
+                {"ref":"studentName","name":"Student Name"}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"schoolName","name":"School Name"}
+              ]},
+              {"name":"Reason","input":[
+                  {"ref":"reason1","name":"Reason 1"},
+                    {"ref":"reason2","name":"Reason 2"},
+                      {"ref":"reason3","name":"Reason 3"},
+                        {"ref":"reason4","name":"Reason 4"},
+                          {"ref":"reason5","name":"Reason 5"}
+              ]}
+            ]
           },{
             "name":"RD9002",
-            "fields":[]
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"loanAmount","name":"Loan Amount"},
+                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerDob","name":"DOB"},
+                 {"ref":"borrowerSsn","name":"SSN"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"},
+                 {"ref":"borrowerPhone","name":"Phone Number"}
+                ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"creditBureauName","name":"Name"},
+                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
+                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
+                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
+                   {"ref":"creditBureauPhone","name": "Phone"}
+                  ]},
+              {"name":"Student","input":[
+                {"ref":"studentName","name":"Student Name"},
+                {"ref":"studentDob","name":"Student DOD"},
+                {"ref":"studentSsn","name":"Student SSN"}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"schoolName","name":"School Name"},
+                  {"ref":"schoolAddress","name":"School Address"},
+                  {"ref":"schoolCity","name":"School City"},
+                  {"ref":"schoolState","name":"School State"},
+                  {"ref":"schoolZip","name":"School Zip"}
+              ]},
+              {"name":"Endorser","input":[
+                  {"ref":"endorserName","name":"Endorser Name"}
+              ]}
+            ]
           },{
             "name":"RLE001",
-            "fields":[]
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"},
+                {"ref":"accountNumber","name":"Account Number"}
+                ]},
+                {"name":"Endorser","input":[
+                   {"ref":"endorserName","name":"Name"},
+                   {"ref":"endorserAddressLine1" ,"name": "Address Line 1"},
+                   {"ref":"endorserAddressLine2","name": "Address Line 2"},
+                   {"ref":"endorserCity","name": "City"},
+                   {"ref":"endorserState","name": "State"},
+                   {"ref":"endorserZip","name":"Zipcode"}
+                  ]},
+                  {"name":"Borrower","input":[
+                      {"ref":"borrowerName","name":"Borrower Name"}
+                      ]},
+              {"name":"Student","input":[
+                  {"ref":"studentName","name":"Student Name"}
+                  ]},
+                {"name":"School","input":[
+                    {"ref":"schoolName","name":"School Name"}
+                ]},
+              {"name":"Credit Bureau","input":[
+                 {"ref":"creditBureauName","name":"Name"},
+                 {"ref":"creditBureauAddress1" ,"name": "Address 1"},
+                 {"ref":"creditBureauAddress2" ,"name": "Address 2"},
+                 {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
+                 {"ref":"creditBureauPhone","name": "Phone"}
+                ]},
+              {"name":"Reason","input":[
+                  {"ref":"reason1","name":"Reason 1"},
+                    {"ref":"reason2","name":"Reason 2"},
+                      {"ref":"reason3","name":"Reason 3"},
+                        {"ref":"reason4","name":"Reason 4"},
+                          {"ref":"reason5","name":"Reason 5"}
+              ]}
+            ]
           },{
           "name":"WCA001",
-          "fields":[]
+          "fields":[
+            {"name":"Correspondence Info","input":[
+              {"ref":"requestDate","name":"Request Date"}
+              ]},
+            {"name":"Borrower","input":[
+               {"ref":"borrowerName","name":"Name"},
+               {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+               {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+               {"ref":"borrowerCity","name": "City"},
+               {"ref":"borrowerState","name": "State"},
+               {"ref":"borrowerZip","name":"Zipcode"}
+              ]},
+              {"name":"Credit Bureau","input":[
+                 {"ref":"creditBureauName","name":"Name"},
+                 {"ref":"creditBureauAddress1" ,"name": "Address 1"},
+                 {"ref":"creditBureauAddress2" ,"name": "Address 2"},
+                 {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
+                 {"ref":"creditBureauPhone","name": "Phone"}
+                ]}
+          ]
           },{
             "name":"WCR001",
-            "fields":[]
+            "fields":[
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date"}
+                ]},
+              {"name":"Borrower","input":[
+                 {"ref":"borrowerName","name":"Name"},
+                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
+                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
+                 {"ref":"borrowerCity","name": "City"},
+                 {"ref":"borrowerState","name": "State"},
+                 {"ref":"borrowerZip","name":"Zipcode"}
+                ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"creditBureauName","name":"Name"},
+                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
+                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
+                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
+                   {"ref":"creditBureauPhone","name": "Phone"}
+                  ]},
+                  {"name":"Reason","input":[
+                      {"ref":"reason1","name":"Reason 1"},
+                        {"ref":"reason2","name":"Reason 2"},
+                          {"ref":"reason3","name":"Reason 3"},
+                            {"ref":"reason4","name":"Reason 4"},
+                              {"ref":"reason5","name":"Reason 5"}
+                  ]}
+            ]
           }
         ],
         "fields":[]
