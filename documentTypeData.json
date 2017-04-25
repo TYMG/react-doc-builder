@@ -4,70 +4,93 @@
       "name": "Endorser Addendum",
       "subtypes": [],
       "fields":[
-        {"name":"Endorser","input":[
-           {"ref":"endorserName","name":"Endorser Addendum"},
-           {"ref":"endorserSsn","name":"Endorser SSN"},
-           {"ref":"dob","name":"Endorser DOB"},
-           {"ref":"permAddressLine1" ,"name": "Address Line 1"},
-           {"ref":"permAddressLine2","name": "Address Line 2"},
-           {"ref":"addrLineOrCityStateZip","name": "Endorser Address City"},
-           {"ref":"mailingAddress","name": "Mailing Address Line 1"},
-           {"ref":"mailingAddress_2","name":"Mailing Address"},
-           {"ref":"mailaddrLineOrCityStateZip","name": "Mailing Address City"},
-           {"ref":"endorserEveningPhone","name":" Endorser Evening Phone"},
-           {"ref":"endorserDlstate","name": "Endorser Driver's License State"},
-           {"ref":"endorserDlNum","name": "Endorser Driver's License Number"},
-           {"ref":"endorserEmail","name": "Endorser Email"},
-           {"ref":"endorserCitizenship","name":"Citizenship Status"},
-           {"ref":"endorserAlienReg","name":"Alien Registration"}
-          ]},
-        {"name":"Endorser Employer","input":[
-          {"ref":"endorserEmployer","name":"Endorser Employer"},
-          {"ref":"endorserEmployerAddress","name":"Endorser Employer Address"},
-          {"ref":"endorserEmployerCityState","name":"Endorser Employer City/State"},
-          {"ref":"endorserEmployerWorkPhone","name": "Endorser Employer Phone Number"}
-          ]},
-        {"name":"Reference 1","input":[
-            {"ref":"ref1FN","name":"First Name"},
-            {"ref":"ref1MI","name":"Middle Initial"},
-            {"ref":"ref1LN","name":"Last Name"},
-            {"ref":"ref1PermAddress" ,"name": "Address"},
-            {"ref":"ref1Email","name": "Email"},
-            {"ref":"ref1Phone","name": "ref1Phone"}
-          ]},
-        {"name":"Reference 2","input":[
-          {"ref":"ref2FN","name":"First Name"},
-          {"ref":"ref2MI","name":"Middle Initial"},
-          {"ref":"ref2LN","name":"Last Name"},
-          {"ref":"ref2PermAddress" ,"name": "Address"},
-          {"ref":"ref2Email","name": "Email"},
-          {"ref":"ref2Phone","name": "ref1Phone"}
-          ]},
-        {"name":"Borrower","input":[
-          {"ref":"borrowerName","name":"Name"},
-          {"ref":"borrowerSSN","name":"SSN"},
-          {"ref":"borrowerDOB","name":"DOB"},
-          {"ref":"borrowerPermAddressLine1" ,"name": "Address Line 1"},
-          {"ref":"borrowerPermAddressLine2" ,"name": "Address Line 2"},
-          {"ref":"borrowerPermAddressCityState" ,"name": "Address City State"},
-          {"ref":"borrowerMailingAddressLine1" ,"name": "Mailing Address Line 1"},
-          {"ref":"borrowerMailingAddressLine2" ,"name": "Mailing Address Line 2"},
-          {"ref":"borrowerMailingAddressCityState" ,"name": "Mailing Address City State"},
-          {"ref":"borrowerPhone","name": "Phone Number"}
-        ]},
-        {"name":"Student","input":[
-          {"ref":"studentName" ,"name": "Name"},
-          {"ref":"studentSsn" ,"name": "SSN"}
-          ]},
-        {"name":"Award","input":[
-          {"ref":"loadId" ,"name": "Loan Identification Number"},
-          {"ref":"loadAmount" ,"name": "Direct PLUS Loan Amount"}
-          ]},
-        {"name":"School","input":[
-          {"ref":"schoolName" ,"name": "School Number"},
-          {"ref":"schoolAddress" ,"name": "School Address"},
-          {"ref":"schoolCityState" ,"name": "School City State"}
-          ]}
+        {"name":"Endorser","ref":"endorser","input":[
+             {"ref":"selfID","name":"IAMA","active":false},
+             {"ref":"name","name":"Name","active":true},
+             {"ref":"dob","name":"DOB","active":true},
+             {"ref":"ssn","name":"SSN","active":true},
+             {"ref":"citizenshipStatus","name":"Citizenship Status","active":true},
+             {"ref":"alienReg","name":"Alien Registration","active":true},
+             {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+             {"ref":"addressLine2","name": "Address Line 2","active":true},
+             {"ref":"city","name": "City","active":true},
+             {"ref":"state","name": "State","active":true},
+             {"ref":"zipCode","name":"Zipcode","active":true},
+             {"ref":"phoneNumber","name":"Phone Number","active":true},
+             {"ref":"email","name":"Email","active":true},
+             {"ref":"dlState","name":"Driver's License State","active":true},
+             {"ref":"dlNum","name":"Driver's License Number","active":true},
+             {"ref":"mailingAddressLine1","name":"Mailing Address Line 1","active":true},
+             {"ref":"mailingAddressLine2","name":"Mailing Address Line 2","active":true},
+             {"ref":"mailingCity","name": "Mailing Address City","active":true},
+             {"ref":"mailingState","name": "Mailing Address State","active":true},
+             {"ref":"mailingZipCode","name":"Mailing Address Zipcode","active":true}
+             ]}
+             ,{"name":"Borrower","ref":"borrower","input":[
+               {"ref":"selfID","name":"IAMA","active":false},
+                  {"ref":"name","name":"Name","active":true},
+                  {"ref":"dob","name":"DOB","active":true},
+                  {"ref":"ssn","name":"SSN","active":true},
+                  {"ref":"citizenshipStatus","name":"Citizenship Status","active":false},
+                  {"ref":"alienReg","name":"Alien Registration","active":false},
+                  {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                  {"ref":"addressLine2","name": "Address Line 2","active":true},
+                  {"ref":"city","name": "City","active":true},
+                  {"ref":"state","name": "State","active":true},
+                  {"ref":"zipCode","name":"Zipcode","active":true},
+                  {"ref":"phoneNumber","name":"Phone Number","active":true},
+                  {"ref":"email","name":"Email","active":true},
+                  {"ref":"dlState","name":"Driver's License State","active":false},
+                  {"ref":"dlNum","name":"Driver's License Number","active":false},
+                  {"ref":"mailingAddressLine1","name":"Mailing Address Line 1","active":true},
+                  {"ref":"mailingAddressLine2","name":"Mailing Address Line 2","active":true},
+                  {"ref":"mailingCity","name": "Mailing Address City","active":true},
+                  {"ref":"mailingState","name": "Mailing Address State","active":true},
+                  {"ref":"mailingZipCode","name":"Mailing Address Zipcode","active":true}
+               ]},
+               {"name":"Reference 1","ref":"reference1","input":[
+                  {"ref":"name","name":"Name","active":true},
+                  {"ref":"address1" ,"name": "Address 1","active":true},
+                  {"ref":"address2" ,"name": "Address 2","active":true},
+                  {"ref":"city","name": "City","active":true},
+                  {"ref":"state","name": "State","active":true},
+                  {"ref":"zip","name": "ZipCode","active":true},
+                  {"ref":"phoneNumber","name": "Phone Number","active":true}
+                 ]},
+                {"name":"Reference 2","ref":"reference2","input":[
+                  {"ref":"name","name":"Name","active":true},
+                  {"ref":"address1" ,"name": "Address 1","active":true},
+                  {"ref":"address2" ,"name": "Address 2","active":true},
+                  {"ref":"city","name": "City","active":true},
+                  {"ref":"state","name": "State","active":true},
+                  {"ref":"zip","name": "ZipCode","active":true},
+                  {"ref":"phoneNumber","name": "Phone Number","active":true}
+                 ]},
+             {"name":"Student","ref":"student","input":[
+                {"ref":"name","name":"Name","active":true},
+                {"ref":"dob","name":"DOB","active":true},
+                {"ref":"ssn","name":"SSN","active":false},
+                {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                {"ref":"addressLine2","name": "Address Line 2","active":false},
+                {"ref":"city","name": "City","active":false},
+                {"ref":"state","name": "State","active":false},
+                {"ref":"zipCode","name":"Zipcode","active":false},
+                {"ref":"phoneNumber","name":"Phone Number","active":false}
+               ]},
+             {"name":"School","ref":"school","input":[
+                 {"ref":"name","name":"School Name","active":true},
+                 {"ref":"longName","name":"Long School Name","active":true},
+                 {"ref":"address1","name":"School Address","active":true},
+                 {"ref":"city","name":"School City","active":true},
+                 {"ref":"state","name":"School State","active":true},
+                 {"ref":"zip","name":"School Zip","active":false}
+             ]},
+             {"name":"Employer","ref":"employer","input":[
+                {"ref":"name","name":"Name","active":true},
+                {"ref":"address" ,"name": "Address","active":true},
+                {"ref":"cityStateZip","name": "City","active":false},
+                {"ref":"workPhone","name":"Phone Number","active":false}
+             ]}
       ]}
     ,
      {
@@ -75,111 +98,145 @@
       "subtypes": [{
           "name":"Plus",
           "fields":[
-            {"name":"Borrower","input":[
-               {"ref":"selfId ","name":"I Am A"},
-               {"ref":"borrowerName","name":"Name"},
-               {"ref":"borrowerSsn","name":"SSN"},
-               {"ref":"borrowerDob","name":"DOB"},
-               {"ref":"permAddressLine1" ,"name": "Address Line 1"},
-               {"ref":"permAddressLine2","name": "Address Line 2"},
-               {"ref":"addrLineOrCityStateZip","name": "Address City State"},
-               {"ref":"mailingAddress","name": "Mailing Address Line 1"},
-               {"ref":"mailingAddress_2","name":"Mailing Address Line 2"},
-               {"ref":"mailaddrLineOrCityStateZip","name": "Mailing Address City"},
-               {"ref":"borrowerEveningPhone","name":"Evening Phone"},
-               {"ref":"borrowerDlstate","name": "Driver's License State"},
-               {"ref":"borrowerDlNum","name": "Driver's License Number"},
-               {"ref":"borrowerEmail","name": "Email"},
-               {"ref":"borrowerCitizenship","name":"Citizenship Status"},
-               {"ref":"borrowerAlienReg","name":"Alien Registration"}
-              ]},
-            {"name":"Borrower Employer","input":[
-              {"ref":"borrowerEmployer","name":"Borrower Employer"},
-              {"ref":"borrowerEmployerAddress","name":"Borrower Employer Address"},
-              {"ref":"borrowerEmployerCityState","name":"Borrower Employer City/State"},
-              {"ref":"borrowerEmployerWorkPhone","name": "Borrower Employer Phone Number"}
-              ]},
-            {"name":"Reference 1","input":[
-                {"ref":"ref1FN","name":"First Name"},
-                {"ref":"ref1MI","name":"Middle Initial"},
-                {"ref":"ref1LN","name":"Last Name"},
-                {"ref":"ref1PermAddress" ,"name": "Address"},
-                {"ref":"ref1Email","name": "Email"},
-                {"ref":"ref1Phone","name": "ref1Phone"}
-              ]},
-            {"name":"Reference 2","input":[
-              {"ref":"ref2FN","name":"First Name"},
-              {"ref":"ref2MI","name":"Middle Initial"},
-              {"ref":"ref2LN","name":"Last Name"},
-              {"ref":"ref2PermAddress" ,"name": "Address"},
-              {"ref":"ref2Email","name": "Email"},
-              {"ref":"ref2Phone","name": "ref1Phone"}
-              ]},
-            {"name":"Student","input":[
-              {"ref":"studentName" ,"name": "Name"},
-              {"ref":"studentDob" ,"name": "DOB"},
-              {"ref":"studentSsn" ,"name": "SSN"}
-              ]},
-            {"name":"School","input":[
-              {"ref":"schoolName" ,"name": "School Number"},
-              {"ref":"schoolAddress" ,"name": "School Address"},
-              {"ref":"schoolCityState" ,"name": "School City State"},
-              {"ref":"schoolCode","name":"School Code"}
-              ]}
+            {"name":"Borrower","ref":"borrower","input":[
+                {"ref":"selfID","name":"IAMA","active":true},
+                {"ref":"name","name":"Name","active":true},
+                {"ref":"dob","name":"DOB","active":true},
+                {"ref":"ssn","name":"SSN","active":true},
+                {"ref":"citizenshipStatus","name":"Citizenship Status","active":true},
+                {"ref":"alienReg","name":"Alien Registration","active":true},
+                {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                {"ref":"addressLine2","name": "Address Line 2","active":true},
+                {"ref":"city","name": "City","active":true},
+                {"ref":"state","name": "State","active":true},
+                {"ref":"zipCode","name":"Zipcode","active":true},
+                {"ref":"phoneNumber","name":"Phone Number","active":true},
+                {"ref":"email","name":"Email","active":true},
+                {"ref":"dlState","name":"Driver's License State","active":true},
+                {"ref":"dlNum","name":"Driver's License Number","active":true},
+                {"ref":"mailingAddressLine1","name":"Mailing Address Line 1","active":true},
+                {"ref":"mailingAddressLine2","name":"Mailing Address Line 2","active":true},
+                {"ref":"mailingCity","name": "Mailing Address City","active":true},
+                {"ref":"mailingState","name": "Mailing Address State","active":true},
+                {"ref":"mailingZipCode","name":"Mailing Address Zipcode","active":true}
+             ]}
+             ,
+               {"name":"Reference 1","ref":"reference1","input":[
+                  {"ref":"name","name":"Name","active":true},
+                  {"ref":"address1" ,"name": "Address 1","active":true},
+                  {"ref":"address2" ,"name": "Address 2","active":true},
+                  {"ref":"city","name": "City","active":true},
+                  {"ref":"state","name": "State","active":true},
+                  {"ref":"zip","name": "ZipCode","active":true},
+                  {"ref":"phoneNumber","name": "Phone Number","active":true}
+                 ]},
+                {"name":"Reference 2","ref":"reference2","input":[
+                  {"ref":"name","name":"Name","active":true},
+                  {"ref":"address1" ,"name": "Address 1","active":true},
+                  {"ref":"address2" ,"name": "Address 2","active":true},
+                  {"ref":"city","name": "City","active":true},
+                  {"ref":"state","name": "State","active":true},
+                  {"ref":"zip","name": "ZipCode","active":true},
+                  {"ref":"phoneNumber","name": "Phone Number","active":true}
+                 ]},
+             {"name":"Student","ref":"student","input":[
+                {"ref":"name","name":"Name","active":true},
+                {"ref":"dob","name":"DOB","active":true},
+                {"ref":"ssn","name":"SSN","active":true},
+                {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                {"ref":"addressLine2","name": "Address Line 2","active":false},
+                {"ref":"city","name": "City","active":false},
+                {"ref":"state","name": "State","active":false},
+                {"ref":"zipCode","name":"Zipcode","active":false},
+                {"ref":"phoneNumber","name":"Phone Number","active":false}
+               ]},
+             {"name":"School","ref":"school","input":[
+                 {"ref":"name","name":"School Name","active":true},
+                 {"ref":"longName","name":"Long School Name","active":true},
+                 {"ref":"address1","name":"School Address","active":true},
+                 {"ref":"city","name":"School City","active":true},
+                 {"ref":"state","name":"School State","active":true},
+                 {"ref":"zip","name":"School Zip","active":false},
+                 {"ref":"schoolCode","name":"School Code","active":false},
+                 {"ref":"mpnId","name":"MPN Id","active":false}
+             ]},
+             {"name":"Employer","ref":"employer","input":[
+                {"ref":"name","name":"Name","active":true},
+                {"ref":"address" ,"name": "Address","active":true},
+                {"ref":"cityStateZip","name": "City/State/Zip","active":true},
+                {"ref":"workPhone","name":"Phone Number","active":true}
+             ]}
           ]},
           {
           "name": "SubUnsub",
           "fields":[
-            {"name":"Borrower","input":[
-               {"ref":"borrowerName","name":"Name"},
-               {"ref":"borrowerSsn","name":"SSN"},
-               {"ref":"borrowerDob","name":"DOB"},
-               {"ref":"permAddressLine1" ,"name": "Address Line 1"},
-               {"ref":"permAddressLine2","name": "Address Line 2"},
-               {"ref":"addrLineOrCityStateZip","name": "Address City State"},
-               {"ref":"mailingAddress","name": "Mailing Address Line 1"},
-               {"ref":"mailingAddress_2","name":"Mailing Address Line 2"},
-               {"ref":"mailaddrLineOrCityStateZip","name": "Mailing Address City"},
-               {"ref":"borrowerEveningPhone","name":"Evening Phone"},
-               {"ref":"borrowerDlstate","name": "Driver's License State"},
-               {"ref":"borrowerDlNum","name": "Driver's License Number"},
-               {"ref":"borrowerEmail","name": "Email"},
-               {"ref":"borrowerCitizenship","name":"Citizenship Status"},
-               {"ref":"borrowerAlienReg","name":"Alien Registration"}
+            {"name":"borrower","ref":"borrower","input":[
+                 {"ref":"selfID","name":"IAMA","active":false},
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"citizenshipStatus","name":"Citizenship Status","active":true},
+                 {"ref":"alienReg","name":"Alien Registration","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                 {"ref":"addressLine2","name": "Address Line 2","active":true},
+                 {"ref":"city","name": "City","active":true},
+                 {"ref":"state","name": "State","active":true},
+                 {"ref":"zipCode","name":"Zipcode","active":true},
+                 {"ref":"phoneNumber","name":"Phone Number","active":true},
+                 {"ref":"email","name":"Email","active":true},
+                 {"ref":"dlState","name":"Driver's License State","active":true},
+                 {"ref":"dlNum","name":"Driver's License Number","active":true},
+                 {"ref":"mailingAddressLine1","name":"Mailing Address Line 1","active":true},
+                 {"ref":"mailingAddressLine2","name":"Mailing Address Line 2","active":true},
+                 {"ref":"mailingCity","name": "Mailing Address City","active":true},
+                 {"ref":"mailingState","name": "Mailing Address State","active":true},
+                 {"ref":"mailingZipCode","name":"Mailing Address Zipcode","active":true}
+              ]}
+              ,
+                {"name":"Reference 1","ref":"reference1","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"address1" ,"name": "Address 1","active":true},
+                   {"ref":"address2" ,"name": "Address 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zip","name": "ZipCode","active":true},
+                   {"ref":"phoneNumber","name": "Phone Number","active":true}
+                  ]},
+                 {"name":"Reference 2","ref":"reference2","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"address1" ,"name": "Address 1","active":true},
+                   {"ref":"address2" ,"name": "Address 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zip","name": "ZipCode","active":true},
+                   {"ref":"phoneNumber","name": "Phone Number","active":true}
+                  ]},
+              {"name":"Student","ref":"student","input":[
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
+                ]},
+              {"name":"School","ref":"school","input":[
+                  {"ref":"name","name":"School Name","active":true},
+                  {"ref":"longName","name":"Long School Name","active":true},
+                  {"ref":"address1","name":"School Address","active":true},
+                  {"ref":"city","name":"School City","active":true},
+                  {"ref":"state","name":"School State","active":true},
+                  {"ref":"zip","name":"School Zip","active":false},
+                  {"ref":"schoolCode","name":"School Code","active":true},
+                  {"ref":"mpnId","name":"MPN Id","active":true}
               ]},
-            {"name":"Borrower Employer","input":[
-              {"ref":"borrowerEmployer","name":"Borrower Employer"},
-              {"ref":"borrowerEmployerAddress","name":"Borrower Employer Address"},
-              {"ref":"borrowerEmployerCityState","name":"Borrower Employer City/State"},
-              {"ref":"borrowerEmployerWorkPhone","name": "Borrower Employer Phone Number"}
-              ]},
-            {"name":"Reference 1","input":[
-                {"ref":"ref1FN","name":"First Name"},
-                {"ref":"ref1MI","name":"Middle Initial"},
-                {"ref":"ref1LN","name":"Last Name"},
-                {"ref":"ref1PermAddress" ,"name": "Address"},
-                {"ref":"ref1Email","name": "Email"},
-                {"ref":"ref1Phone","name": "ref1Phone"}
-              ]},
-            {"name":"Reference 2","input":[
-              {"ref":"ref2FN","name":"First Name"},
-              {"ref":"ref2MI","name":"Middle Initial"},
-              {"ref":"ref2LN","name":"Last Name"},
-              {"ref":"ref2PermAddress" ,"name": "Address"},
-              {"ref":"ref2Email","name": "Email"},
-              {"ref":"ref2Phone","name": "ref1Phone"}
-              ]},
-            {"name":"Student","input":[
-              {"ref":"studentName" ,"name": "Name"},
-              {"ref":"studentDob" ,"name": "DOB"},
-              {"ref":"studentSsn" ,"name": "SSN"}
-              ]},
-            {"name":"School","input":[
-              {"ref":"schoolName" ,"name": "School Number"},
-              {"ref":"schoolAddress" ,"name": "School Address"},
-              {"ref":"schoolCityState" ,"name": "School City State"},
-              {"ref":"schoolCode","name":"School Code"},
-              {"ref":"mpdid","name":"MPN ID"}
+              {"name":"Employer","ref":"employer","input":[
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"address" ,"name": "Address","active":true},
+                 {"ref":"cityStateZip","name": "City/State/Zip","active":true},
+                 {"ref":"workPhone","name":"Phone Number","active":true}
               ]}
           ]
         }],
@@ -191,168 +248,384 @@
             "name":"AEC001",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"accountNumber","name":"Account Number"}
+                {"ref":"requestDate","name":"Request Date","active":true},
+                {"ref":"accountNumber","name":"Account Number","active":true},
+                {"ref":"awardId","name":"Award Id","active":false},
+                {"ref":"creditLimit","name":"Credit Limit","active":false},
+                {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                 ]},
               {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerAddressLine3","name": "Address Line 3"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                 {"ref":"addressLine2","name": "Address Line 2","active":true},
+                 {"ref":"city","name": "City","active":true},
+                 {"ref":"state","name": "State","active":true},
+                 {"ref":"zipCode","name":"Zipcode","active":true},
+                 {"ref":"phoneNumber","name":"Phone Number","active":true}
                 ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"name","name":"Name","active":false},
+                   {"ref":"address1" ,"name": "Address 1","active":false},
+                   {"ref":"address2" ,"name": "Address 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zip","name": "Zip","active":false},
+                   {"ref":"phone","name": "Phone","active":false}
+                  ]},
               {"name":"Student","input":[
-                {"ref":"studentName","name":"Student Name"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
                 ]},
               {"name":"School","input":[
-                  {"ref":"schoolName","name":"School Name"}
+                  {"ref":"name","name":"School Name","active":true},
+                  {"ref":"longName","name":"Long School Name","active":false},
+                  {"ref":"address1","name":"School Address","active":false},
+                  {"ref":"city","name":"School City","active":false},
+                  {"ref":"state","name":"School State","active":false},
+                  {"ref":"zip","name":"School Zip","active":false},
+                  {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
+              ]},
+              {"name":"Endorser","input":[
+                 {"ref":"name","name":"Name","active":false},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
               ]}
             ]},
           {
             "name":"BAC001",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"accountNumber","name":"Account Number"},
-                {"ref":"loanApprovedAmount", "name":"Loan Approved Amount"}
-                ]},
-              {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerAddressLine3","name": "Address Line 3"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"}
-                ]},
-                {"name":"Credit Bureau","input":[
-                   {"ref":"creditBureauName","name":"Name"},
-                   {"ref":"creditBureauAddress1" ,"name": "Address"},
-                   {"ref":"creditBureauCity","name": "City"},
-                   {"ref":"creditBureauState","name": "State"},
-                   {"ref":"creditBureauZip","name":"Zipcode"},
-                   {"ref":"creditBureauPhone","name": "Phone"}
+                  {"ref":"requestDate","name":"Request Date","active":true},
+                  {"ref":"accountNumber","name":"Account Number","active":true},
+                  {"ref":"awardId","name":"Award Id","active":false},
+                  {"ref":"creditLimit","name":"Credit Limit","active":false},
+                  {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":true},
+                  {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                   ]},
-              {"name":"Student","input":[
-                {"ref":"studentName","name":"Student Name"}
+                {"name":"Borrower","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":true},
+                   {"ref":"ssn","name":"SSN","active":true},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                   {"ref":"addressLine2","name": "Address Line 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zipCode","name":"Zipcode","active":true},
+                   {"ref":"phoneNumber","name":"Phone Number","active":true}
+                  ]},
+                  {"name":"Credit Bureau","input":[
+                     {"ref":"name","name":"Name","active":true},
+                     {"ref":"address1" ,"name": "Address 1","active":true},
+                     {"ref":"address2" ,"name": "Address 2","active":true},
+                     {"ref":"city","name": "City","active":true},
+                     {"ref":"state","name": "State","active":true},
+                     {"ref":"zip","name": "Zip","active":true},
+                     {"ref":"phone","name": "Phone","active":true}
+                    ]},
+                {"name":"Student","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false}
+                  ]},
+                {"name":"School","input":[
+                    {"ref":"name","name":"School Name","active":true},
+                    {"ref":"longName","name":"Long School Name","active":false},
+                    {"ref":"address1","name":"School Address","active":false},
+                    {"ref":"city","name":"School City","active":false},
+                    {"ref":"state","name":"School State","active":false},
+                    {"ref":"zip","name":"School Zip","active":false},
+                    {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
                 ]},
-              {"name":"School","input":[
-                  {"ref":"schoolName","name":"School Name"}
-              ]}
+                {"name":"Endorser","input":[
+                   {"ref":"name","name":"Name","active":false},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false}
+                ]}
             ]},
           {
             "name":"BEA001",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"accountNumber","name":"Account Number"}
+                {"ref":"requestDate","name":"Request Date","active":true},
+                {"ref":"accountNumber","name":"Account Number","active":true},
+                {"ref":"awardId","name":"Award Id","active":false},
+                {"ref":"creditLimit","name":"Credit Limit","active":false},
+                {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                 ]},
               {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerAddressLine3","name": "Address Line 3"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                 {"ref":"addressLine2","name": "Address Line 2","active":true},
+                 {"ref":"city","name": "City","active":true},
+                 {"ref":"state","name": "State","active":true},
+                 {"ref":"zipCode","name":"Zipcode","active":true},
+                 {"ref":"phoneNumber","name":"Phone Number","active":true}
                 ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"name","name":"Name","active":false},
+                   {"ref":"address1" ,"name": "Address 1","active":false},
+                   {"ref":"address2" ,"name": "Address 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zip","name": "Zip","active":false},
+                   {"ref":"phone","name": "Phone","active":false}
+                  ]},
               {"name":"Student","input":[
-                {"ref":"studentName","name":"Student Name"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
                 ]},
               {"name":"School","input":[
-                  {"ref":"schoolName","name":"School Name"}
+                  {"ref":"name","name":"School Name","active":true},
+                  {"ref":"longName","name":"Long School Name","active":false},
+                  {"ref":"address1","name":"School Address","active":false},
+                  {"ref":"city","name":"School City","active":false},
+                  {"ref":"state","name":"School State","active":false},
+                  {"ref":"zip","name":"School Zip","active":false},
+                  {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
               ]},
               {"name":"Endorser","input":[
-                  {"ref":"endorserName","name":"Endorser Name"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
               ]}
             ]},
             {
             "name":"EAC001",
             "fields":[
-
-                {"name":"Correspondence Info","input":[
-                  {"ref":"requestDate","name":"Request Date"},
-                  {"ref":"accountNumber","name":"Account Number"}
-                  ]},
-                {"name":"Endorser","input":[
-                   {"ref":"endorserName","name":"Name"},
-                   {"ref":"endorserAddressLine1" ,"name": "Address Line 1"},
-                   {"ref":"endorserAddressLine2","name": "Address Line 2"},
-                   {"ref":"endorserAddressLine3","name": "Address Line 3"},
-                   {"ref":"endorserCity","name": "City"},
-                   {"ref":"endorserState","name": "State"},
-                   {"ref":"endorserZip","name":"Zipcode"}
-                  ]},
-                  {"name":"Credit Bureau","input":[
-                     {"ref":"creditBureauName","name":"Name"},
-                     {"ref":"creditBureauAddress1" ,"name": "Address"},
-                     {"ref":"creditBureauCity","name": "City"},
-                     {"ref":"creditBureauState","name": "State"},
-                     {"ref":"creditBureauZip","name":"Zipcode"},
-                     {"ref":"creditBureauPhone","name": "Phone"}
-                    ]},
-                {"name":"Student","input":[
-                  {"ref":"studentName","name":"Student Name"}
-                  ]},
-                {"name":"School","input":[
-                    {"ref":"schoolName","name":"School Name"}
+              {"name":"Correspondence Info","input":[
+                {"ref":"requestDate","name":"Request Date","active":true},
+                {"ref":"accountNumber","name":"Account Number","active":true},
+                {"ref":"awardId","name":"Award Id","active":false},
+                {"ref":"creditLimit","name":"Credit Limit","active":false},
+                {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                 ]},
-                {"name":"Borrower","input":[
-                    {"ref":"borrowerName","name":"Borrower Name"}
-                ]}
-              ]
-            },
+              {"name":"Borrower","input":[
+                 {"ref":"name","name":"Name","active":false},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
+                ]},
+                {"name":"Credit Bureau","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"address1" ,"name": "Address 1","active":true},
+                   {"ref":"address2" ,"name": "Address 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zip","name": "Zip","active":true},
+                   {"ref":"phone","name": "Phone","active":true}
+                  ]},
+              {"name":"Student","input":[
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
+                ]},
+              {"name":"School","input":[
+                  {"ref":"name","name":"School Name","active":true},
+                  {"ref":"longName","name":"Long School Name","active":false},
+                  {"ref":"address1","name":"School Address","active":false},
+                  {"ref":"city","name":"School City","active":false},
+                  {"ref":"state","name":"School State","active":false},
+                  {"ref":"zip","name":"School Zip","active":false},
+                  {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
+              ]},
+              {"name":"Endorser","input":[
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
+              ]}
+              ]},
           {
             "name":"RAC002",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"accountNumber","name":"Account Number"}
+                  {"ref":"requestDate","name":"Request Date","active":true},
+                  {"ref":"accountNumber","name":"Account Number","active":true},
+                  {"ref":"awardId","name":"Award Id","active":false},
+                  {"ref":"creditLimit","name":"Credit Limit","active":false},
+                  {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                  {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
+                  ]},
+                {"name":"Borrower","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":true},
+                   {"ref":"ssn","name":"SSN","active":true},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                   {"ref":"addressLine2","name": "Address Line 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zipCode","name":"Zipcode","active":true},
+                   {"ref":"phoneNumber","name":"Phone Number","active":true}
+                  ]},
+                  {"name":"Credit Bureau","input":[
+                     {"ref":"name","name":"Name","active":false},
+                     {"ref":"address1" ,"name": "Address 1","active":false},
+                     {"ref":"address2" ,"name": "Address 2","active":false},
+                     {"ref":"city","name": "City","active":false},
+                     {"ref":"state","name": "State","active":false},
+                     {"ref":"zip","name": "Zip","active":false},
+                     {"ref":"phone","name": "Phone","active":false}
+                    ]},
+                {"name":"Student","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false}
+                  ]},
+                {"name":"School","input":[
+                    {"ref":"name","name":"School Name","active":true},
+                    {"ref":"longName","name":"Long School Name","active":false},
+                    {"ref":"address1","name":"School Address","active":false},
+                    {"ref":"city","name":"School City","active":false},
+                    {"ref":"state","name":"School State","active":false},
+                    {"ref":"zip","name":"School Zip","active":false},
+                    {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
                 ]},
-              {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"}
-                ]},
-              {"name":"Student","input":[
-                {"ref":"studentName","name":"Student Name"}
-                ]},
-              {"name":"School","input":[
-                  {"ref":"schoolName","name":"School Name"}
-              ]}
+                {"name":"Endorser","input":[
+                   {"ref":"name","name":"Name","active":false},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false}
+                ]}
             ]
           },{
             "name":"RB9002",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"accountNumber","name":"Account Number"}
+                {"ref":"requestDate","name":"Request Date","active":true},
+                {"ref":"accountNumber","name":"Account Number","active":true},
+                {"ref":"awardId","name":"Award Id","active":false},
+                {"ref":"creditLimit","name":"Credit Limit","active":false},
+                {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                 ]},
               {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                 {"ref":"addressLine2","name": "Address Line 2","active":true},
+                 {"ref":"city","name": "City","active":true},
+                 {"ref":"state","name": "State","active":true},
+                 {"ref":"zipCode","name":"Zipcode","active":true},
+                 {"ref":"phoneNumber","name":"Phone Number","active":true}
                 ]},
                 {"name":"Credit Bureau","input":[
-                   {"ref":"creditBureauName","name":"Name"},
-                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
-                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
-                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
-                   {"ref":"creditBureauPhone","name": "Phone"}
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"address1" ,"name": "Address 1","active":true},
+                   {"ref":"address2" ,"name": "Address 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zip","name": "Zip","active":true},
+                   {"ref":"phone","name": "Phone","active":true}
                   ]},
               {"name":"Student","input":[
-                {"ref":"studentName","name":"Student Name"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
                 ]},
               {"name":"School","input":[
-                  {"ref":"schoolName","name":"School Name"}
+                  {"ref":"name","name":"School Name","active":true},
+                  {"ref":"longName","name":"Long School Name","active":false},
+                  {"ref":"address1","name":"School Address","active":false},
+                  {"ref":"city","name":"School City","active":false},
+                  {"ref":"state","name":"School State","active":false},
+                  {"ref":"zip","name":"School Zip","active":false},
+                  {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
+              ]},
+              {"name":"Endorser","input":[
+                 {"ref":"name","name":"Name","active":false},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
               ]},
               {"name":"Reason","input":[
                   {"ref":"reason1","name":"Reason 1"},
@@ -366,29 +639,64 @@
             "name":"RB9003",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"accountNumber","name":"Account Number"}
+                {"ref":"requestDate","name":"Request Date","active":true},
+                {"ref":"accountNumber","name":"Account Number","active":true},
+                {"ref":"awardId","name":"Award Id","active":false},
+                {"ref":"creditLimit","name":"Credit Limit","active":false},
+                {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                 ]},
               {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                 {"ref":"addressLine2","name": "Address Line 2","active":true},
+                 {"ref":"city","name": "City","active":true},
+                 {"ref":"state","name": "State","active":true},
+                 {"ref":"zipCode","name":"Zipcode","active":true},
+                 {"ref":"phoneNumber","name":"Phone Number","active":true}
                 ]},
                 {"name":"Credit Bureau","input":[
-                   {"ref":"creditBureauName","name":"Name"},
-                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
-                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
-                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
-                   {"ref":"creditBureauPhone","name": "Phone"}
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"address1" ,"name": "Address 1","active":true},
+                   {"ref":"address2" ,"name": "Address 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zip","name": "Zip","active":true},
+                   {"ref":"phone","name": "Phone","active":true}
                   ]},
               {"name":"Student","input":[
-                {"ref":"studentName","name":"Student Name"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
                 ]},
               {"name":"School","input":[
-                  {"ref":"schoolName","name":"School Name"}
+                  {"ref":"name","name":"School Name","active":true},
+                  {"ref":"longName","name":"Long School Name","active":false},
+                  {"ref":"address1","name":"School Address","active":false},
+                  {"ref":"city","name":"School City","active":false},
+                  {"ref":"state","name":"School State","active":false},
+                  {"ref":"zip","name":"School Zip","active":false},
+                  {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
+              ]},
+              {"name":"Endorser","input":[
+                 {"ref":"name","name":"Name","active":false},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
               ]},
               {"name":"Reason","input":[
                   {"ref":"reason1","name":"Reason 1"},
@@ -402,125 +710,256 @@
             "name":"RD9002",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"loanAmount","name":"Loan Amount"},
-                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked"}
+                {"ref":"requestDate","name":"Request Date","active":true},
+                {"ref":"accountNumber","name":"Account Number","active":true},
+                {"ref":"awardId","name":"Award Id","active":false},
+                {"ref":"creditLimit","name":"Credit Limit","active":false},
+                {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                 ]},
               {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerDob","name":"DOB"},
-                 {"ref":"borrowerSsn","name":"SSN"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"},
-                 {"ref":"borrowerPhone","name":"Phone Number"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                 {"ref":"addressLine2","name": "Address Line 2","active":true},
+                 {"ref":"city","name": "City","active":true},
+                 {"ref":"state","name": "State","active":true},
+                 {"ref":"zipCode","name":"Zipcode","active":true},
+                 {"ref":"phoneNumber","name":"Phone Number","active":true}
                 ]},
                 {"name":"Credit Bureau","input":[
-                   {"ref":"creditBureauName","name":"Name"},
-                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
-                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
-                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
-                   {"ref":"creditBureauPhone","name": "Phone"}
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"address1" ,"name": "Address 1","active":true},
+                   {"ref":"address2" ,"name": "Address 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zip","name": "Zip","active":true},
+                   {"ref":"phone","name": "Phone","active":true}
                   ]},
               {"name":"Student","input":[
-                {"ref":"studentName","name":"Student Name"},
-                {"ref":"studentDob","name":"Student DOD"},
-                {"ref":"studentSsn","name":"Student SSN"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":true},
+                 {"ref":"ssn","name":"SSN","active":true},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
                 ]},
               {"name":"School","input":[
-                  {"ref":"schoolName","name":"School Name"},
-                  {"ref":"schoolAddress","name":"School Address"},
-                  {"ref":"schoolCity","name":"School City"},
-                  {"ref":"schoolState","name":"School State"},
-                  {"ref":"schoolZip","name":"School Zip"}
+                  {"ref":"name","name":"School Name","active":true},
+                  {"ref":"longName","name":"Long School Name","active":false},
+                  {"ref":"address1","name":"School Address","active":true},
+                  {"ref":"city","name":"School City","active":true},
+                  {"ref":"state","name":"School State","active":true},
+                  {"ref":"zip","name":"School Zip","active":true},
+                  {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
               ]},
               {"name":"Endorser","input":[
-                  {"ref":"endorserName","name":"Endorser Name"}
+                 {"ref":"name","name":"Name","active":true},
+                 {"ref":"dob","name":"DOB","active":false},
+                 {"ref":"ssn","name":"SSN","active":false},
+                 {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                 {"ref":"addressLine2","name": "Address Line 2","active":false},
+                 {"ref":"city","name": "City","active":false},
+                 {"ref":"state","name": "State","active":false},
+                 {"ref":"zipCode","name":"Zipcode","active":false},
+                 {"ref":"phoneNumber","name":"Phone Number","active":false}
               ]}
             ]
           },{
             "name":"RLE001",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"},
-                {"ref":"accountNumber","name":"Account Number"}
-                ]},
-                {"name":"Endorser","input":[
-                   {"ref":"endorserName","name":"Name"},
-                   {"ref":"endorserAddressLine1" ,"name": "Address Line 1"},
-                   {"ref":"endorserAddressLine2","name": "Address Line 2"},
-                   {"ref":"endorserCity","name": "City"},
-                   {"ref":"endorserState","name": "State"},
-                   {"ref":"endorserZip","name":"Zipcode"}
+                  {"ref":"requestDate","name":"Request Date","active":true},
+                  {"ref":"accountNumber","name":"Account Number","active":true},
+                  {"ref":"awardId","name":"Award Id","active":false},
+                  {"ref":"creditLimit","name":"Credit Limit","active":false},
+                  {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                  {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                   ]},
-                  {"name":"Borrower","input":[
-                      {"ref":"borrowerName","name":"Borrower Name"}
-                      ]},
-              {"name":"Student","input":[
-                  {"ref":"studentName","name":"Student Name"}
+                {"name":"Borrower","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false}
+                  ]},
+                  {"name":"Credit Bureau","input":[
+                     {"ref":"name","name":"Name","active":true},
+                     {"ref":"address1" ,"name": "Address 1","active":true},
+                     {"ref":"address2" ,"name": "Address 2","active":true},
+                     {"ref":"city","name": "City","active":true},
+                     {"ref":"state","name": "State","active":true},
+                     {"ref":"zip","name": "Zip","active":true},
+                     {"ref":"phone","name": "Phone","active":true}
+                    ]},
+                {"name":"Student","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false},
+                   {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
                   ]},
                 {"name":"School","input":[
-                    {"ref":"schoolName","name":"School Name"}
+                    {"ref":"name","name":"School Name","active":true},
+                    {"ref":"longName","name":"Long School Name","active":false},
+                    {"ref":"address1","name":"School Address","active":false},
+                    {"ref":"city","name":"School City","active":false},
+                    {"ref":"state","name":"School State","active":false},
+                    {"ref":"zip","name":"School Zip","active":false}
                 ]},
-              {"name":"Credit Bureau","input":[
-                 {"ref":"creditBureauName","name":"Name"},
-                 {"ref":"creditBureauAddress1" ,"name": "Address 1"},
-                 {"ref":"creditBureauAddress2" ,"name": "Address 2"},
-                 {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
-                 {"ref":"creditBureauPhone","name": "Phone"}
-                ]},
-              {"name":"Reason","input":[
-                  {"ref":"reason1","name":"Reason 1"},
-                    {"ref":"reason2","name":"Reason 2"},
-                      {"ref":"reason3","name":"Reason 3"},
-                        {"ref":"reason4","name":"Reason 4"},
-                          {"ref":"reason5","name":"Reason 5"}
-              ]}
+                {"name":"Endorser","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":true},
+                   {"ref":"ssn","name":"SSN","active":true},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                   {"ref":"addressLine2","name": "Address Line 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zipCode","name":"Zipcode","active":true},
+                   {"ref":"phoneNumber","name":"Phone Number","active":true}
+                ]}
             ]
           },{
           "name":"WCA001",
           "fields":[
             {"name":"Correspondence Info","input":[
-              {"ref":"requestDate","name":"Request Date"}
-              ]},
-            {"name":"Borrower","input":[
-               {"ref":"borrowerName","name":"Name"},
-               {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-               {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-               {"ref":"borrowerCity","name": "City"},
-               {"ref":"borrowerState","name": "State"},
-               {"ref":"borrowerZip","name":"Zipcode"}
-              ]},
-              {"name":"Credit Bureau","input":[
-                 {"ref":"creditBureauName","name":"Name"},
-                 {"ref":"creditBureauAddress1" ,"name": "Address 1"},
-                 {"ref":"creditBureauAddress2" ,"name": "Address 2"},
-                 {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
-                 {"ref":"creditBureauPhone","name": "Phone"}
+                  {"ref":"requestDate","name":"Request Date","active":true},
+                  {"ref":"accountNumber","name":"Account Number","active":false},
+                  {"ref":"awardId","name":"Award Id","active":false},
+                  {"ref":"creditLimit","name":"Credit Limit","active":false},
+                  {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                  {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
+                  ]},
+                {"name":"Borrower","input":[
+                   {"ref":"name","name":"Name","active":true},
+                   {"ref":"dob","name":"DOB","active":true},
+                   {"ref":"ssn","name":"SSN","active":true},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                   {"ref":"addressLine2","name": "Address Line 2","active":true},
+                   {"ref":"city","name": "City","active":true},
+                   {"ref":"state","name": "State","active":true},
+                   {"ref":"zipCode","name":"Zipcode","active":true},
+                   {"ref":"phoneNumber","name":"Phone Number","active":true}
+                  ]},
+                  {"name":"Credit Bureau","input":[
+                     {"ref":"name","name":"Name","active":true},
+                     {"ref":"address1" ,"name": "Address 1","active":true},
+                     {"ref":"address2" ,"name": "Address 2","active":true},
+                     {"ref":"city","name": "City","active":true},
+                     {"ref":"state","name": "State","active":true},
+                     {"ref":"zip","name": "Zip","active":true},
+                     {"ref":"phone","name": "Phone","active":true}
+                    ]},
+                {"name":"Student","input":[
+                   {"ref":"name","name":"Name","active":false},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false}
+                  ]},
+                {"name":"School","input":[
+                    {"ref":"name","name":"School Name","active":false},
+                    {"ref":"longName","name":"Long School Name","active":false},
+                    {"ref":"address1","name":"School Address","active":false},
+                    {"ref":"city","name":"School City","active":false},
+                    {"ref":"state","name":"School State","active":false},
+                    {"ref":"zip","name":"School Zip","active":false},
+                    {"ref":"schoolCode","name":"School Code","active":false},
+                  {"ref":"mpnId","name":"MPN Id","active":false}
+                ]},
+                {"name":"Endorser","input":[
+                   {"ref":"name","name":"Name","active":false},
+                   {"ref":"dob","name":"DOB","active":false},
+                   {"ref":"ssn","name":"SSN","active":false},
+                   {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                   {"ref":"addressLine2","name": "Address Line 2","active":false},
+                   {"ref":"city","name": "City","active":false},
+                   {"ref":"state","name": "State","active":false},
+                   {"ref":"zipCode","name":"Zipcode","active":false},
+                   {"ref":"phoneNumber","name":"Phone Number","active":false}
                 ]}
           ]
           },{
             "name":"WCR001",
             "fields":[
               {"name":"Correspondence Info","input":[
-                {"ref":"requestDate","name":"Request Date"}
-                ]},
-              {"name":"Borrower","input":[
-                 {"ref":"borrowerName","name":"Name"},
-                 {"ref":"borrowerAddressLine1" ,"name": "Address Line 1"},
-                 {"ref":"borrowerAddressLine2","name": "Address Line 2"},
-                 {"ref":"borrowerCity","name": "City"},
-                 {"ref":"borrowerState","name": "State"},
-                 {"ref":"borrowerZip","name":"Zipcode"}
-                ]},
-                {"name":"Credit Bureau","input":[
-                   {"ref":"creditBureauName","name":"Name"},
-                   {"ref":"creditBureauAddress1" ,"name": "Address 1"},
-                   {"ref":"creditBureauAddress2" ,"name": "Address 2"},
-                   {"ref":"creditBureauCityStateZip","name": "City/State/Zip"},
-                   {"ref":"creditBureauPhone","name": "Phone"}
+                    {"ref":"requestDate","name":"Request Date","active":true},
+                    {"ref":"accountNumber","name":"Account Number","active":false},
+                    {"ref":"awardId","name":"Award Id","active":false},
+                    {"ref":"creditLimit","name":"Credit Limit","active":false},
+                    {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
+                    {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
+                    ]},
+                  {"name":"Borrower","input":[
+                     {"ref":"name","name":"Name","active":true},
+                     {"ref":"dob","name":"DOB","active":true},
+                     {"ref":"ssn","name":"SSN","active":true},
+                     {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
+                     {"ref":"addressLine2","name": "Address Line 2","active":true},
+                     {"ref":"city","name": "City","active":true},
+                     {"ref":"state","name": "State","active":true},
+                     {"ref":"zipCode","name":"Zipcode","active":true},
+                     {"ref":"phoneNumber","name":"Phone Number","active":true}
+                    ]},
+                    {"name":"Credit Bureau","input":[
+                       {"ref":"name","name":"Name","active":true},
+                       {"ref":"address1" ,"name": "Address 1","active":true},
+                       {"ref":"address2" ,"name": "Address 2","active":true},
+                       {"ref":"city","name": "City","active":true},
+                       {"ref":"state","name": "State","active":true},
+                       {"ref":"zip","name": "Zip","active":true},
+                       {"ref":"phone","name": "Phone","active":true}
+                      ]},
+                  {"name":"Student","input":[
+                     {"ref":"name","name":"Name","active":false},
+                     {"ref":"dob","name":"DOB","active":false},
+                     {"ref":"ssn","name":"SSN","active":false},
+                     {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                     {"ref":"addressLine2","name": "Address Line 2","active":false},
+                     {"ref":"city","name": "City","active":false},
+                     {"ref":"state","name": "State","active":false},
+                     {"ref":"zipCode","name":"Zipcode","active":false},
+                     {"ref":"phoneNumber","name":"Phone Number","active":false}
+                    ]},
+                  {"name":"School","input":[
+                      {"ref":"name","name":"School Name","active":false},
+                      {"ref":"longName","name":"Long School Name","active":false},
+                      {"ref":"address1","name":"School Address","active":false},
+                      {"ref":"city","name":"School City","active":false},
+                      {"ref":"state","name":"School State","active":false},
+                      {"ref":"zip","name":"School Zip","active":false},
+                      {"ref":"schoolCode","name":"School Code","active":false},
+                      {"ref":"mpnId","name":"MPN Id","active":false}
+                  ]},
+                  {"name":"Endorser","input":[
+                     {"ref":"name","name":"Name","active":false},
+                     {"ref":"dob","name":"DOB","active":false},
+                     {"ref":"ssn","name":"SSN","active":false},
+                     {"ref":"addressLine1" ,"name": "Address Line 1","active":false},
+                     {"ref":"addressLine2","name": "Address Line 2","active":false},
+                     {"ref":"city","name": "City","active":false},
+                     {"ref":"state","name": "State","active":false},
+                     {"ref":"zipCode","name":"Zipcode","active":false},
+                     {"ref":"phoneNumber","name":"Phone Number","active":false}
                   ]},
                   {"name":"Reason","input":[
                       {"ref":"reason1","name":"Reason 1"},

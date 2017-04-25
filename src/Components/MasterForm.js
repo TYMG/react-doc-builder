@@ -22,24 +22,91 @@ class MasterForm extends Component {
       currentSubDocmentType:nextProps.subDocumentType
     })
   }
-  
+
   formSubmit(e){
-    this.setState({correspondence:{
-      name:this.refs.name.value,
-      addr1:this.refs.addr1.value,
-      addr2:this.refs.addr2.value,
-      addrCity: this.refs.addrCity.value
+    this.setState({refs:{
+      fields:this.refs
     }}, function(){
-        this.props.createDocument(this.state.correspondence);
+        let result = this.parseForm()
+        console.log(JSON.stringify(result))
+        this.props.createDocument(result);
     });
     e.preventDefault();
   }
 
+
+  // function onGeneratedRow(columnsResult)
+  // {
+  //     var jsonData = {};
+  //     columnsResult.forEach(function(column)
+  //     {
+  //         var columnName = column.metadata.colName;
+  //         jsonData[columnName] = column.value;
+  //     });
+  //     viewData.employees.push(jsonData);
+  //  }
+
+  parseInputs(section){
+    const stateRefs = this.state.refs;
+    let inputJson = {};
+     section.input.forEach( input =>{
+      const inputRef = input.ref;
+      let inputRefValue=null
+      if(input.active){
+        let uniqueRef = input.ref+section.ref;
+        inputRefValue = stateRefs.fields[uniqueRef].value;
+      }
+      inputJson[inputRef] = inputRefValue;
+    })
+    return inputJson;
+  }
+
+  parseSections(docTypeFields){
+    //Loop through the sections
+      let sectionJson = {};
+       docTypeFields.forEach( (section,index) => {
+        //Build The Section Header
+        const sectionRef = section.ref;
+        let sectionInputFields = this.parseInputs(section)
+        sectionJson[sectionRef] = sectionInputFields
+    })
+
+    return sectionJson;
+  }
+
+  parseForm(){
+    const currDocType = this.state.currentDocumentType
+    const currSubDocType = this.state.currentSubDocmentType
+
+    let formJson = {};
+    if(currDocType.fields.length !== 0 && currDocType.subtypes.length === 0){
+      //Loop Through The Fields Creating Input
+      formJson = this.parseSections(currDocType.fields)
+    }else{
+      if(currSubDocType !== 'Select'){
+          //This assumes that the current DocType doesnt have any fields
+          //Need to the loop through subtypes
+          currDocType.subtypes.forEach ( (sdt,index) =>{
+            //In the case where
+            if(sdt.name === currSubDocType){
+              //Loop Through The Fields Create Input Fields
+              formJson = this.parseSections(sdt.fields)
+
+            }
+          })
+        }
+      }
+      return formJson
+    }
+
+
   procesInputs(section){
     return section.input.map( input =>{
-      console.log(input)
-    return <div key={input.ref}><label>{input.name}:</label>&nbsp;<input type="text" ref={input.ref}/><br/></div>
+      if(input.active){
+        let uniqueRef = input.ref+section.ref;
+        return <div key={input.ref}><label>{input.name}:</label>&nbsp;<input type="text" ref={uniqueRef}/><br/></div>
     //  return <option key={subtype.name} value={subtype.name}>{subtype.name}</option>
+      }
     })
   }
 
@@ -54,8 +121,8 @@ class MasterForm extends Component {
   }
 
   processFormAndFields(){
-    const currDocType = this.props.documentType
-    const currSubDocType = this.props.subDocumentType
+    const currDocType = this.state.currentDocumentType
+    const currSubDocType = this.state.currentSubDocmentType
     let docTypeFieldInputs = null
     if(currDocType.fields.length !== 0 && currDocType.subtypes.length === 0){
       //Loop Through The Fields Creating Input
@@ -82,7 +149,11 @@ class MasterForm extends Component {
       return(
           <form onSubmit={this.formSubmit.bind(this)}>
           <div>
-            <h2>{this.state.currentDocumentType.name}</h2>
+            {this.state.currentSubDocmentType !== 'Select' ? (
+                <h2>{this.state.currentDocumentType.name}: {this.state.currentSubDocmentType}</h2>
+              ) : (
+                <h2>{this.state.currentDocumentType.name}</h2>
+            )}
             {listOfInputFields}
           </div>
           <br />

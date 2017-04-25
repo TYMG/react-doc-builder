@@ -3,9 +3,6 @@ import request from 'request';
 import DocumentTypeSelector from './Components/DocumentTypeSelector'
 import Home from './Components/Home'
 import MasterForm from './Components/MasterForm'
-import EndorserAddendumForm from './Components/EndorserAddendumForm'
-import CorrespondenceForm from './Components/CorrespondenceForm'
-import MPNForm from './Components/MPNForm'
 
 import logo from './logo.svg';
 import './App.css';
@@ -26,15 +23,12 @@ class App extends Component {
     }
 
   parseDocumentTypeData(){
-    let test = documentTypeData.documentTypes;
     let docTypes = documentTypeData.documentTypes.map( docType =>{
-      let test2 = docType.fields;
       return docType;
     })
     this.setState({
       documentTypes:docTypes
     }, function(){
-        console.log(this.state.documentTypes);
     })
   }
 
@@ -42,25 +36,27 @@ class App extends Component {
     this.setState({
       currentSelection:documentTypeSelected
     }, ()=>{
-      console.log("Values Set")
     });
   }
 
-  createDocument(document){
+  createDocument(form){
     console.log("Create Document Function Hit");
     //Check if the document is not null
     var options = {
-      url: 'http://localhost:8080/Document/EA',
+      url: 'http://localhost:8080/Document/Corr/RD9002',
       method: 'POST',
-      json: document
+      json: form
     }
     request.post(options);
+
+    // .then((body)=>{
+    //   console.log(body)
+    //      //Check the Response and Check the Return
+    //   })
     // request.post({url:'http://localhost:8080/Document/EA',
     //               form:})
     // .json(document)
-    // .then((body)=>{
-    //     //Check the Response and Check the Return
-    // })
+
   }
 
   renderForm(){
