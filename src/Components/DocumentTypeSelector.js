@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
+
 
 class DocumentTypeSelector extends Component {
   constructor(){
@@ -18,7 +20,7 @@ class DocumentTypeSelector extends Component {
   // }
   buildDocTypeArray(){
     return this.props.documentTypes.map( docType =>{
-     return <option key={docType.name} value={docType.name}>{docType.name}</option>
+     return <option id={docType.route} key={docType.name} value={docType.name}>{docType.name}</option>
    })
   }
 

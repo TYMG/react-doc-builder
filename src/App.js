@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import request from 'request';
 import DocumentTypeSelector from './Components/DocumentTypeSelector'
 import Home from './Components/Home'
@@ -22,6 +23,27 @@ class App extends Component {
       this.parseDocumentTypeData();
     }
 
+
+  findRoute(){
+    const currDocType = this.state.currentSelection.docType
+    let docTypeRoute = documentTypeData.documentTypes.find( docType =>{
+      if(currDocType === docType.name){
+        return docType.route;
+      }
+    })
+    this.setState({
+        documentTypeRoute: docTypeRoute.route
+    },()=>{
+      const currSubDocType = this.state.currentSelection.subDocType
+
+      let path = '/document/'+docTypeRoute.route
+      if(currSubDocType !== '' && currSubDocType !== 'Select'){
+        path += '/'+currSubDocType;
+      }
+      this.props.history.push(`${path}`)
+    })
+  }
+
   parseDocumentTypeData(){
     let docTypes = documentTypeData.documentTypes.map( docType =>{
       return docType;
@@ -36,14 +58,19 @@ class App extends Component {
     this.setState({
       currentSelection:documentTypeSelected
     }, ()=>{
+      this.findRoute();
     });
+  }
+
+  updateRoutePath(path){
   }
 
   createDocument(form){
     console.log("Create Document Function Hit");
+    var PATH = window.location.pathname;
     //Check if the document is not null
     var options = {
-      url: 'http://localhost:8080/Document/Corr/RD9002',
+      url: 'http://localhost:8080'+PATH,
       method: 'POST',
       json: form
     }
@@ -76,16 +103,6 @@ class App extends Component {
 
   render() {
     let formType = this.renderForm();
-    // if(currSelection !== undefined){
-    //   const currSelectedDocType = currSelection.docType;
-    //   if(currSelection.docType === 'Correspondence'){
-    //     formType = <CorrespondenceForm createDocument={this.createDocument.bind(this)}/>;
-    //   }else if(currSelection.docType === 'Endorser Addendum'){
-    //     formType = <EndorserAddendumForm createDocument={this.createDocument.bind(this)}/>;
-    //   }else if(currSelection.docType === 'Master Promissory Note'){
-    //     formType = <MPNForm createDocument={this.createDocument.bind(this)}/>;
-    //   }
-    // }
     return (
       <div className="App">
         <div className="App-header">
@@ -102,4 +119,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
