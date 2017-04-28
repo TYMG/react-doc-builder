@@ -1,5 +1,57 @@
-.App {
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/***
+Multipurpose
+***/
+
+.elem__background {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.centered {
   text-align: center;
+}
+
+
+.inline{
+  display: inline;
+  margin-right: 5%;
+}
+
+/**
+Header CSS
+**/
+
+
+/**
+Home CSS
+**/
+
+
+/**
+App CSS
+**/
+
+.app__content {
+  flex: 1;
+  height:95%;
+  margin: auto;
+}
+
+div.app__masterform{
+  padding:5%;
 }
 
 .App-header {
@@ -16,4 +68,26 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/***
+Document Selector
+***/
+
+
+
+/***
+Footer
+***/
+
+.footer__background {
+  background-color: #222;
+  height: 10%;
+  padding: 1%;
+  color: white;
+}
+
+
+.footer__text{
+  font-size: 2rem;
 }

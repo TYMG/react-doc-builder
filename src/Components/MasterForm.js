@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'semantic-ui-react'
 
 class MasterForm extends Component {
 
@@ -33,18 +34,6 @@ class MasterForm extends Component {
     });
     e.preventDefault();
   }
-
-
-  // function onGeneratedRow(columnsResult)
-  // {
-  //     var jsonData = {};
-  //     columnsResult.forEach(function(column)
-  //     {
-  //         var columnName = column.metadata.colName;
-  //         jsonData[columnName] = column.value;
-  //     });
-  //     viewData.employees.push(jsonData);
-  //  }
 
   parseInputs(section){
     const stateRefs = this.state.refs;
@@ -147,7 +136,7 @@ class MasterForm extends Component {
 
     renderFormAndFields(listOfInputFields){
       return(
-          <form onSubmit={this.formSubmit.bind(this)}>
+          <form className="form-horizontal" onSubmit={this.formSubmit.bind(this)}>
           <div>
             {this.state.currentSubDocmentType !== 'Select' ? (
                 <h2>{this.state.currentDocumentType.name}: {this.state.currentSubDocmentType}</h2>
@@ -157,7 +146,7 @@ class MasterForm extends Component {
             {listOfInputFields}
           </div>
           <br />
-          <input type="submit" value="Submit"/>
+          <input className="btn btn-primary" type="submit" value="Submit"/>
           <br />
           </form>
         );

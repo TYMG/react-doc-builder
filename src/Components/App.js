@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
+
+import { Container, Header } from 'semantic-ui-react'
+
 import request from 'request';
-import DocumentTypeSelector from './Components/DocumentTypeSelector'
-import Home from './Components/Home'
-import MasterForm from './Components/MasterForm'
 
-import logo from './logo.svg';
-import './App.css';
+/**
+Import Components
+**/
+import AppHeader from './AppHeader'
+import DocumentTypeSelector from './DocumentTypeSelector'
+import Home from './Home'
+import MasterForm from './MasterForm'
+import AppFooter from './AppFooter'
 
-import documentTypeData from '../documentTypeData.json';
+import '../App.css';
 
 class App extends Component {
 
@@ -19,40 +25,28 @@ class App extends Component {
     }
   }
 
-    componentWillMount(){
-      this.parseDocumentTypeData();
-    }
 
 
-  findRoute(){
-    const currDocType = this.state.currentSelection.docType
-    let docTypeRoute = documentTypeData.documentTypes.find( docType =>{
-      if(currDocType === docType.name){
-        return docType.route;
-      }
-    })
-    this.setState({
-        documentTypeRoute: docTypeRoute.route
-    },()=>{
-      const currSubDocType = this.state.currentSelection.subDocType
-
-      let path = '/document/'+docTypeRoute.route
-      if(currSubDocType !== '' && currSubDocType !== 'Select'){
-        path += '/'+currSubDocType;
-      }
-      this.props.history.push(`${path}`)
-    })
-  }
-
-  parseDocumentTypeData(){
-    let docTypes = documentTypeData.documentTypes.map( docType =>{
-      return docType;
-    })
-    this.setState({
-      documentTypes:docTypes
-    }, function(){
-    })
-  }
+  //
+  // findRoute(){
+  //   const currDocType = this.state.currentSelection.docType
+  //   let docTypeRoute = documentTypeData.documentTypes.find( docType =>{
+  //     if(currDocType === docType.name){
+  //       return docType.route;
+  //     }
+  //   })
+  //   this.setState({
+  //       documentTypeRoute: docTypeRoute.route
+  //   },()=>{
+  //     const currSubDocType = this.state.currentSelection.subDocType
+  //
+  //     let path = '/document/'+docTypeRoute.route
+  //     if(currSubDocType !== '' && currSubDocType !== 'Select'){
+  //       path += '/'+currSubDocType;
+  //     }
+  //     this.props.history.push(`${path}`)
+  //   })
+  // }
 
   selectDocumentType(documentTypeSelected){
     this.setState({
@@ -104,15 +98,14 @@ class App extends Component {
   render() {
     let formType = this.renderForm();
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to ACDOE Document Creator</h2>
-        </div>
+      <div>
         <div>
           <DocumentTypeSelector documentTypes={this.state.documentTypes} selectDocumentType={this.selectDocumentType.bind(this)}/>
         </div>
-        <div>
-          {formType}
+        <div className="app__masterform">
+          <Container form>
+            {formType}
+          </Container>
         </div>
       </div>
     );

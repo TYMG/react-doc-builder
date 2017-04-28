@@ -94,7 +94,7 @@ class DocumentTypeSelector extends Component {
     if(activeSubTypeDropDown){
       let subDocTypes = this.state.subDocumentTypes;
       return(
-        <div>
+        <div className="inline">
             <label>Sub Document Type:</label>&nbsp;
             <select ref="subDocType" value={this.state.subDocumentType} onChange={this.subDocumentTypeSelection.bind(this)}>
               {subDocTypes}
@@ -110,7 +110,7 @@ class DocumentTypeSelector extends Component {
         <div className="docSelector">
           <h3>Please select a Document Type from the Drop Down Below</h3>
           <div>
-            <div>
+            <div className="inline">
               <label>Document Type:</label>&nbsp;
               <select ref="docType" value={this.state.documentType} onChange={this.documentTypeSelection.bind(this)}>
                 {docTypes}
