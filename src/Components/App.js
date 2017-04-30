@@ -9,7 +9,7 @@ import request from 'request';
 Import Components
 **/
 import AppHeader from './AppHeader'
-import DocumentTypeSelector from './DocumentTypeSelector'
+import DocumentTypeSelector from '../Containers/DocumentTypeSelector'
 import Home from './Home'
 import MasterForm from './MasterForm'
 import AppFooter from './AppFooter'
@@ -100,7 +100,7 @@ class App extends Component {
     return (
       <div>
         <div>
-          <DocumentTypeSelector documentTypes={this.state.documentTypes} selectDocumentType={this.selectDocumentType.bind(this)}/>
+          <DocumentTypeSelector/>
         </div>
         <div className="app__masterform">
           <Container form>

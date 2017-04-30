@@ -1,37 +1,63 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux'
+
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-import changeDocumentTypes from './reducers'
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+
+import createHistory from 'history/createBrowserHistory'
+import { Route } from 'react-router'
+
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+
+import CurrentDocumentTypeSelection from './Reducers/CurrentDocumentTypeSelection'
+import DocumentTypes from './Reducers/DocumentTypes'
+import Form from './Reducers/Form'
 
 import App from './Components/App';
 
-import documentTypeData from '../documentTypeData.json';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
 
-let store = createStore(changeDocumentTypes,{"documentTypes":documentTypes})
+// Add the reducer to your store on the `router` key
+// Also apply our middleware for navigating
+const store = createStore(
+  combineReducers({
+    CurrentDocumentTypeSelection,
+    DocumentTypes,
+    Form,
+    router: routerReducer
+  }),
+  applyMiddleware(...middleware)
+)
 
-let documentTypes = parseDocumentTypeData()
+// Create a history of your choosing (we're using a browser history in this case)
+const history = createHistory()
 
-function parseDocumentTypeData(){
-  let docTypes = documentTypeData.documentTypes.map( docType =>{
-    return docType;
-  })
-  return docTypes
-}
+// Build the middleware for intercepting and dispatching navigation actions
+const middleware =  [routerMiddleware(history)]
 
 render(
+  <Provider store={store}>
+    { /* ConnectedRouter will use the store from Provider automatically */ }
+    <ConnectedRouter history={history}>
+      <div>
+          <Route path="/" component={App} />
+      </div>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
+)
+
+/*render(
   <Provider store={store}>
     <Router>
       <Route path="/" component={App} />
     </Router>
   </Provider>,
     document.getElementById('root')
-)
+)*/
 
 // render(
 //   <Router>

@@ -3,9 +3,9 @@
 */
 
 export const LOAD_DOCUMENT_TYPES = 'LOAD_DOCUMENT_TYPES'
-export const CHANGE_DOC_TYPE = 'CHANGE_DOC_TYPE'
-export const CHANGE_SUB_DOC_TYPE = 'CHANGE_SUB_DOC_TYPE'
-export const VALIDATE_FORM = 'VALIDATE_FORM'
+export const MODIFY_DOCUMENT_TYPE = 'MODIFY_DOCUMENT_TYPE'
+export const SUBMIT_FORM = 'SUBMIT_FORM'
+export const VALIDATE_FORM_SECTION = 'VALIDATE_FORM_SECTION'
 
 /*
 * Other constraints
@@ -20,10 +20,14 @@ export function loadDocumentTypes(documentTypes){
   return { type: LOAD_DOCUMENT_TYPES, docType:documentTypes}
 }
 
-export function changeDocumentType(documentType){
-  return { type: CHANGE_DOC_TYPE, docType:documentType}
+export function modifyDocSubDocTypeSelection(docSubDocSelection){
+  return { type: MODIFY_DOCUMENT_TYPE, currentDocSubDocSelection:docSubDocSelection}
 }
 
-export function changeSubDocumentType(subDocumentType){
-  return { type: CHANGE_SUB_DOC_TYPE, subDocType:subDocumentType}
+export function submitForm(finalFormDraft){
+  return { type: SUBMIT_FORM, form:finalFormDraft}
+}
+
+export function validateFormSection(section){
+  return { type: VALIDATE_FORM_SECTION, section:section}
 }

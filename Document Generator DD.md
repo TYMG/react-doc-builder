@@ -160,8 +160,10 @@ I need to refactor this project to include Redux into the project's ecosystem. R
     * Header
     * DocumentSelection
     * Form
-      * FormSection
-        * FormField
+      * FormPage
+            * Bread Crumb
+            * FormSection
+                   * FormField
     * Footer
 
 ### State
@@ -173,5 +175,10 @@ documentTypes <-- Initial : [ array of doc types ],
 currentDocumentTypes: ,
 
 currentSubDocumentTypes: ,
+
+form:
+      section:
+            input
+      section:
 
 }

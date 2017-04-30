@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router'
 
 
-class DocumentTypeSelector extends Component {
+/*class Selector extends Component {
   constructor(){
         super();
         this.state = {
@@ -121,5 +121,39 @@ class DocumentTypeSelector extends Component {
         </div>
     );
   }
+}*/
+class Selector extends Component {
+  constructor(){
+        super();
+        this.state = {
+          documentType:'',
+          subDocumentType:'',
+          documentTypes:[],
+          documentSubTypes:[],
+          subTypeDD:false
+      }
+    }
+    render(){
+      return(
+        <div>
+          Hello world!!!
+          </div>
+      )
+    }
 }
-export default DocumentTypeSelector;
+/*const Selector = ({ documentTypes , selectDocumentType }) => (
+  <div className="docSelector">
+          <h3>Please select a Document Type from the Drop Down Below</h3>
+          {/*<div>
+            <div className="inline">
+              <label>Document Type:</label>&nbsp;
+              <select ref="docType" value={this.state.documentType} onChange={this.documentTypeSelection.bind(this)}>
+                {docTypes}
+              </select>
+            </div>
+            {this.renderSubDocTypeSelectors()}
+            </div>
+        </div>
+)*/
+
+export default Selector
