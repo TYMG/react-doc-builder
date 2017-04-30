@@ -99,17 +99,22 @@ class App extends Component {
     let formType = this.renderForm();
     return (
       <div>
+        <AppHeader/>
         <div>
-          <DocumentTypeSelector/>
+        <DocumentTypeSelector/>
+        <MasterForm/>
         </div>
-        <div className="app__masterform">
-          <Container form>
-            {formType}
-          </Container>
-        </div>
+        <AppFooter/>
       </div>
     );
   }
 }
 
 export default withRouter(App);
+
+/*
+   <div className="app__masterform">
+          <Container form>
+            {formType}
+          </Container>
+        </div>*/

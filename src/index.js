@@ -13,12 +13,11 @@ import CurrentDocumentTypeSelection from './Reducers/CurrentDocumentTypeSelectio
 import DocumentTypes from './Reducers/DocumentTypes'
 import Form from './Reducers/Form'
 
-import App from './Components/App';
-
+import App from './Containers/App'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import './index.css';
+
 
 // Add the reducer to your store on the `router` key
 // Also apply our middleware for navigating
@@ -42,9 +41,9 @@ render(
   <Provider store={store}>
     { /* ConnectedRouter will use the store from Provider automatically */ }
     <ConnectedRouter history={history}>
-      <div>
-          <Route path="/" component={App} />
-      </div>
+         <div>
+            <Route exact path="/" component={App} />
+        </div>
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')

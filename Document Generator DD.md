@@ -182,3 +182,12 @@ form:
       section:
 
 }
+
+### Routes
+
+/  => App
+      indexRoute => AppHome
+      /document/:Doc/:SubDoc => AppForm
+            indexRoute => FormHome
+            /document/:Doc/:SubDoc/:Section => FormSection
+            /document/:Doc/:SubDoc/review => FormReview
