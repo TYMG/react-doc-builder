@@ -13,7 +13,7 @@ import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux'
 import reducer, { selectLocalState } from './Reducers/reducer';
 import { localThunk } from 'redux-local-state'
 
-import App from './Containers/App'
+import App from './Routes/App'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -37,20 +37,27 @@ const store = createStore(
 const history = createHistory()
 
 // Build the middleware for intercepting and dispatching navigation actions
-const middleware = [routerMiddleware(history),thunk, localThunk(selectLocalState)]
+const middleware = [routerMiddleware(history)]
+
+//Add back the local state thunks if needed
+//const middleware = [routerMiddleware(history),thunk, localThunk(selectLocalState)]
 
 render(
-  <Provider store={store}>
-    { /* ConnectedRouter will use the store from Provider automatically */}
+  <App store={store}/>,
+  document.getElementById('root')
+)
+
+
+{/*<Provider store={store}>
+    { /* ConnectedRouter will use the store from Provider automatically }
     <ConnectedRouter history={history}>
       <div>
         <Route exact path="/" component={App} />
       </div>
     </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root')
-)
+  </Provider>
 
+  */}
 /*render(
   <Provider store={store}>
     <Router>
