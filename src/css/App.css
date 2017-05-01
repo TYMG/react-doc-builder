@@ -1,6 +1,8 @@
 
 html {
   height: 100%;
+  margin: 0;
+  padding:0;
 }
 body {
   min-height: 100%;
@@ -8,6 +10,9 @@ body {
   flex-direction: column;
 }
 
+div[data-reactroot] { 
+  height: 100% !important;  
+}
 
 /***
 Multipurpose
@@ -44,10 +49,21 @@ Home CSS
 App CSS
 **/
 
-.app__content {
+.app_main{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height:100%; 
+  display: flex;
+  flex-direction: column;
+
+}
+
+.app__main-content {
   flex: 1;
   height:95%;
-  margin: auto;
 }
 
 div.app__masterform{

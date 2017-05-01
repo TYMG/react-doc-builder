@@ -19,16 +19,14 @@ const mapStateToProps = (state) => {
 }
 
 const AppComponent = ({match}) => (
-    <div>
-        <Container fluid>
+        <div className="app_main">
             <AppHeader />
-            <div>
+            <div className="app__main-content">
                 <Route exact path="/" component={AppHome} />
                 <Route path={`${match.url}/:doc/:subDoc`} component={AppForm}/>
             </div>
             <AppFooter />
-        </Container>
-    </div>
+        </div>
 )
 
 const App = withRouter(
