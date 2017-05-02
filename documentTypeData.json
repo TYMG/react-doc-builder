@@ -3,7 +3,7 @@
   {
       "name": "Endorser Addendum",
       "route": "EA",
-      "subtypes": [],
+      "subTypes": [],
       "fields":[
         {"name":"Endorser","ref":"endorser","input":[
              {"ref":"selfID","name":"IAMA","active":false},
@@ -97,7 +97,7 @@
      {
       "name" : "Master Promissory Note",
       "route": "MPN",
-      "subtypes": [{
+      "subTypes": [{
           "name":"Plus",
           "fields":[
             {"name":"Borrower","ref":"borrower","input":[
@@ -247,7 +247,7 @@
     ,{
           "name": "Correspondence",
           "route": "Corr",
-          "subtypes": [{
+          "subTypes": [{
             "name":"AEC001",
             "fields":[
               {"name":"Correspondence Info","input":[

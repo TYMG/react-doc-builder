@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Switch} from 'react-router-dom';
-import Route from '../../Utils/Route'
+import { Route, Link, Switch} from 'react-router-dom';
+import { withRouter } from 'react-router'
 
 import Home from '../Home'
 import Form from '../Form'
@@ -19,7 +19,7 @@ const LayoutComponent = () => (
   <div>
     <Switch>
       <Route exact path="/" component={Home}/>
-      <Route path="/Document" component={Form}>
+      <Route path="/Document/:doc/:subDoc?" component={Form}>
         {/*// <div>
         // <Route exact path="/:section" component={FormSection} />
         // <Route exact path="/:review" component={FormReview} />
@@ -29,9 +29,9 @@ const LayoutComponent = () => (
   </div>
 )
 
-const Layout = connect(
+const Layout = withRouter(connect(
   mapStateToProps,
   null
-)(LayoutComponent)
+)(LayoutComponent))
 
 export default LayoutComponent;

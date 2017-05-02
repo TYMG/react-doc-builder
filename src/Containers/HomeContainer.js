@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { modifyDocSubDocTypeSelection } from '../actions'
 
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
+
 
 import { buildDocumentTypeList, buildSubDocumentTypeList } from '../Library/DocumentTypeParser'
 
@@ -65,7 +67,7 @@ class HomeComponent extends Component{
 
 
 render(){
-  const { documentTypes } = this.props
+  const { match, location, history, documentTypes } = this.props
   return (
     <div>
     <h2> Test Home Page </h2>
@@ -76,11 +78,11 @@ render(){
 
 }
 
-const HomeContainer =
+const HomeContainer = withRouter(
   connect(
     mapStateToProps,
     null
-  )(HomeComponent)
+  )(HomeComponent))
 
 
 
