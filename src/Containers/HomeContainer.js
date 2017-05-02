@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
 import { modifyDocSubDocTypeSelection } from '../actions'
 
-import { withRouter, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { combineReducers } from "redux";
-
-import  Dropdown  from 'react-toolbox/lib/dropdown'
+import { buildDocumentTypeList, buildSubDocumentTypeList } from '../Library/DocumentTypeParser'
 
 
 const mapStateToProps = (state) => {
   return {
-    documentTypes: state.documentTypes,
-    router: state.router
+    documentTypes: state.documentTypes
   }
 }
 
@@ -30,17 +26,28 @@ const options = [
   { key: 'css', text: 'CSS', value: 'css' }
 ]
 
-class AppHomeComponent extends Component{
+class HomeComponent extends Component{
   constructor(props){
     super(props)
     this.state = {
       currentDocType:'',
       currentSubDocType:'',
       activeSubDocTypeDropDown:false,
-      documentTypes:this.props.documentTypes,
+      documentTypes:buildDocumentTypeList(this.props.documentTypes),
       docTypes:[],
       subDocType:[]
     }
+  }
+
+  componentWillMount() {
+    //console.log(buildDocumentTypeList(this.props.documentTypes))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      currentDocumentType: nextProps.documentType,
+      currentSubDocmentType: nextProps.subDocumentType
+    })
   }
 
   updateSubDocTypeDropDownOptions = _ =>{
@@ -51,34 +58,33 @@ class AppHomeComponent extends Component{
 
   }
 
-  checkDocTypeForSubDocType = selectedDocType => {
+  checkDocTypeForSubDocType = (selectedDocType) => {
 
   }
 
-render(){  return (
+
+
+render(){
+  const { documentTypes } = this.props
+  return (
     <div>
-     <Dropdown
-        auto
-        onChange={this.checkDocTypeForSubDocType(this.state.currentDocType)}
-        source={this.state.documentTypes}
-        value={this.state.currentDocType}
-      />
-  <Dropdown placeholder='Document Type' selection options={options} />
+    <h2> Test Home Page </h2>
+    <Link to="/Document/MPN">Go To Login</Link>
   </div>
-  )}
+)}
 
 
 }
 
-const AppHome = withRouter(
+const HomeContainer =
   connect(
     mapStateToProps,
     null
-  )(AppHomeComponent)
-)
+  )(HomeComponent)
 
 
-export default AppHome
+
+export default HomeContainer
 
 
  /*<div>

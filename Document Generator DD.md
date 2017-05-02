@@ -160,10 +160,8 @@ I need to refactor this project to include Redux into the project's ecosystem. R
     * Header
     * DocumentSelection
     * Form
-      * FormPage
-            * Bread Crumb
-            * FormSection
-                   * FormField
+      * FormSection
+        * FormField
     * Footer
 
 ### State
@@ -176,33 +174,4 @@ currentDocumentTypes: ,
 
 currentSubDocumentTypes: ,
 
-form:
-      section:
-            input
-      section:
-
 }
-
-### Routes
-
-/  => App
-      indexRoute => AppHome
-      /document/:Doc/:SubDoc => AppForm
-            indexRoute => FormHome
-            /document/:Doc/:SubDoc/:Section => FormSection
-            /document/:Doc/:SubDoc/review => FormReview
-
-### Store Mock Up
-<App store={}/>
-      <Provider store={props.store}>
-            <BrowserRouter forceRefresh={!supportsHistory} keyLength={12}>
-                  <div>
-                        <Switch>
-                               <Route exact path="/" component={AppHome} />
-                               <Route path={`${match.url}/:doc/:subDoc`} component={AppForm}/>
-                                    <Route path={`${match.url}/:section`} component={AppForm}/>
-                                    <Route path={`${match.url}/:review`} component={AppForm}/>
-                        </Switch>
-                  </div>
-            </BrowserRouter>
-  </Provider>

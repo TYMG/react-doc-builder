@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 
-import { withRouter, Route } from 'react-router-dom'
+import { withRouter, Route, Link } from 'react-router-dom'
 
 import FormSection from './FormSection'
 import FormReview from './FormReview'
@@ -179,22 +179,28 @@ import FormReview from './FormReview'
 
 }*/
 
-const AppFormComponent = ({match}) => (
+const AppFormComponent = ({documentTypes}) => 
+  (
   <div>
-    <Route path={`${match.url}/:section`} component={FormSection} />
-    <Route path={`${match.url}/:review`} component={FormReview} />
+    <div>
+      Vertical Document Select
+    </div>
+    <div>
+      Document Creator Form
+      <Link to="">Back To Login</Link>
+      </div>
   </div>
 )
 
 const mapStateToProp = (state) => {
   return {
-    router: state.router
+    documentTypes: state.documentTypes
   }
 }
 
 const AppForm = withRouter(
   connect(
-    mapStateToProp,
+    null,
     null
   )
     (AppFormComponent))

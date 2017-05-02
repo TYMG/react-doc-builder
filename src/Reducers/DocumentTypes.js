@@ -7,8 +7,13 @@ function parseDocumentTypeData(){
   return docTypes
 }
 
-export default function documentTypes( state = parseDocumentTypeData(), action ) {
-    return state;
+const DocumentTypes = (state = parseDocumentTypeData(), action) => {
+  switch(action.type){
+    case 'LOAD_DOCUMENT_TYPES':
+      return parseDocumentTypeData()
+    default:
+      return state
+  }
 }
 
-
+export default DocumentTypes

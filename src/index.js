@@ -1,20 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import { createStore, compose, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
 
 import createHistory from 'history/createBrowserHistory'
-import { Route } from 'react-router'
 
 import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux'
 
-import reducer, { selectLocalState } from './Reducers/reducer';
+import RootReducer from './Reducers/RootReducer';
 import { localThunk } from 'redux-local-state'
 
 import App from './Routes/App'
 
+import './css/App.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 
@@ -26,10 +26,10 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // Add the reducer to your store on the `router` key
 // Also apply our middleware for navigating
 const store = createStore(
-  combineReducers(
-    reducer
-  ), composeEnhancers(
-      applyMiddleware(...middleware)
+    RootReducer
+  , composeEnhancers(
+      applyMiddleware(thunk),
+      window.devToolsExtension && process.env.NODE_ENV !== 'production' ? window.devToolsExtension() : f => f
     )
 )
 
@@ -48,7 +48,7 @@ render(
 )
 
 
-{/*<Provider store={store}>
+/*<Provider store={store}>
     { /* ConnectedRouter will use the store from Provider automatically }
     <ConnectedRouter history={history}>
       <div>
@@ -57,7 +57,7 @@ render(
     </ConnectedRouter>
   </Provider>
 
-  */}
+  */
 /*render(
   <Provider store={store}>
     <Router>

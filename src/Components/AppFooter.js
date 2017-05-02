@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-const AppFooter = _ => 
+const AppFooter = _ =>
 (
  <footer>
       <div  className="footer__background">

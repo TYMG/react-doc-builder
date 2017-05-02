@@ -1,10 +1,21 @@
 import request from 'request';
 
+function createDocument(form){
+  console.log("Create Document Function Hit");
+  var PATH = window.location.pathname;
+  //Check if the document is not null
+  var options = {
+    url: 'http://localhost:8080'+PATH,
+    method: 'POST',
+    json: form
+  }
+  request.post(options);
+}
 
-export default function form(state = {}, action) {
+const Form = (state = {}, action) => {
     switch(action.type) {
         case 'SUBMIT_FORM':
-            createDocument(form)
+            createDocument(action.form)
             return Object.assign({}, state, {
             form: {}
           })
@@ -15,15 +26,4 @@ export default function form(state = {}, action) {
     }
 }
 
-  function createDocument(form){
-    console.log("Create Document Function Hit");
-    var PATH = window.location.pathname;
-    //Check if the document is not null
-    var options = {
-      url: 'http://localhost:8080'+PATH,
-      method: 'POST',
-      json: form
-    }
-    request.post(options);
-
-  }
+export default Form
