@@ -1,3 +1,6 @@
+import React from 'react'
+
+
 export const buildDocumentTypeList = (documentTypes) => {
   let documentTypeList = documentTypes.map( docType =>{
     return docType.name
@@ -17,6 +20,22 @@ export const buildSubDocumentTypeList = (documentTypes, selectedDocType) => {
     }
   })
   return subDocsTypes
+}
+
+export const buildDocumentTypeDropDownList = (documentTypes) => {
+  let documentTypeList = buildDocumentTypeList(documentTypes)
+  
+}
+
+export const buildSubDocumentTypeDropDownList = (documentTypes, selectedDocType) => {
+  let subDocumentTypeList = buildSubDocumentTypeList(documentTypes, selectedDocType)
+  let selectOptions = 
+  <select ref="subDocType" value={this.state.subDocumentType} onChange={this.subDocumentTypeSelection.bind(this)}>
+  {subDocumentTypeList.map( subDocType =>{
+     return <option id={subDocType.ref} key={subDocType.ref} value={subDocType.name}>{subDocType.name}</option>
+   })}
+   </select>
+   return selectOptions;
 }
 
 export const locateDocumentFields = (documentTypes, docTypeParams) => {

@@ -4,9 +4,9 @@ import { modifyDocSubDocTypeSelection } from '../actions'
 
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
+import { Dropdown } from 'semantic-ui-react'
 
-
-import { buildDocumentTypeList, buildSubDocumentTypeList } from '../Library/DocumentTypeParser'
+import { buildDocumentTypeDropDownList } from '../Library/DocumentTypeParser'
 
 
 const mapStateToProps = (state) => {
@@ -28,16 +28,16 @@ const options = [
   { key: 'css', text: 'CSS', value: 'css' }
 ]
 
-class HomeComponent extends Component{
-  constructor(props){
+class HomeComponent extends Component {
+  constructor(props) {
     super(props)
     this.state = {
-      currentDocType:'',
-      currentSubDocType:'',
-      activeSubDocTypeDropDown:false,
-      documentTypes:buildDocumentTypeList(this.props.documentTypes),
-      docTypes:[],
-      subDocType:[]
+      currentDocType: '',
+      currentSubDocType: '',
+      activeSubDocTypeDropDown: false,
+      documentTypes: [],
+      docTypes: [],
+      subDocType: []
     }
   }
 
@@ -52,7 +52,14 @@ class HomeComponent extends Component{
     })
   }
 
-  updateSubDocTypeDropDownOptions = _ =>{
+  buildDocumentTypeDropDownList = _ => ( 
+    this.props.documentTypes.map( docType =>(
+     <option id={docType.route} key={docType.name} value={docType.name}>{docType.name}</option>
+   ))
+
+  )
+
+  updateSubDocTypeDropDownOptions = _ => {
 
   }
 
@@ -64,16 +71,69 @@ class HomeComponent extends Component{
 
   }
 
+  documentTypeSelection(e){
+     console.log("Hello WOrld")
+     /* const selectedDocType = this.refs.docType.value;
+      let subDocsTypes = null;
+      let subTypeDropDownActive = false;
+      if(selectedDocType !== this.state.documentType &&  selectedDocType !== 'Select'){
+        this.props.documentTypes.forEach( (dt,index) => {
+          if(selectedDocType === dt.name){
+            if (dt.subtypes.length!==0) {
+              subDocsTypes = this.buildSubDocTypeArray(dt)
+              subDocsTypes.unshift(
+                <option key='Select'>Select</option>
+              );
+              subTypeDropDownActive = true
+            }
+          }
+        })
+        this.setState({
+          documentType:selectedDocType,
+          subDocumentType:'Select',
+          subTypeDD:subTypeDropDownActive,
+          subDocumentTypes:subDocsTypes
+        } , function(){
+          //This needs return the SubTypes
+          this.props.selectDocumentType(
+            {
+              "docType":selectedDocType,
+              "subDocType":'Select'
+            });
+        })
+      }*/
+    }
 
+  render() {
+    const { match, location, history, documentTypes } = this.props
+    const documentTypeDropDownList = this.buildDocumentTypeDropDownList();
+    return (
+      <div>
 
-render(){
-  const { match, location, history, documentTypes } = this.props
-  return (
-    <div>
-    <h2> Test Home Page </h2>
-    <Link to="/Document/MPN">Go To Login</Link>
-  </div>
-)}
+        <div>
+          <h3>Welcome to Doc Creator!!</h3>
+          <div>
+            <p>
+              <strong>How to:</strong><br />
+            </p>
+
+            <ol>
+              <li>Select a Document from the drop down below
+                <div>
+                    <select ref="docType" value={this.state.documentType} onChange={this.documentTypeSelection.bind(this)}>
+                    {documentTypeDropDownList}
+                     </select>
+                </div>
+              </li>
+              <li>Fill out the fields in the form</li>
+              <li>Review; and when ready, Click 'Submit'</li>
+              <li>If there are no errors, a Document will be generated and returned</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
 
 }
@@ -89,18 +149,5 @@ const HomeContainer = withRouter(
 export default HomeContainer
 
 
- /*<div>
-    <h3>Welcome to Doc Creator!!</h3>
-    <div>
-      <p>
-        <strong>How to:</strong><br />
-      </p>
 
-      <ol>
-        <li>Select a Document from the drop down menu above</li>
-        <li>Fill out the fields in the form</li>
-        <li>Review; and when ready, Click 'Submit'</li>
-        <li>If there are no errors, a Document will be generated and returned</li>
-      </ol>
-    </div>
-  </div>*/
+ /*   <Link to="/Document/MPN">Go To Login</Link>*/
