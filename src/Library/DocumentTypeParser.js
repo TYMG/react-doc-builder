@@ -2,20 +2,18 @@ import React from 'react'
 
 
 export const buildDocumentTypeList = (documentTypes) => {
-  let documentTypeList = documentTypes.map( docType =>{
+  let documentTypeList = documentTypes.map(docType => {
     return docType.name
   })
   return documentTypeList;
 }
 
 export const buildSubDocumentTypeList = (documentTypes, selectedDocType) => {
-  let subDocsTypes
-  documentTypes.forEach( (docType,index) =>{
-    if(selectedDocType === docType.name){
-      if (docType.subTypes.length!==0) {
-        let subDocsTypes = docType.subTypes.map( subtype =>{
-           return subtype
-         })
+  let subDocsTypes = undefined
+  documentTypes.forEach((docType, index) => {
+    if (selectedDocType === docType.name) {
+      if (docType.subTypes.length !== 0) {
+        subDocsTypes = docType.subTypes.map(subtype => subtype.name)
       }
     }
   })
@@ -24,32 +22,21 @@ export const buildSubDocumentTypeList = (documentTypes, selectedDocType) => {
 
 export const buildDocumentTypeDropDownList = (documentTypes) => {
   let documentTypeList = buildDocumentTypeList(documentTypes)
-  
-}
 
-export const buildSubDocumentTypeDropDownList = (documentTypes, selectedDocType) => {
-  let subDocumentTypeList = buildSubDocumentTypeList(documentTypes, selectedDocType)
-  let selectOptions = 
-  <select ref="subDocType" value={this.state.subDocumentType} onChange={this.subDocumentTypeSelection.bind(this)}>
-  {subDocumentTypeList.map( subDocType =>{
-     return <option id={subDocType.ref} key={subDocType.ref} value={subDocType.name}>{subDocType.name}</option>
-   })}
-   </select>
-   return selectOptions;
 }
 
 export const locateDocumentFields = (documentTypes, docTypeParams) => {
-  let documentTypeFields = null 
-  documentTypes.forEach( documentType => {
-    if(documentType.route === docTypeParams.doc){
-      if(documentType.subTypes.length === 0 && documentType.fields.length > 0){
+  let documentTypeFields = null
+  documentTypes.forEach(documentType => {
+    if (documentType.route === docTypeParams.doc) {
+      if (documentType.subTypes.length === 0 && documentType.fields.length > 0) {
         //If the itr documentType has no subTypes and HAS fields
-        documentTypeFields  = documentType.fields
-      }else{
+        documentTypeFields = documentType.fields
+      } else {
         //If the itr document has subTypes
-        documentType.subTypes.forEach( subType => {
-          if(docTypeParams.subDoc!== undefined && subType.name === docTypeParams.subDoc){
-            documentTypeFields =  subType.fields
+        documentType.subTypes.forEach(subType => {
+          if (docTypeParams.subDoc !== undefined && subType.name === docTypeParams.subDoc) {
+            documentTypeFields = subType.fields
           }
         })
       }
@@ -57,6 +44,27 @@ export const locateDocumentFields = (documentTypes, docTypeParams) => {
   })
   return documentTypeFields
 }
+
+export const docTypeRoute = (documentTypes, docType) => {
+  let docRoute = null
+  documentTypes.forEach(documentType => {
+    if (documentType.name === docType) {
+      docRoute = documentType.route
+    }
+  })
+  return docRoute
+}
+/*
+export const subDocTypeRoute = (documentTypes, docType) => {
+  let subDocRoute = null
+  documentTypes.forEach(documentType => {
+    if (documentType.name === docType) {
+      documentType.forEach( subType => {
+        if(subType.name === docType)
+      })
+    })
+    return docRoute
+  }*/
 
 /*
 procesInputs(section) {
