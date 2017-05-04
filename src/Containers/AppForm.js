@@ -3,12 +3,13 @@ import { Button } from 'semantic-ui-react'
 
 import { connect } from 'react-redux'
 
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 
 import { buildDocumentTypeList, buildSubDocumentTypeList, locateDocumentFields } from '../Library/DocumentTypeParser'
 
+import FormHome from './FormHome'
 import FormSection from './FormSection'
 import FormReview from './FormReview'
 
@@ -198,22 +199,15 @@ class FormComponent extends Component {
     }
   }
 
-  testDocumentTypes = _ => {
-    console.log(this.props.documentTypes)
-    return buildDocumentTypeList(this.props.documentTypes).map(docType => (
-      <li key={docType}>{docType}</li>
-    ))
-  }
-
  testFormSectionLink = (match) => {
     const docTypePath = this.props.match.path
     let documentFields = locateDocumentFields(this.props.documentTypes, this.props.match.params)
     return (
       documentFields.map(section => {
-        console.log(match.url+section.ref)
+        const sectionName = section.name.replace(/ /g,'')
         return (
            <li key={section.ref}>
-            <Link to={`${match.url}/${section.ref}`}>{section.name}</Link>
+            <Link to={`${match.url}/${sectionName}`}>{section.name}</Link>
           </li>
         )
       }
@@ -224,46 +218,37 @@ class FormComponent extends Component {
   testFormSectionRoutes = (match) => {
     const docTypePath = this.props.match.path
     let documentFields = locateDocumentFields(this.props.documentTypes, this.props.match.params)
+  
     return (
       documentFields.map(section => {
-        console.log(match.path+section.ref)
         return (
-          <Route key={section.ref} path={`${match.path}/${section.ref}`} render={() => (
+          <Route exact={true} key={section.ref} path={`${match.path}/${section.ref}`} render={() => (
             <FormSection inputFields={section.input} />
           )} />
         )
-      }
+        }
       )
     )
   }
 
+ checkForActiveFormSection = (section) => {
+   let activeSectionForm = true
+   let inputFields = section.filter((field) =>{
+        return field.active
+    })
+    return (inputFields.length > 0)
+ }
 
   render() {
     const { match, location, history, documentTypes } = this.props
-    const testDocumentTypes = this.testDocumentTypes()
     const testFormSectionRoutes = this.testFormSectionRoutes(match)
     const testFormSectionLink = this.testFormSectionLink(match)
     return (
-      <div>
-        <div>
-          <h2>Vertical Document Select</h2>
-          <Link to='/'>Home</Link>
-        </div>
-        <div>
-          Document Creator Form
           <div>
-            <ul>
-            {testFormSectionLink}
-            </ul>
-          </div>
-          <ol>
-            {testDocumentTypes}
-          </ol>
-          <div>
+            <Route strict path={`${match.url}/Review`} component={FormReview}/>
+            <Route exact path={`${match.url}/`} component={FormHome}/>
             {testFormSectionRoutes}
           </div>
-        </div>
-      </div>
     )
   }
 }
@@ -275,3 +260,12 @@ const AppForm = withRouter(
   )(FormComponent))
 
 export default AppForm
+
+/*/*
+<div>
+          Document Creator Form
+          <div>
+            <ul>
+            {testFormSectionLink}
+            </ul>
+          </div>*/

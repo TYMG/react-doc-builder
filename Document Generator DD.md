@@ -158,20 +158,50 @@ I need to refactor this project to include Redux into the project's ecosystem. R
 * Root
   * App
     * Header
-    * DocumentSelection
+    * Home
     * Form
+      * FormHome
+        * Props
+          * selectedDocumentType
       * FormSection
+        * Props
+          * documentTypeSection
+          * form
         * FormField
+      * FormReview
     * Footer
 
-### State
+### Store
+
+A Store is constructed with a number of reducers 
 
 {
 
 documentTypes <-- Initial : [ array of doc types ],
 
-currentDocumentTypes: ,
+selectedDocumentType: <-- The Document Type that is selected, contains the Sections and Input Fields, not just the name.
 
-currentSubDocumentTypes: ,
+* Actions
+  * ModifySelectedDocumentType
+
+form: <-- the Current Form, when the flow starts, it should be blank. the form should fill out as the user moves through the flow, as the user moves forwards and backwards, the form should be used to fill out the FormSection component
+
+* Form
+* SectionIndex
+  * Actions
+    * CreateForm
+      * Also Creates the Section Index
+    * UpdateForm
+    * SubmitForm
+
+FormNavigator: Will handle the navigation of the form. FormNavigator will 
 
 }
+
+## Document Creation Web Flow
+
+![20170430_005719](C:\Users\Matthew.A.Green\Downloads\20170430_005719.jpg)
+
+* Form Home
+* Form Section
+* Form Review

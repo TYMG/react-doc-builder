@@ -50,6 +50,14 @@ export const docTypeRoute = (documentTypes, docType) => {
   documentTypes.forEach(documentType => {
     if (documentType.name === docType) {
       docRoute = documentType.route
+      if(documentType.fields.length > 0 && documentType.subTypes.length === 0){
+        /**
+         * This is to take care of EA which has no subtype, but the Route needs one.
+         * So for any document without any subtype, 'Default' will concatted to as
+         * the SubType 
+         */
+        docRoute += '/Default'
+      }
     }
   })
   return docRoute
