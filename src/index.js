@@ -11,6 +11,9 @@ import { ConnectedRouter, routerMiddleware, push } from 'react-router-redux'
 
 import RootReducer from './Reducers/RootReducer';
 import { localThunk } from 'redux-local-state'
+import storeSynchronize from 'redux-localstore'
+
+
 
 import App from './Routes/App'
 
@@ -33,6 +36,9 @@ const store = createStore(
     )
 )
 
+//Subscribe Redux Store and replicate to localStorage, so user will can refresh page and keep the App state
+storeSynchronize(store)
+
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory()
 
@@ -41,6 +47,8 @@ const middleware = [routerMiddleware(history)]
 
 //Add back the local state thunks if needed
 //const middleware = [routerMiddleware(history),thunk, localThunk(selectLocalState)]
+
+
 
 render(
   <App store={store}/>,

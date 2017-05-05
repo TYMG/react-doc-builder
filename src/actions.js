@@ -32,6 +32,9 @@ export function modifyDocTypeSelection(newDocTypeSelection){
   return { type: MODIFY_DOCUMENT_TYPE, docTypeSelection:newDocTypeSelection}
 }
 
+export function nextFormSection(nextFormSection){
+  return { type: NEXT_FORM_SECTION, nextFormSection}
+}
 
 
 export function createForm(formInformation){

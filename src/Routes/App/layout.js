@@ -15,16 +15,17 @@ const mapStateToProps = (state) => {
   }
 }
 
-const LayoutComponent = () => (
+const LayoutComponent = (props) => (
   <div>
     <Switch>
       <Route exact path="/" component={Home}/>
-      <Route path="/Document/:doc/:subDoc?" component={Form}>
+      <Route path="/Document/:doc/:subDoc"  render={() => (
+            <Form />
+          )} />
         {/*// <div>
         // <Route exact path="/:section" component={FormSection} />
         // <Route exact path="/:review" component={FormReview} />
         // </div>*/}
-      </Route>
     </Switch>
   </div>
 )

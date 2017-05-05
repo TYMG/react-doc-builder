@@ -23,17 +23,12 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const options = [
-  { key: 'angular', text: 'Angular', value: 'angular' },
-  { key: 'css', text: 'CSS', value: 'css' }
-]
-
 class HomeComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedDocType: '',
-      selectedSubDocType: '',
+      selectedDocType: 'Select',
+      selectedSubDocType: 'Select',
       activeSubDocTypeDropDown: false,
       activeBeginLink: false,
       documentTypes: [],

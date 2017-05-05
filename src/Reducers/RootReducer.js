@@ -1,6 +1,7 @@
 import CurrentDocumentTypeSelection from './CurrentDocumentTypeSelection'
 import DocumentTypes from './DocumentTypes'
 import Form from './Form'
+import FormNavigator from './FormNavigator'
 
 import { combineReducers } from 'redux';
 
@@ -11,7 +12,8 @@ export const selectLocalState = (state) => state.local;
 
 const RootReducer = combineReducers({
   documentTypes: DocumentTypes,
-  form: Form
+  form: Form,
+  formNavigator: FormNavigator
 })
 
 export default RootReducer

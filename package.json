@@ -19,6 +19,8 @@
     "react-transition-group": "^1.1.3",
     "redux": "^3.6.0",
     "redux-local-state": "^0.2.2",
+    "redux-localstore": "^0.1.4",
+    "redux-persist": "^4.8.0",
     "redux-state": "^1.1.0",
     "redux-thunk": "^2.2.0",
     "request": "^2.81.0",

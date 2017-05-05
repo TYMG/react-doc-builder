@@ -62,6 +62,24 @@ export const docTypeRoute = (documentTypes, docType) => {
   })
   return docRoute
 }
+
+/*export const calculateLinksInFlow = (documentTypes, docSubDocParams) => {
+  let docTypeSectionArr = undefined
+  documentTypes.forEach(type => {
+    if(type.name === docSubDocParams.doc){
+      if(docSubDocParams.subDoc !== undefined){
+        type.subTypes.forEach(subType => {
+          if(subType.name === docSubDocParams.subDoc){
+            doc
+          }
+        })
+      }else{
+        docTypeSectionArr = type.fields
+      }
+    }
+  })
+  console.log(inputs)
+}*/
 /*
 export const subDocTypeRoute = (documentTypes, docType) => {
   let subDocRoute = null

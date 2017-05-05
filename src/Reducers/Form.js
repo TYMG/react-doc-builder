@@ -24,9 +24,7 @@ const Form = (state = {}, action) => {
     switch(action.type) {
         case 'CREATE_FORM':
             return Object.assign({}, state, {
-                form:{},
-                sectionIndex:1,
-                numOfSections:action.numOfSections
+                form:{}
             })
         case 'UPDATE_FORM':
             const sectionName = state.sectionName

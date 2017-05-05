@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 import AppForm from '../../Containers/AppForm'
 
 class Form extends Component {
+  constructor(props) {
+        super(props)
+        this.state = {
+                rehydrated:false
+        }
+    }
 
   componentWillMount() {}
   componentWillUnmount() {}
@@ -11,7 +17,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <AppForm/>
+        <AppForm store={this.props.store}/>
       </div>
     );
   }

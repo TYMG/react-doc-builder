@@ -14,7 +14,7 @@ const App = props => (
           <div className="app__main">
             <AppHeader/>
             <div className="app__main-content">
-              <Layout />
+              <Layout/>
             </div>
             <AppFooter/>
           </div>

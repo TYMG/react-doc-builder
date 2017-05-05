@@ -172,7 +172,7 @@
           {
           "name": "SubUnsub",
           "fields":[
-            {"name":"Borrower","route":"borrower","input":[
+            {"name":"Borrower","ref":"borrower","input":[
                  {"ref":"selfID","name":"IAMA","active":false},
                  {"ref":"name","name":"Name","active":true},
                  {"ref":"dob","name":"DOB","active":true},
@@ -386,7 +386,7 @@
                 {"ref":"loanApprovedAmount","name":"Loan Approved Amount","active":false},
                 {"ref":"accountNumberUnmasked","name":"Account Number Unmasked","active":false}
                 ]},
-              {"name":"Borrower","ref":"student","input":[
+              {"name":"Borrower","ref":"borrower","input":[
                  {"ref":"name","name":"Name","active":true},
                  {"ref":"dob","name":"DOB","active":true},
                  {"ref":"ssn","name":"SSN","active":true},
