@@ -205,3 +205,39 @@ FormNavigator: Will handle the navigation of the form. FormNavigator will
 * Form Home
 * Form Section
 * Form Review
+
+## Form Wizard 
+
+Using the redux-form create a Form that can be validated. The issue is that redux-form  API's reduxForm directly conflicts with the react-router's withRoute method. Therefore the actual Form itself will have to be nested inside the FormSection Component.
+
+The Form needs to be programatically built using the input arr from a Document Type Section. So for each item in input[] create a FormInput, which consists of a Field Component that contains a renderField, which is a label and input.
+
+For the onSubmit there should be dispatch call to update the Form, update the formNavigation. 
+
+Redux-Form has "actions" that can be used to control the form 
+
+
+
+FormSection : props - section, docTypeSections,  state props - form, formNavigator, documentTypes
+
+* Should contain the forward and back buttons, also should contain the 
+
+​	Form - Will contain the reduxForm; props: section 
+
+​		Also the Form will determine the name of the section
+
+​		Loop through the sections building FormFields		
+
+```html
+<div>
+ <FormField section={section}></FormField>
+</div>
+```
+
+​					 
+
+​		Field - A Single field component
+
+# Future Fun
+
+Blocking the transition when the a user changes the Document Type Mid Form

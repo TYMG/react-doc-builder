@@ -5,9 +5,6 @@ import { withRouter } from 'react-router'
 
 import Home from '../Home'
 import Form from '../Form'
-import FormSection from '../../Containers/FormSection'
-import FormReview from '../../Containers/FormReview'
-
 
 const mapStateToProps = (state) => {
   return {

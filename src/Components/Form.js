@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
+/*import React, { Component } from 'react'
+import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 
-import { calculateLinksInFlow } from '../Library/DocumentTypeParser'
+import Validator from '../Library/Validator'
+
+import FormField from './FormField'
+
 import { nextFormSection } from '../actions'
 
 
@@ -29,29 +31,11 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-class SectionComponent extends Component {
-    constructor(props) {
+
+class FormComponent extends Component {
+    constructor(props){
         super(props)
-        this.state = {
-        }
-    }
-
-
-    buildBeginLink = (section) => {
-
-        let firstSection = this.props.documentTypeSections[0].name
-        let href = this.props.match.url + '/' + firstSection
-        let linkText = "the " + firstSection + " link"
-        return <Link to={href} onClick={this.props.beginFormFlow}>{linkText}</Link>
-    }
-
-    testInputFields = _ => {
-        let inputFields = this.props.section.input.filter((field) => {
-            return field.active
-        })
-        return inputFields.map(field => (
-            <li key={field.ref}>{field.name}</li>
-        ))
+        this.state = {}
     }
 
     calculateBackLink = _ => {
@@ -88,34 +72,37 @@ class SectionComponent extends Component {
         }
     }
 
-    render() {
-        const { match, section } = this.props
-        const inputFieldsList = this.testInputFields()
-        const calculateBackLink = this.calculateBackLink()
-        return (
+    renderInputFields = section => {
+        let inputFields = undefined
+        section.input.map(field => {
             <div>
-                <h3>Input Fields</h3>
-                <ol>
-                    {inputFieldsList}
-                </ol>
-                <div>
+                <Field name={field.ref} type="text" component={FormField} label={field.input}/>
+            </div>
+        })
+    }
+
+
+    render(){
+        const {section, match, allSections} = this.props
+        return (
+            <form >
+                {this.renderInputFields(section)}
+                 <div>
                     <div>
-                        {this.calculateBackLink()}
+                        <button type="submit" className="next">Next</button>
                     </div>
                     <div>
-                        {this.calculateForwardLink()}
+                        <button type="submit" className="next">Next</button>
                     </div>
                 </div>
-            </div>
+            </form>
         )
-    }
+    }   
 }
 
-const FormSection = withRouter(connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(SectionComponent))
-
-export default FormSection
-
-
+export default reduxForm({
+  form: 'documentCreationForm',                 // <------ same form name
+  destroyOnUnmount: false,        // <------ preserve form data
+  forceUnregisterOnUnmount: true,  // <------ unregister fields on unmount
+  Validator
+})(FormComponent)*/

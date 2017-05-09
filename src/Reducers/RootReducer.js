@@ -7,13 +7,15 @@ import { combineReducers } from 'redux';
 
 import {reducer as Local} from 'redux-local-state';
 import { routerReducer as Router } from 'react-router-redux'
+import { reducer as formReducer } from 'redux-form'
+
 
 export const selectLocalState = (state) => state.local;
 
 const RootReducer = combineReducers({
   documentTypes: DocumentTypes,
-  form: Form,
-  formNavigator: FormNavigator
+  formNavigator: FormNavigator,
+  form: formReducer     // <---- Mounted at 'form'
 })
 
 export default RootReducer
