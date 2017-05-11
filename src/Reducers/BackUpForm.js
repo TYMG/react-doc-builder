@@ -35,7 +35,9 @@ const BackUpForm = (state = initialState, action) => {
             })
         case 'UPDATE_FORM':
             const updatedDraft = action.form
-           return updatedDraft 
+            if(updatedDraft !== undefined){
+           return updatedDraft }
+           return state
             
         case 'AUTO_GENERATE_FORM':
             return Object.assign({}, state, {
