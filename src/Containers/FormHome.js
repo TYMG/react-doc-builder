@@ -9,7 +9,7 @@ import { nextFormSection } from '../actions'
 const mapStateToProps = (state) => {
     return {
         form: state.form,
-        formNavigator: state.formNavigator
+        formNavigator: 0
     }
 }
 

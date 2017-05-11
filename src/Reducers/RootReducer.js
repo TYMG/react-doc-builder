@@ -1,6 +1,6 @@
 import CurrentDocumentTypeSelection from './CurrentDocumentTypeSelection'
 import DocumentTypes from './DocumentTypes'
-import Form from './Form'
+import BackUpForm from './BackUpForm'
 import FormNavigator from './FormNavigator'
 
 import { combineReducers } from 'redux';
@@ -15,6 +15,7 @@ export const selectLocalState = (state) => state.local;
 const RootReducer = combineReducers({
   documentTypes: DocumentTypes,
   formNavigator: FormNavigator,
+  backUpForm: BackUpForm,
   form: formReducer     // <---- Mounted at 'form'
 })
 

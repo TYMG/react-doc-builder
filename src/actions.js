@@ -37,16 +37,17 @@ export function nextFormSection(nextFormSection){
 }
 
 
+export function submitCompletedForm(finalFormDraft){
+  return { type: SUBMIT_FORM, finalFormDraft}
+}
+
+
 export function createForm(formInformation){
   return { type: CREATE_FORM, form:formInformation}
 }
 
-export function submitForm(finalFormDraft){
-  return { type: SUBMIT_FORM, form:finalFormDraft}
-}
-
-export function updateForm(finalFormDraft){
-  return { type: UPDATE_FORM, form:finalFormDraft}
+export function updateBackupForm(formDraft){
+  return { type: UPDATE_FORM, form:formDraft}
 }
 
 export function autoGenerateForm(finalFormDraft){

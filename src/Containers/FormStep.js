@@ -6,7 +6,7 @@ import { Field, FormSection, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom'
 
 import { calculateLinksInFlow } from '../Library/DocumentTypeParser'
-import { nextFormSection } from '../actions'
+import { nextFormSection, updateBackupForm } from '../actions'
 
 import FormField from '../Components/FormField'
 
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
     return {
         form: state.form,
         formNavigator: state.formNavigator,
-        documentTypes: state.documentTypes
+        documentTypes: state.documentTypes,
+        backUpForm: state.backUpForm
     }
 }
 
@@ -30,6 +31,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         nextFlowStep: index => {
             dispatch(nextFormSection(index + 1))
+        },
+        saveFormDraft: values => {
+            dispatch(updateBackupForm(values))
         }
     }
 }
@@ -43,6 +47,7 @@ class StepComponent extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault() // <= THIS LINE IS TO PREVENT THE FORM VALUES FROM BEING ADDED TO THE URL
+        this.props.saveFormDraft(this.props.form.documentCreationForm.values)
         this.props.nextFlowStep(this.props.formNavigator)
         const path = this.calculateFormActionLink()
         const location = {
@@ -93,8 +98,10 @@ class StepComponent extends Component {
         let nextStepHref = '/Document/' + hrefParams.doc + '/' + hrefParams.subDoc + '/'
         if (formNavigationIndex + 1 >= docTypeSections.length) // Index out bounds
         {
-            return <Link to={nextStepHref + 'Review'} onClick={ event => this.props.nextFlowStep(formNavigationIndex,event)}>Review</Link>
-        } else {
+            //return <Link to={nextStepHref + 'Review'} onClick={ event => this.props.nextFlowStep(formNavigationIndex,event)}>Review</Link>
+            return <button type="submit">Review</button>
+                
+    } else {
             // Calculate the back link
             let nextSection = docTypeSections[formNavigationIndex + 1]
             const nextSectionName = nextSection.name.replace(/ /g, '')
@@ -168,7 +175,8 @@ class StepComponent extends Component {
 
 
     export default reduxForm({
-        form: 'documentCreationForm'
+        form: 'documentCreationForm',
+        destroyOnUnmount: false 
     })(FormStep)
 
 

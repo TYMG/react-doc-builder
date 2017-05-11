@@ -1,4 +1,6 @@
 import request from 'request';
+import {defineState} from 'redux-localstore'
+
 /**
  * The Form Reducer Handles The Form In The Store
  * 
@@ -7,6 +9,11 @@ import request from 'request';
  * Section Index <-- Consists of Section Name And Index Within The Array
  * 
  */
+
+const defaultState = {}
+
+const initialState = defineState(defaultState,'backUpForm')
+
 
 function createDocument(form){
   console.log("Create Document Function Hit");
@@ -20,19 +27,16 @@ function createDocument(form){
   request.post(options);
 }
 
-const Form = (state = {}, action) => {
+const BackUpForm = (state = initialState, action) => {
     switch(action.type) {
         case 'CREATE_FORM':
             return Object.assign({}, state, {
                 form:{}
             })
         case 'UPDATE_FORM':
-            const sectionName = state.sectionName
-            Object.assign({}, state, {
-                form:{
-                    sectionName:state.sectionInfo
-                }
-            })
+            const updatedDraft = action.form
+           return updatedDraft 
+            
         case 'AUTO_GENERATE_FORM':
             return Object.assign({}, state, {
                 form:action.form
@@ -49,4 +53,4 @@ const Form = (state = {}, action) => {
     }
 }
 
-export default Form
+export default BackUpForm

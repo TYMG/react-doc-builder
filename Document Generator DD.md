@@ -29,6 +29,9 @@ The Backend should be able to generate PDFs using the XSLs that are in SVN or in
   * JavaScript
   * ReactJS
     * Redux
+    * Redux-Form
+    * React-Router
+    * Redux-Localstore
   * Webpack
   * Bootstrap
 
@@ -238,6 +241,29 @@ FormSection : props - section, docTypeSections,  state props - form, formNavigat
 
 ​		Field - A Single field component
 
+## Form Final Design
+
+Right now, I have a problem. I want to submit the form on the review page, but there is no Form associated with the page. I need a form because I can use React-Form's Submit functionality. 
+
+------
+
+# Known Issues
+
+- [ ] The Form Redux object will blank out if the page is refreshed.
+- [ ] When the Form is being created, it should create and return a promised that states, whether the form creation fails or is successful, that the page user will be redirected back to the home page. 
+- [ ] The Endorser Form Step is too big for the size of the Div; Text Overflow
+      - [ ] Expand the Div to make all the text fit
+      - [ ] Add a scroll Bar to the Form
+      - [ ] Style the Input fields to be two columns
+
+------
+
 # Future Fun
 
-Blocking the transition when the a user changes the Document Type Mid Form
+- [ ] Blocking the transition when the a user changes the Document Type while in the middle of the flow
+- [ ] Remembering the values inputted if the user goes backwards
+- [ ] Breadcrumbs
+- [ ] Create a Form Component for each subset of Form Data, Endorser, Employer Etc
+
+------
+
