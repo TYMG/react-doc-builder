@@ -17,10 +17,14 @@ const initialState = defineState(defaultState,'backUpForm')
 
 function createDocument(form){
   console.log("Create Document Function Hit");
+  const jsonStringifyForm = JSON.stringify(form)
+  console.log(jsonStringifyForm)
   var PATH = window.location.pathname;
+  const indexOfReviewPathParam =  PATH.lastIndexOf('/Review')
+  const cleanPATH = PATH.substring(0,indexOfReviewPathParam)
   //Check if the document is not null
   var options = {
-    url: 'http://localhost:8080'+PATH,
+    url: 'http://localhost:8080'+cleanPATH,
     method: 'POST',
     json: form
   }
@@ -29,10 +33,12 @@ function createDocument(form){
 
 const BackUpForm = (state = initialState, action) => {
     switch(action.type) {
-        case 'CREATE_FORM':
+        /*case 'CREATE_FORM':
             return Object.assign({}, state, {
                 form:{}
-            })
+            })*/
+        case 'CLEAR_FORM':
+         return {}
         case 'UPDATE_FORM':
             const updatedDraft = action.form
             if(updatedDraft !== undefined){
@@ -44,10 +50,8 @@ const BackUpForm = (state = initialState, action) => {
                 form:action.form
             })
         case 'SUBMIT_FORM':
-            createDocument(action.form)
-            return Object.assign({}, state, {
-            form: {}
-          })
+            createDocument(state)
+            return {}
         case 'VALIDATE_FORM_SECTION':
             return state;
         default:

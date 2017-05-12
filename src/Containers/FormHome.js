@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import { nextFormSection } from '../actions'
+import { nextFormSection , clearForm } from '../actions'
 
 
 const mapStateToProps = (state) => {
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     beginFormFlow: _ => {
       dispatch(nextFormSection(1))
+    },
+    clearForm: _ => {
+        dispatch(clearForm())
     }
   }
 }
@@ -25,6 +28,11 @@ class FormHomeComponent extends Component {
     constructor(props){
         super(props)
     }
+
+    componentWillMount() {
+        this.props.clearForm()
+    }
+    
 
     buildBeginLink = _ => {  
 
@@ -59,6 +67,9 @@ class FormHomeComponent extends Component {
             </div>
             <div>
                 Please click {this.buildBeginLink()} to begin creating your Document
+            </div>
+            <div>
+                Or click <Link to='/'>Home</Link> to return back to the home page.
             </div>
         </div>
     )}

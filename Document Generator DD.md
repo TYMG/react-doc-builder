@@ -255,6 +255,8 @@ Right now, I have a problem. I want to submit the form on the review page, but t
       - [ ] Expand the Div to make all the text fit
       - [ ] Add a scroll Bar to the Form
       - [ ] Style the Input fields to be two columns
+- [ ] SubmitForm method is building the Post URI incorrectly
+      - [ ] Update the EA Endpoint; It's easier
 
 ------
 
@@ -264,6 +266,8 @@ Right now, I have a problem. I want to submit the form on the review page, but t
 - [ ] Remembering the values inputted if the user goes backwards
 - [ ] Breadcrumbs
 - [ ] Create a Form Component for each subset of Form Data, Endorser, Employer Etc
+- [ ] STYLE!!!
+- [ ] ​
 
 ------
 

@@ -64,7 +64,7 @@ class FormReviewComponent extends Component {
                 Review YO Form!!!
              <div>
                     {/*<Link to={cleanHomeHref}  onClick={ _ => this.props.completedReviewSubmitForm(this.props.completedForm)}>CREATE DOC</Link>*/}
-                    <button type="submit" onClick={ _ => this.props.completedReviewSubmitForm(this.props.completedForm)}>Create Document</button>
+                    <button type="submit" onClick={ event => this.handleFormSubmit(event)}>Create Document</button>
                 </div>
                 <div>
                     <Link to={cleanHomeHref} onClick={ _ => this.props.returnHomeFromFlow()}>Start Over</Link>
