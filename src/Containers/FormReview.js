@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom'
 import { reduxForm } from 'redux-form'
 
 
-import { nextFormSection, submitCompletedForm } from '../actions'
+import { nextFormSection, submitCompletedForm, updateBackupForm } from '../actions'
 
 const mapStateToProps = (state) => {
     return {
         form: state.form,
-        completedForm: state.form,        
+        completedForm: state.backUpForm,        
         formNavigator: state.formNavigator,
     }
 }
@@ -20,9 +20,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         returnHomeFromFlow: _ => {
-            dispatch(nextFormSection(this.props.completedForm))
+            dispatch(nextFormSection(-1))
         },
         completedReviewSubmitForm: completedForm => {
+            dispatch(updateBackupForm(this.state.backUpForm.documentCreationForm.values))
             dispatch(submitCompletedForm(completedForm))
         }
     }
@@ -42,8 +43,9 @@ class FormReviewComponent extends Component {
     */
     handleFormSubmit = (e) => {
         e.preventDefault() // <= THIS LINE IS TO PREVENT THE FORM VALUES FROM BEING ADDED TO THE URL
+        
         this.props.completedReviewSubmitForm(this.props.completedForm)
-        let homePath = this.props.match.url
+      /*  let homePath = this.props.match.url
         let lastIndexOfFwdSlash = homePath.lastIndexOf('/')
         let cleanHomeHref = homePath.substring(0,lastIndexOfFwdSlash)
         const location = {
@@ -51,7 +53,7 @@ class FormReviewComponent extends Component {
             state: {}
         }
         this.props.history.replace(cleanHomeHref,{}) // <= THIS LINE IS TO PUSH THE NEW URL TO THE HISTORY SO THE ROUTE CAN UPDATE
-        //this.props.nextFlowStep(formNavigationIndex)
+        //this.props.nextFlowStep(formNavigationIndex)*/
     }
 
     render() {

@@ -80,7 +80,7 @@ class StepComponent extends Component {
         let hrefParams = this.props.match.params
         let formNavigationIndex = this.props.formNavigator
         let homeHref = '/Document/' + hrefParams.doc + '/' + hrefParams.subDoc
-        if (formNavigationIndex - 1 <= 0) // Index out bounds
+        if (formNavigationIndex <= 0) // Index out bounds
         {
             return <Link to={homeHref} onClick={ event=> this.props.returnHomeFromFlow(formNavigationIndex, event)}>Home</Link>
         } else {
@@ -129,9 +129,13 @@ class StepComponent extends Component {
         /**
          * THIS WILL CREATE THE SECTION NAME FOR THE FORM STEP
          */
-        calculateFormSectionName = _ => (
-            this.props.docTypeSections[this.props.formNavigator-1].name.replace(/ /g, '') 
-        )
+        calculateFormSectionName = _ => {
+            const secName = this.props.docTypeSections[this.props.formNavigator].name
+            const firstLetter = secName.substr(0,1).toLowerCase()
+            const restOfString = secName.substr(1)
+            const restOfStringNoSpace = restOfString.replace(/ /g, '') 
+            return firstLetter+restOfStringNoSpace
+        }
 
         renderInputFields = section => (
             section.input.map(field =>

@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     beginFormFlow: _ => {
-      dispatch(nextFormSection(1))
+      dispatch(nextFormSection(0))
     },
     clearForm: _ => {
         dispatch(clearForm())
