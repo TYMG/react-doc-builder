@@ -1,0 +1,112 @@
+
+html {
+  height: 100%;
+  margin: 0;
+  padding:0;
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+div#root {
+  height: 100% !important;
+}
+
+/***
+Multipurpose
+***/
+
+.elem__background {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.centered {
+  text-align: center;
+}
+
+
+.inline{
+  display: inline;
+  margin-right: 5%;
+}
+
+/**
+Header CSS
+**/
+
+
+/**
+Home CSS
+**/
+
+
+/**
+App CSS
+**/
+
+
+.app__main{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height:100%;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.app__main-content {
+  flex: 1;
+  height:95%;
+}
+
+div.app__masterform{
+  padding:5%;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/***
+Document Selector
+***/
+
+
+
+/***
+Footer
+***/
+
+.footer__background {
+  background-color: #222;
+  height: 10%;
+  padding: 1%;
+  color: white;
+}
+
+
+.footer__text{
+  font-size: 2rem;
+}
