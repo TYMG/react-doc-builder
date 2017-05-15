@@ -10,7 +10,7 @@ import { withRouter } from 'react-router'
 import { buildDocumentTypeList, buildSubDocumentTypeList, locateDocumentFields, docTypeRoute } from '../Library/DocumentTypeParser'
 
 import FormHome from './FormHome'
-import FormSection from './FormSection'
+import FormStep from './FormStep'
 import FormReview from './FormReview'
 
 
@@ -200,7 +200,7 @@ class FormComponent extends Component {
     }
   }
 
-  testFormSectionLink = (match) => {
+  testFormStepLink = (match) => {
     const docTypePath = this.props.match.path
     let documentFields = locateDocumentFields(this.props.documentTypes, this.props.match.params)
     return (
@@ -216,17 +216,17 @@ class FormComponent extends Component {
     )
   }
 
-  testFormSectionRoutes = (match) => {
+  testFormStepRoutes = (match) => {
     const docTypePath = this.props.match.path
     let documentFields = locateDocumentFields(this.props.documentTypes, this.props.match.params)
     let filteredDocumentFields = this.filterDocTypeSections(documentFields)
     return (
       filteredDocumentFields.map(section => {
-        if (this.checkForActiveFormSection(section)) {
+        if (this.checkForActiveFormStep(section)) {
           const sectionName = section.name.replace(/ /g, '')
           return (
             <Route exact={true} key={section.ref} path={`${match.path}/${sectionName}`} render={() => (
-              <FormSection section={section} docTypeSections={filteredDocumentFields} />
+              <FormStep section={section} docTypeSections={filteredDocumentFields} />
             )} />
           )
         }
@@ -236,11 +236,11 @@ class FormComponent extends Component {
 
   filterDocTypeSections(documentFields){
     return documentFields.filter(section => (
-      this.checkForActiveFormSection(section)
+      this.checkForActiveFormStep(section)
     ))
   }
 
-  checkForActiveFormSection = (section) => {
+  checkForActiveFormStep = (section) => {
     let activeSectionForm = true
     let inputFields = section.input.filter((field) => {
       return field.active
@@ -250,15 +250,15 @@ class FormComponent extends Component {
 
   render() {
     const { match, location, history, documentTypes } = this.props
-    const testFormSectionRoutes = this.testFormSectionRoutes(match)
-    const testFormSectionLink = this.testFormSectionLink(match)
+    const testFormStepRoutes = this.testFormStepRoutes(match)
+    const testFormStepLink = this.testFormStepLink(match)
     return (
       <div>
         <Route strict path={`${match.url}/Review`} component={FormReview} />
         <Route exact path={`${match.url}/`} render={() => (
           <FormHome documentTypeSections={locateDocumentFields(this.props.documentTypes, this.props.match.params)} />
         )} />
-        {testFormSectionRoutes}
+        {testFormStepRoutes}
       </div>
     )
   }
@@ -277,6 +277,6 @@ export default AppForm
           Document Creator Form
           <div>
             <ul>
-            {testFormSectionLink}
+            {testFormStepLink}
             </ul>
           </div>*/

@@ -1,4 +1,6 @@
 import request from 'request';
+import {defineState} from 'redux-localstore'
+
 /**
  * The Form Reducer Handles The Form In The Store
  * 
@@ -8,40 +10,48 @@ import request from 'request';
  * 
  */
 
+const defaultState = {}
+
+const initialState = defineState(defaultState,'backUpForm')
+
+
 function createDocument(form){
   console.log("Create Document Function Hit");
+  const jsonStringifyForm = JSON.stringify(form)
+  console.log(jsonStringifyForm)
   var PATH = window.location.pathname;
+  const indexOfReviewPathParam =  PATH.lastIndexOf('/Review')
+  const cleanPATH = PATH.substring(0,indexOfReviewPathParam)
   //Check if the document is not null
   var options = {
-    url: 'http://localhost:8080'+PATH,
+    url: 'http://localhost:8080'+cleanPATH,
     method: 'POST',
     json: form
   }
   request.post(options);
 }
 
-const Form = (state = {}, action) => {
+const BackUpForm = (state = initialState, action) => {
     switch(action.type) {
-        case 'CREATE_FORM':
+        /*case 'CREATE_FORM':
             return Object.assign({}, state, {
                 form:{}
-            })
+            })*/
+        case 'CLEAR_FORM':
+         return {}
         case 'UPDATE_FORM':
-            const sectionName = state.sectionName
-            Object.assign({}, state, {
-                form:{
-                    sectionName:state.sectionInfo
-                }
-            })
+            const updatedDraft = action.form
+            if(updatedDraft !== undefined){
+           return updatedDraft }
+           return state
+            
         case 'AUTO_GENERATE_FORM':
             return Object.assign({}, state, {
                 form:action.form
             })
         case 'SUBMIT_FORM':
-            createDocument(action.form)
-            return Object.assign({}, state, {
-            form: {}
-          })
+            createDocument(state)
+            return {}
         case 'VALIDATE_FORM_SECTION':
             return state;
         default:
@@ -49,4 +59,4 @@ const Form = (state = {}, action) => {
     }
 }
 
-export default Form
+export default BackUpForm

@@ -29,6 +29,9 @@ The Backend should be able to generate PDFs using the XSLs that are in SVN or in
   * JavaScript
   * ReactJS
     * Redux
+    * Redux-Form
+    * React-Router
+    * Redux-Localstore
   * Webpack
   * Bootstrap
 
@@ -205,3 +208,66 @@ FormNavigator: Will handle the navigation of the form. FormNavigator will
 * Form Home
 * Form Section
 * Form Review
+
+## Form Wizard 
+
+Using the redux-form create a Form that can be validated. The issue is that redux-form  API's reduxForm directly conflicts with the react-router's withRoute method. Therefore the actual Form itself will have to be nested inside the FormSection Component.
+
+The Form needs to be programatically built using the input arr from a Document Type Section. So for each item in input[] create a FormInput, which consists of a Field Component that contains a renderField, which is a label and input.
+
+For the onSubmit there should be dispatch call to update the Form, update the formNavigation. 
+
+Redux-Form has "actions" that can be used to control the form 
+
+
+
+FormSection : props - section, docTypeSections,  state props - form, formNavigator, documentTypes
+
+* Should contain the forward and back buttons, also should contain the 
+
+​	Form - Will contain the reduxForm; props: section 
+
+​		Also the Form will determine the name of the section
+
+​		Loop through the sections building FormFields		
+
+```html
+<div>
+ <FormField section={section}></FormField>
+</div>
+```
+
+​					 
+
+​		Field - A Single field component
+
+## Form Final Design
+
+Right now, I have a problem. I want to submit the form on the review page, but there is no Form associated with the page. I need a form because I can use React-Form's Submit functionality. 
+
+------
+
+# Known Issues
+
+- [ ] The Form Redux object will blank out if the page is refreshed.
+- [ ] When the Form is being created, it should create and return a promised that states, whether the form creation fails or is successful, that the page user will be redirected back to the home page. 
+- [ ] The Endorser Form Step is too big for the size of the Div; Text Overflow
+      - [ ] Expand the Div to make all the text fit
+      - [ ] Add a scroll Bar to the Form
+      - [ ] Style the Input fields to be two columns
+- [ ] SubmitForm method is building the Post URI incorrectly
+      - [ ] Update the EA Endpoint; It's easier
+
+------
+
+# Future Fun
+
+- [ ] Blocking the transition when the a user changes the Document Type while in the middle of the flow
+- [ ] Remembering the values inputted if the user goes backwards
+- [ ] Breadcrumbs
+- [ ] Create a Form Component for each subset of Form Data, Endorser, Employer Etc
+- [ ] STYLE!!!
+- [ ] ​
+
+------
+

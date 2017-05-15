@@ -8,7 +8,7 @@ export const MODIFY_DOCUMENT_TYPE = 'MODIFY_DOCUMENT_TYPE'
 
 export const NEXT_FORM_SECTION = 'NEXT_FORM_SECTION'
 
-export const CREATE_FORM = 'CREATE_FORM'
+export const CLEAR_FORM = 'CLEAR_FORM'
 export const SUBMIT_FORM = 'SUBMIT_FORM'
 export const UPDATE_FORM = 'UPDATE_FORM'
 export const AUTO_GENERATE_FORM = 'AUTO_GENERATE_FORM'
@@ -36,17 +36,16 @@ export function nextFormSection(nextFormSection){
   return { type: NEXT_FORM_SECTION, nextFormSection}
 }
 
-
-export function createForm(formInformation){
-  return { type: CREATE_FORM, form:formInformation}
+export function clearForm(finalFormDraft){
+  return { type: CLEAR_FORM, finalFormDraft}
 }
 
-export function submitForm(finalFormDraft){
-  return { type: SUBMIT_FORM, form:finalFormDraft}
+export function submitCompletedForm(finalFormDraft){
+  return { type: SUBMIT_FORM, finalFormDraft}
 }
 
-export function updateForm(finalFormDraft){
-  return { type: UPDATE_FORM, form:finalFormDraft}
+export function updateBackupForm(formDraft){
+  return { type: UPDATE_FORM, form:formDraft}
 }
 
 export function autoGenerateForm(finalFormDraft){
