@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import AppForm from '../../Containers/AppForm'
+import Layout from './layout'
 
 class Form extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <AppForm store={this.props.store}/>
+        <Layout store={this.props.store}/>
       </div>
     );
   }

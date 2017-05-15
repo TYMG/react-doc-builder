@@ -247,9 +247,15 @@ Right now, I have a problem. I want to submit the form on the review page, but t
 
 ------
 
+# Refactor
+
+Cleaning up some of the code before 
+
+------
+
 # Known Issues
 
-- [ ] The Form Redux object will blank out if the page is refreshed.
+- [x] The Form Redux object will blank out if the page is refreshed.
 - [ ] When the Form is being created, it should create and return a promised that states, whether the form creation fails or is successful, that the page user will be redirected back to the home page. 
 - [ ] The Endorser Form Step is too big for the size of the Div; Text Overflow
       - [ ] Expand the Div to make all the text fit
@@ -267,7 +273,7 @@ Right now, I have a problem. I want to submit the form on the review page, but t
 - [ ] Breadcrumbs
 - [ ] Create a Form Component for each subset of Form Data, Endorser, Employer Etc
 - [ ] STYLE!!!
-- [ ] ​
+- [ ] Form Validation 
 
 ------
 

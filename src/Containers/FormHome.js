@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     beginFormFlow: _ => {
       dispatch(nextFormSection(0))
     },
+    jumpToSection: index => {
+        dispatch(nextFormSection(index))
+    },
     clearForm: _ => {
         dispatch(clearForm())
     }
@@ -44,10 +47,33 @@ class FormHomeComponent extends Component {
   }
 
     buildDocTypeSectionList = _ => {
-     return this.props.documentTypeSections.map( section => (
-            <li key={section.name}>{section.name}</li>
-        ))
+     return this.props.documentTypeSections.map( (section,index) =>{
+        const sectionNameUrl = section.name.replace(/ /g, '')
+        return (
+         <li key={section.ref}>
+            <Link to={`${this.props.match.url}/${sectionNameUrl}`} onClick={ _ => this.props.jumpToSection(index)}>{section.name}</Link>
+          </li>
+        )
+     })
     }
+
+
+
+  /*testFormStepLink = (match) => {
+    const docTypePath = this.props.match.path
+    let documentFields = locateDocumentFields(this.props.documentTypes, this.props.match.params)
+    return (
+      documentFields.map(section => {
+        const sectionName = section.name.replace(/ /g, '')
+        return (
+          <li key={section.ref}>
+            <Link to={`${match.url}/${sectionName}`}>{section.name}</Link>
+          </li>
+        )
+      }
+      )
+    )
+  }*/
 
     render = _ => 
     {
