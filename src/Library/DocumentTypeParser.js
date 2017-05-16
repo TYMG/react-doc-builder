@@ -45,6 +45,26 @@ export const locateDocumentFields = (documentTypes, docTypeParams) => {
   return documentTypeFields
 }
 
+export const identifyDocTypesRoutes = (documentTypes, docTypeParams) => {
+  let documentTypeFields = null
+  documentTypes.forEach(documentType => {
+    if (documentType.route === docTypeParams.doc) {
+      if (documentType.subTypes.length === 0 && documentType.fields.length > 0) {
+        //If the itr documentType has no subTypes and HAS fields
+        documentTypeFields = {"docType":documentType.name}
+      } else {
+        //If the itr document has subTypes
+        documentType.subTypes.forEach(subType => {
+          if (docTypeParams.subDoc !== undefined && subType.name === docTypeParams.subDoc) {
+            documentTypeFields = {"docType":documentType.name, "subDocType":subType.name}
+          }
+        })
+      }
+    }
+  })
+  return documentTypeFields
+}
+
 export const docTypeRoute = (documentTypes, docType) => {
   let docRoute = null
   documentTypes.forEach(documentType => {

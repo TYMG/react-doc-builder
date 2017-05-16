@@ -7,7 +7,7 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 
-import { buildDocumentTypeList, buildSubDocumentTypeList, locateDocumentFields, docTypeRoute } from '../../Library/DocumentTypeParser'
+import { buildDocumentTypeList, buildSubDocumentTypeList, locateDocumentFields, docTypeRoute, identifyDocTypesRoutes } from '../../Library/DocumentTypeParser'
 
 import FormHome from '../../Containers/FormHome'
 import FormStep from '../../Containers/FormStep'
@@ -64,10 +64,10 @@ class FormComponent extends Component {
     const { match, location, history, documentTypes } = this.props
     const formStepRoutes = this.createFormStepRoutes(match)
     return (
-      <div>
+      <div className="form__layout flexbox">
         <Route strict path={`${match.url}/Review`} component={FormReview} />
         <Route exact path={`${match.url}/`} render={() => (
-          <FormHome documentTypeSections={locateDocumentFields(this.props.documentTypes, this.props.match.params)} />
+          <FormHome docTypeSelection={identifyDocTypesRoutes(this.props.documentTypes, this.props.match.params)} documentTypeSections={locateDocumentFields(this.props.documentTypes, this.props.match.params)} />
         )} />
         {formStepRoutes}
       </div>

@@ -16,7 +16,7 @@ class Form extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form__route_index flexbox">
         <Layout store={this.props.store}/>
       </div>
     );
