@@ -249,7 +249,7 @@ Right now, I have a problem. I want to submit the form on the review page, but t
 
 # Refactor
 
-Cleaning up some of the code before 
+Cleaning up some of the code before styling and   
 
 ------
 
