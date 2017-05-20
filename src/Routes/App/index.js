@@ -13,7 +13,7 @@ const App = props => (
         <BrowserRouter forceRefresh={false} keyLength={12}>
           <div className="app__main">
             <AppHeader/>
-            <div className="app__main-content flexbox">
+            <div className="app__main-content flexbox-column">
               <Layout/>
             </div>
             <AppFooter/>

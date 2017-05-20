@@ -50,7 +50,7 @@ class FormHomeComponent extends Component {
         return this.props.documentTypeSections.map((section, index) => {
             const sectionNameUrl = section.name.replace(/ /g, '')
             return (
-                <li key={section.ref}>
+                <li key={index}>
                     <Link to={`${this.props.match.url}/${sectionNameUrl}`} onClick={_ => this.props.jumpToSection(index)}>{section.name}</Link>
                 </li>
             )
@@ -93,7 +93,7 @@ class FormHomeComponent extends Component {
                         <div>
                             <h2>Below are the sections the have to be completed</h2>
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-2">
                             <ol>
                                 {this.buildDocTypeSectionList()}
                             </ol>

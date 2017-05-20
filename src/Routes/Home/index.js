@@ -8,7 +8,7 @@ class Home extends Component {
 
   render(){
     return(
-      <div className='app_home flexbox'>
+      <div className='app_home flexbox-column'>
         <HomeContainer/>
       </div>
     )
