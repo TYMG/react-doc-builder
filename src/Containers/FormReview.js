@@ -6,6 +6,9 @@ import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import { reduxForm } from 'redux-form'
 
+import jsonQuery from 'json-query';
+import Helpers from '../Library/Helpers'
+import documentTypeData from '../../documentTypeData.json';
 
 import { nextFormSection, submitCompletedForm, updateBackupForm } from '../actions'
 
@@ -56,15 +59,35 @@ class FormReviewComponent extends Component {
         //this.props.nextFlowStep(formNavigationIndex)*/
     }
 
+    renderFormSectionField = field => (
+        console.log(field)
+    )
+
+    renderFormSectionFields = fields => (
+        console.log(fields)
+    )
+
+    renderCollapsableFormSection = section => (
+        console.log(section)
+    )
+
+    renderCollapsableFormSections = url => {
+       var result = jsonQuery('documentTypes[**][route].fields', {
+            data: documentTypeData
+        })
+         console.log(result)  
+    }
+
     render() {
-        const { error, handleSubmit, dispatch } = this.props;
+        const { error, handleSubmit, dispatch,match } = this.props;
         let homePath = this.props.match.url
         let lastIndexOfFwdSlash = homePath.lastIndexOf('/')
         let cleanHomeHref = homePath.substring(0,lastIndexOfFwdSlash)
         return (
             <div>
-                Review YO Form!!!
-             <div>
+                <h1>Review YO Form!!!</h1>
+                {this.renderCollapsableFormSections(match)}
+                <div>
                     {/*<Link to={cleanHomeHref}  onClick={ _ => this.props.completedReviewSubmitForm(this.props.completedForm)}>CREATE DOC</Link>*/}
                     <button type="submit" onClick={ event => this.handleFormSubmit(event)}>Create Document</button>
                 </div>

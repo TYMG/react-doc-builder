@@ -137,6 +137,10 @@ class PersonComponent extends Component {
             return firstLetter+restOfStringNoSpace
         }
 
+        renderFormTitle = _ => {
+            console.log(this.props)
+        }
+
         renderInputFields = section => (
             section.input.map(field =>
                 (<Field key={field.ref} name={field.ref} type="text" component={FormField} label={field.name} />)
@@ -170,12 +174,12 @@ class PersonComponent extends Component {
              const formNavigationIndex = this.props.formNavigator
 
             return (
-                <div>
-                    <h3>Input Fields</h3>
-                    <div>
+                <div className="person__form-main flexbox-column flex-1">
+                    <h1>{this.props.section.name}</h1>
+                    <div className="person-form flexbox-column flex-2">
                         <form name="sectionForm" onSubmit={ e => this.handleSubmit(e)}>
                             <FormSection name={this.calculateFormSectionName()}>
-                               <div className="reference1__form-section-1">
+                               <div className="reference1__form-section-1 flex-2">
                                    <Field key="name" name="name" type="text" component={FormField} label="Name" />
                                    <Field key="dob" name="dob" type="text" component={FormField} label="DOB" />
                                    <Field key="ssn" name="ssn" type="text" component={FormField} label="SSN" />
@@ -187,15 +191,15 @@ class PersonComponent extends Component {
                                    <Field key="phoneNumber" name="phoneNumber" type="text" component={FormField} label="Phone Number" />
                                 </div>
                             </FormSection>
-                            <div>
-                        <div>
-                            {this.calculateBackLink()}
-                        </div>
-                        <div>
-
-                            {this.renderForwardLink()}
-                        </div>
-                    </div>       
+                            <div className="flexbox-row flex-1">
+                                <div className="flex-1">
+                                    {this.calculateBackLink()}
+                                </div>
+                                <div className="flex-1">
+                                    {this.renderForwardLink()}
+                                </div>
+                                <div className="flex-3"/>
+                            </div>       
                         </form>
                     </div>
                 </div>

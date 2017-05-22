@@ -66,7 +66,9 @@ class FormComponent extends Component {
     const formStepRoutes = this.createFormStepRoutes(match)
     return (
       <div className="form__layout flexbox-column">
-        <Route strict path={`${match.url}/Review`} component={FormReview} />
+        <Route strict path={`${match.url}/Review`} render={() => (
+          <FormReview />
+        )} />
         <Route exact path={`${match.url}/`} render={() => (
           <FormHome docTypeSelection={identifyDocTypesRoutes(this.props.documentTypes, this.props.match.params)} documentTypeSections={locateDocumentFields(this.props.documentTypes, this.props.match.params)} />
         )} />

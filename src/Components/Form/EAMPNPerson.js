@@ -172,7 +172,7 @@ class EAMPNPersonFormComponent extends Component {
 
         return (
             <div className="eaMpn__form-main flexbox-column flex-1">
-                <h3>Input Fields</h3>
+                <h1>{this.props.section.name}</h1>
                 <div className="eaMpn__form flex-2">
                     <form name="sectionForm" onSubmit={e => this.handleSubmit(e)}>
                         <FormSection name={this.calculateFormSectionName()}>
@@ -204,17 +204,17 @@ class EAMPNPersonFormComponent extends Component {
                                 </div>
                             </div>
                         </FormSection>
-                    </form>
-                </div>
-                <div className="flexbox-row flex-1">
-                    <div className="flex-1">
-                        {this.calculateBackLink()}
-                    </div>
-                    <div className="flex-1">
+                         <div className="flexbox-row flex-1">
+                            <div className="flex-1">
+                                {this.calculateBackLink()}
+                            </div>
+                            <div className="flex-1">
 
-                        {this.renderForwardLink()}
-                    </div>
-                    <div className="flex-3" />
+                                {this.renderForwardLink()}
+                            </div>
+                            <div className="flex-3" />
+                        </div>
+                    </form>
                 </div>
             </div>
         )

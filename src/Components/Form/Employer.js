@@ -170,9 +170,9 @@ class EmployerComponent extends Component {
              const formNavigationIndex = this.props.formNavigator
 
             return (
-                <div>
-                    <h3>Input Fields</h3>
-                    <div>
+                <div className="employer__form-main flexbox-column flex-1" >
+                    <h1>{this.props.section.name}</h1>
+                    <div className="employer__form flex-2">
                         <form name="sectionForm" onSubmit={ e => this.handleSubmit(e)}>
                             <FormSection name={this.calculateFormSectionName()}>
                                <div className="reference1__form-section-1">
@@ -185,15 +185,16 @@ class EmployerComponent extends Component {
                                    <Field key="phoneNumber" name="phoneNumber" type="text" component={FormField} label="Phone Number" />
                                 </div>
                             </FormSection>
-                            <div>
-                        <div>
-                            {this.calculateBackLink()}
-                        </div>
-                        <div>
+                            <div className="flexbox-row flex-1">
+                                <div className="flex-1">
+                                    {this.calculateBackLink()}
+                                </div>
+                                <div className="flex-1">
 
-                            {this.renderForwardLink()}
-                        </div>
-                    </div>       
+                                    {this.renderForwardLink()}
+                                </div>
+                                <div className="flex-3"/>
+                            </div>       
                         </form>
                     </div>
                 </div>

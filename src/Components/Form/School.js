@@ -170,12 +170,12 @@ class SchoolComponent extends Component {
              const formNavigationIndex = this.props.formNavigator
 
             return (
-                <div>
+                <div className="employer__form-main flexbox-column flex-1">
                     <h3>Input Fields</h3>
-                    <div>
+                    <div className="school__form flexbox-column">
                         <form name="sectionForm" onSubmit={ e => this.handleSubmit(e)}>
                             <FormSection name={this.calculateFormSectionName()}>
-                               <div className="reference1__form-section-1">
+                               <div className="reference1__form-section-1 flex-2">
                                    <Field key="name" name="name" type="text" component={FormField} label="Name" />
                                    <Field key="longName" name="longName" type="text" component={FormField} label="Long School Name" />
                                    <Field key="address1" name="address1" type="text" component={FormField} label="School Address" />
@@ -187,15 +187,15 @@ class SchoolComponent extends Component {
                                    <Field key="mpdId" name="mpnId" type="text" component={FormField} label="MPN Id" />
                                 </div>
                             </FormSection>
-                            <div>
-                        <div>
-                            {this.calculateBackLink()}
-                        </div>
-                        <div>
-
-                            {this.renderForwardLink()}
-                        </div>
-                    </div>       
+                            <div className="flexbox-row flex-1">
+                                <div className="flex-1">
+                                    {this.calculateBackLink()}
+                                </div>
+                               <div className="flex-1">
+                                    {this.renderForwardLink()}
+                                </div>
+                                <div className="flex-3"/>
+                            </div>       
                         </form>
                     </div>
                 </div>
