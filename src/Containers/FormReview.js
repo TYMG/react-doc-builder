@@ -59,23 +59,50 @@ class FormReviewComponent extends Component {
         //this.props.nextFlowStep(formNavigationIndex)*/
     }
 
-    renderFormSectionField = field => (
-        console.log(field)
-    )
+    trimAndCapSectionName = secName => {
+            const firstLetter = secName.substr(0,1).toLowerCase()
+            const restOfString = secName.substr(1)
+            const restOfStringNoSpace = restOfString.replace(/ /g, '') 
+            return firstLetter+restOfStringNoSpace
+        }
 
-    renderFormSectionFields = fields => (
-        console.log(fields)
-    )
 
-    renderCollapsableFormSection = section => (
-        console.log(section)
-    )
+    renderFormSectionField =  (sectionName,field) => {
+       var formSectionField
+        if(field.active){
+            const sectionArr = this.props.completedForm[this.trimAndCapSectionName(sectionName)]
+            const fieldValue = sectionArr[field.ref]
+            formSectionField = <div>{field.name}:{fieldValue}</div>
+        }else{
+            formSectionField = <div>{field.name}:</div>
+        }
+        return formSectionField
+    }
+
+    renderCollapsableFormSection = section => {
+        const collaspableFormSection = section.input.forEach( field =>
+            {
+                this.renderFormSectionField(section.name,field)
+            }
+        )
+        return (<div>{collaspableFormSection}</div>)
+    }
+
 
     renderCollapsableFormSections = url => {
-       var result = jsonQuery('documentTypes[**][route].fields', {
+       const EA = 'EA'
+       const DEFAULT = 'Default' 
+       const urlArr = url.path.split('/')
+       var result = jsonQuery('documentTypes[route='+urlArr[2]+'].subTypes[name='+urlArr[3]+'].fields', {
             data: documentTypeData
         })
-         console.log(result)  
+         const collaspableFormSections = result.value.forEach( section => {
+                const completedFormSection = this.props.completedForm[section.name]
+                this.renderCollapsableFormSection(section)
+         }
+
+         )
+        return (<div>{collaspableFormSections}</div>)
     }
 
     render() {
