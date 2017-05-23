@@ -7,10 +7,10 @@ import { Route, Link, Switch } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
 
-import { buildDocumentTypeList, buildSubDocumentTypeList, locateDocumentFields, docTypeRoute } from '../../Library/DocumentTypeParser'
+import { buildDocumentTypeList, buildSubDocumentTypeList, locateDocumentFields, docTypeRoute, identifyDocTypesRoutes } from '../../Library/DocumentTypeParser'
 
 import FormHome from '../../Containers/FormHome'
-import FormStep from '../../Containers/FormStep'
+import FormMap from '../../Components/Form/FormMap'
 import FormReview from '../../Containers/FormReview'
 
 const mapStateToProp = (state) => {
@@ -24,7 +24,7 @@ class FormComponent extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+     formMap: FormMap
     }
   }
 
@@ -32,18 +32,19 @@ class FormComponent extends Component {
     const docTypePath = this.props.match.path
     let documentFields = locateDocumentFields(this.props.documentTypes, this.props.match.params)
     let filteredDocumentFields = this.filterDocTypeSections(documentFields)
-    return (
-      filteredDocumentFields.map(section => {
+    let formStepRoutes =  filteredDocumentFields.map((section,index) => {
+        const formMap = FormMap
         if (this.checkForActiveFormStep(section)) {
           const sectionName = section.name.replace(/ /g, '')
+          const SectionFormType = formMap.get(section.formId).value
           return (
-            <Route exact={true} key={section.ref} path={`${match.path}/${sectionName}`} render={() => (
-              <FormStep section={section} docTypeSections={filteredDocumentFields} />
+            <Route exact={true} key={index} path={`${match.path}/${sectionName}`} render={() => (
+              <SectionFormType section={section} docTypeSections={filteredDocumentFields} />
             )} />
           )
         }
       })
-    )
+      return formStepRoutes
   }
 
   filterDocTypeSections(documentFields){
@@ -64,10 +65,12 @@ class FormComponent extends Component {
     const { match, location, history, documentTypes } = this.props
     const formStepRoutes = this.createFormStepRoutes(match)
     return (
-      <div>
-        <Route strict path={`${match.url}/Review`} component={FormReview} />
+      <div className="form__layout flexbox-column">
+        <Route strict path={`${match.url}/Review`} render={() => (
+          <FormReview />
+        )} />
         <Route exact path={`${match.url}/`} render={() => (
-          <FormHome documentTypeSections={locateDocumentFields(this.props.documentTypes, this.props.match.params)} />
+          <FormHome docTypeSelection={identifyDocTypesRoutes(this.props.documentTypes, this.props.match.params)} documentTypeSections={locateDocumentFields(this.props.documentTypes, this.props.match.params)} />
         )} />
         {formStepRoutes}
       </div>

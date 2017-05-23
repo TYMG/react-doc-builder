@@ -10,21 +10,60 @@ body {
   flex-direction: column;
 }
 
-
-
 div#root {
   height: 100% !important;
 }
 
+label {
+  font-size: 2rem;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#7EDFF2;
+  height: 3px;
+}
 /***
 Multipurpose
 ***/
 
 .elem__background {
-  background-color: #222;
-  height: 150px;
+  background-color: #5778A5;
   padding: 20px;
   color: white;
+}
+
+.flexbox-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flexbox-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-1{
+  flex:1;
+}
+
+.flex-2{
+  flex:2;
+}
+
+.flex-3{
+  flex:3;
+}
+
+.margin-btm-1{
+  margin-bottom: 1%;
+}
+
+.margin-btm-2{
+  margin-bottom: 3%;
 }
 
 .centered {
@@ -37,15 +76,127 @@ Multipurpose
   margin-right: 5%;
 }
 
+.max-height {
+    height: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.wide {
+  width:300px;
+}
+
+
+/***
+
+Fonts, Sizes, Etc
+
+***/
+
+h1.form-header{
+  text-align: center;
+  font-size: 8rem;
+  color: #28659B;
+}
+
+
+/***
+
+Buttons
+
+***/
+
+.btn {
+  padding: 10px 15px;
+  background: #4479BA;
+	color: #FFF;
+	border-radius: 3px;
+	border: solid 1px #20538D;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+	user-select:none;
+  font-size: 4rem;
+}
+
+.btn:hover, .btn:focus {
+	background: #356094;
+	border: solid 1px #2A4E77;
+	text-decoration: none;
+}
+
+.btn:active {
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+	background: #2E5481;
+	border: solid 1px #203E5F;
+}
+
 /**
 Header CSS
 **/
 
+ul.header__links  {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li.float-left {
+    float: left;
+}
+
+a.header__link {
+    color: white;
+    font-size:3rem;
+    margin-right:25%; 
+}
+
+a.header__link:hover {
+    background-color: #C1C0C6;
+}
 
 /**
 Home CSS
 **/
 
+.app_home {
+ flex: 1;
+ margin:auto;
+}
+
+.app__home-container {
+ flex: 1;
+ margin:15% auto;
+}
+
+h1.home_header{
+  font-size: 7rem;
+} 
+
+p.home_how-to{
+  font-size: 4rem;
+}
+
+ol.home_instructions > li {
+  font-size:3rem
+}
+
+div.home_doc_type_dropdowns {
+  display: flex;
+  flex-direction: row;
+}
+
+div.home__doc_type_dd {
+  flex:1;
+  order:0;
+}
+
+div.home__subdoc_type_dd {
+  flex: 1;
+  order:1;
+}
 
 /**
 App CSS
@@ -66,7 +217,7 @@ App CSS
 
 .app__main-content {
   flex: 1;
-  height:95%;
+  background-color: #C1C0C6;
 }
 
 div.app__masterform{
@@ -89,10 +240,84 @@ div.app__masterform{
   to { transform: rotate(360deg); }
 }
 
+
+/***
+Layout
+***/
+
+div.app__layout {
+  flex:1;
+}
+
+/*****************************************************************
+Form
+******************************************************************/
+
+div.form__route_index {
+  flex:1;
+}
+
+div.form__layout {
+  flex:1;
+  margin: 1% 1%;
+}
+
+/***
+Home
+***/
+div.form__home-main-content{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  font-size:3rem;
+  margin: 1% 5%;
+}
+
+div.form__home-title {
+  order:0
+}
+
+div.form__home-title > h2 {
+  font-size:7rem;
+}
+
+div.form__home-docType-sections {
+  flex:2;
+  display: flex;
+  flex-direction: row;
+  order:1;
+}
+
+div.home-docType-sections{
+  order:0;
+  flex:1;
+  display: flex;
+  flex-direction: column;
+} 
+
+div.home-docType-preview {
+  order:1;
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+
+div.docType-preview {
+  width:75%;
+  background-color: #8CD7F2;
+  margin: 0 auto;
+}
+
+div.form__home-return-home{
+  order:2;
+  flex:0;
+}
+
+
+
 /***
 Document Selector
 ***/
-
 
 
 /***
@@ -100,7 +325,7 @@ Footer
 ***/
 
 .footer__background {
-  background-color: #222;
+  background-color: #5778A5;
   height: 10%;
   padding: 1%;
   color: white;

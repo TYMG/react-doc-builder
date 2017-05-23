@@ -6,7 +6,11 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import { Dropdown } from 'semantic-ui-react'
 
-import { buildSubDocumentTypeList,docTypeRoute } from '../Library/DocumentTypeParser'
+import jsonQuery from 'json-query';
+import Helpers from '../Library/Helpers'
+import documentTypeData from '../../documentTypeData.json';
+
+import { buildSubDocumentTypeList, docTypeRoute } from '../Library/DocumentTypeParser'
 
 
 const mapStateToProps = (state) => {
@@ -53,6 +57,9 @@ class HomeComponent extends Component {
   }
 
   buildSubDocumentTypeDropDownList = _ => {
+    var docTypeRouteResult = jsonQuery('documentTypes[route=' + this.state.selectedDocType + '].subTypes[name=' + this.state.selectedDocType + '].fields', {
+            data: documentTypeData
+        })
     let subDocumentTypeList = buildSubDocumentTypeList(this.state.documentTypes, this.state.selectedDocType)
     let selectOptions = subDocumentTypeList.map(subDocType => {
       return <option id={subDocType} key={subDocType} value={subDocType}>{subDocType}</option>
@@ -61,13 +68,22 @@ class HomeComponent extends Component {
     return selectOptions;
   }
 
-  buildBeginLink = _ => {  
-    let toString = "/Document/"+docTypeRoute(this.state.documentTypes,this.state.selectedDocType)
+  buildLinkAddress = _ => {
+    var docTypeRouteResult = jsonQuery('documentTypes[name=' + this.state.selectedDocType + '].route', {
+            data: documentTypeData
+        })
+    let linkAddress = "/Document/" + docTypeRouteResult.value
+    if (this.state.activeSubDocTypeDropDown) {
+      linkAddress += '/' + this.state.selectedSubDocType
+    }else{
+      linkAddress += '/Default'
+    }
+    return linkAddress
+  }
+
+  buildBeginLink = _ => {   
     let linkText = "Begin " + this.state.selectedDocType + " Creation"
-      if(this.state.activeSubDocTypeDropDown){
-        toString += '/'+this.state.selectedSubDocType
-      }
-     return <Link to={toString}>{linkText}</Link>
+    return <Link to={this.buildLinkAddress()}>{linkText}</Link>
   }
 
   updateSubDocTypeDropDownOptions = _ => {
@@ -75,12 +91,12 @@ class HomeComponent extends Component {
       this.setState({
         subDocTypes: this.buildSubDocumentTypeDropDownList(),
         activeSubDocTypeDropDown: true
-      },this.checkBeginLinkCriteria.bind(this))
+      }, this.checkBeginLinkCriteria.bind(this))
     } else {
       this.setState({
         subDocTypes: [],
         activeSubDocTypeDropDown: false
-      },this.checkBeginLinkCriteria.bind(this))
+      }, this.checkBeginLinkCriteria.bind(this))
     }
   }
 
@@ -95,7 +111,7 @@ class HomeComponent extends Component {
   }
 
   checkBeginLinkCriteria = _ => {
-    let beginLinkCriteriaMet =false
+    let beginLinkCriteriaMet = false
     if (this.refs.docType.value !== 'Select') {
       if (this.state.activeSubDocTypeDropDown) {
         if (this.refs.subDocType.value !== 'Select') {
@@ -106,19 +122,18 @@ class HomeComponent extends Component {
       }
     }
     this.setState({
-      activeBeginLink:beginLinkCriteriaMet
+      activeBeginLink: beginLinkCriteriaMet
     })
   }
 
   subDocumentTypeSelection = () => (
     this.setState({
       selectedSubDocType: this.refs.subDocType.value
-    },this.checkBeginLinkCriteria())
+    }, this.checkBeginLinkCriteria())
   )
 
   documentTypeSelection = (e) => {
     const newSelectedDocType = this.refs.docType.value;
-    console.log(newSelectedDocType)
     this.setState({
       selectedDocType: newSelectedDocType
     }, this.updateSubDocTypeDropDownOptions.bind(this))
@@ -128,29 +143,29 @@ class HomeComponent extends Component {
     const { match, location, history, documentTypes } = this.props
     const documentTypeDropDownList = this.buildDocumentTypeDropDownList();
     return (
-      <div>
-
-        <div>
-          <h3>Welcome to Doc Creator!!</h3>
+        <div className="app__home-container">
+          <h1 className="home_header">Welcome to Doc Creator!!</h1>
           <div>
-            <p>
+            <p className="home_how-to">
               <strong>How to:</strong><br />
             </p>
 
-            <ol>
+            <ol className="home_instructions">
               <li>Select a Document from the drop down below
-                <div>
+                <div className="home_doc_type_dropdowns">
+                <div className="home__doc_type_dd">
                   <select ref="docType" value={this.state.selectedDocType} onChange={this.documentTypeSelection}>
                     {documentTypeDropDownList}
                   </select>
                 </div>
+           <div className="home__subdoc_type_dd">
                 {this.state.activeSubDocTypeDropDown &&
-                  <div>
                     <select ref="subDocType" value={this.state.subDocumentType} onChange={this.subDocumentTypeSelection}>
                       {this.state.subDocTypes}
                     </select>
-                  </div>
                 }
+                 </div>
+                </div>
                 {this.state.activeBeginLink &&
                   <div>
                     {this.buildBeginLink()}
@@ -163,7 +178,6 @@ class HomeComponent extends Component {
             </ol>
           </div>
         </div>
-      </div>
     )
   }
 

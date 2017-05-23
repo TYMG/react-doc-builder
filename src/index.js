@@ -18,6 +18,7 @@ import storeSynchronize from 'redux-localstore'
 import App from './Routes/App'
 
 import './css/App.css'
+import './css/Form.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 

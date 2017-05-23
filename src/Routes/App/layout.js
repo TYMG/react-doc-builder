@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 }
 
 const LayoutComponent = (props) => (
-  <div>
+  <div className='app__layout flexbox-column'>
     <Switch>
       <Route exact path="/" component={Home}/>
       <Route path="/Document/:doc/:subDoc"  render={() => (

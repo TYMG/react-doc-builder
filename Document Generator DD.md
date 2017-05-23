@@ -247,9 +247,47 @@ Right now, I have a problem. I want to submit the form on the review page, but t
 
 ------
 
-# Refactor
+# Style Refactoring
 
-Cleaning up some of the code before 
+At this point it's too difficult to style the FormStep while accounting for the different form fields lengths. Right now the EA and MPN Endorser and Borrower Steps are too long. Therefore, I'm going to create Form Components for each possible step of the Document Creation Process.
+
+* EAMPNForm - Section Name will have to be programmatically 
+* ReferenceForm - ""
+* SchoolForm
+
+So in order to leverage these forms, when the user selects the document type, the Form Router will programmatically creates routes for each step, with each step using one of the forms as the components.
+
+Refresher: What are the 'refs' in the Section portion of the JSON being used for?
+
+It looks like the Section ref property is being used by Routes/Form/layout.js to create a key for each form Step.
+
+Also it seems to be used to in FormHome.js as well as a key for each List Item in the Section List
+
+#### Update: 
+
+~~Since the ref doesnt have a specific purpose, they will be repurposed to be used to determine which form component will be used. The values and the form component mappings are as follows (Note: The 'form' suffix may need to be removed from the exported name to ease in match):~~
+
+*  Mapping Value : Component
+* ~~"CorrespondenceInfo" : CorrespondenceInfo{Form}~~
+* ~~"CreditBureau" : CreditBureau{Form}~~
+* ~~"EAMPNPerson" : EAMPNPerson <-- FKA EAMPNBorrower~~
+
+#### Update: 
+
+Strings cannot be used to dynamically render React Components, on Functions can. 
+
+## How to refactor the Form Routes
+
+For the most part, the createFormStepRoutes can stay the same, but there will need another function that programatically determines which Component needs to be utilize. That function needs to return a string.
+
+
+
+### Which props should be passed down to the child form components?
+
+* Section - Name and Fields
+* DocTypeSections - Navigation purposes.
+
+##  
 
 ------
 
