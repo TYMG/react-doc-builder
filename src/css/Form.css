@@ -11,17 +11,21 @@ EAMPN
 
 ***/
 
-eaMpn__form-section-1 {
-
+.eaMpn__form-section-1 {
+    margin-bottom: 1%; 
 }
 
-eaMpn__form-section-2 {
+eaMpn__form-address{
+    margin-top: 1%;
+}
+
+/*eaMpn__form-section-2 {
 
 }
 
 eaMpn__form-section-3 {
     
-}
+}*/
 
 /***
 

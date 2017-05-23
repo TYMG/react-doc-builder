@@ -14,13 +14,24 @@ div#root {
   height: 100% !important;
 }
 
+label {
+  font-size: 2rem;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#7EDFF2;
+  height: 3px;
+}
 /***
 Multipurpose
 ***/
 
 .elem__background {
-  background-color: #222;
-  height: 100px;
+  background-color: #5778A5;
   padding: 20px;
   color: white;
 }
@@ -47,6 +58,14 @@ Multipurpose
   flex:3;
 }
 
+.margin-btm-1{
+  margin-bottom: 1%;
+}
+
+.margin-btm-2{
+  margin-bottom: 3%;
+}
+
 .centered {
   text-align: center;
 }
@@ -65,12 +84,78 @@ Multipurpose
   position: relative;
 }
 
+.wide {
+  width:300px;
+}
 
+
+/***
+
+Fonts, Sizes, Etc
+
+***/
+
+h1.form-header{
+  text-align: center;
+  font-size: 8rem;
+  color: #28659B;
+}
+
+
+/***
+
+Buttons
+
+***/
+
+.btn {
+  padding: 10px 15px;
+  background: #4479BA;
+	color: #FFF;
+	border-radius: 3px;
+	border: solid 1px #20538D;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
+	user-select:none;
+  font-size: 4rem;
+}
+
+.btn:hover, .btn:focus {
+	background: #356094;
+	border: solid 1px #2A4E77;
+	text-decoration: none;
+}
+
+.btn:active {
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+	background: #2E5481;
+	border: solid 1px #203E5F;
+}
 
 /**
 Header CSS
 **/
 
+ul.header__links  {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li.float-left {
+    float: left;
+}
+
+a.header__link {
+    color: white;
+    font-size:3rem;
+    margin-right:25%; 
+}
+
+a.header__link:hover {
+    background-color: #C1C0C6;
+}
 
 /**
 Home CSS
@@ -132,8 +217,7 @@ App CSS
 
 .app__main-content {
   flex: 1;
-  height:95%;
-  background-color: #DFDCE8;
+  background-color: #C1C0C6;
 }
 
 div.app__masterform{
@@ -162,7 +246,6 @@ Layout
 ***/
 
 div.app__layout {
-  height:75%;
   flex:1;
 }
 
@@ -176,6 +259,7 @@ div.form__route_index {
 
 div.form__layout {
   flex:1;
+  margin: 1% 1%;
 }
 
 /***
@@ -230,6 +314,7 @@ div.form__home-return-home{
 }
 
 
+
 /***
 Document Selector
 ***/
@@ -240,7 +325,7 @@ Footer
 ***/
 
 .footer__background {
-  background-color: #222;
+  background-color: #5778A5;
   height: 10%;
   padding: 1%;
   color: white;

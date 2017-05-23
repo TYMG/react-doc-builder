@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 import { Dropdown } from 'semantic-ui-react'
 
+import jsonQuery from 'json-query';
+import Helpers from '../Library/Helpers'
+import documentTypeData from '../../documentTypeData.json';
+
 import { buildSubDocumentTypeList, docTypeRoute } from '../Library/DocumentTypeParser'
 
 
@@ -53,6 +57,9 @@ class HomeComponent extends Component {
   }
 
   buildSubDocumentTypeDropDownList = _ => {
+    var docTypeRouteResult = jsonQuery('documentTypes[route=' + this.state.selectedDocType + '].subTypes[name=' + this.state.selectedDocType + '].fields', {
+            data: documentTypeData
+        })
     let subDocumentTypeList = buildSubDocumentTypeList(this.state.documentTypes, this.state.selectedDocType)
     let selectOptions = subDocumentTypeList.map(subDocType => {
       return <option id={subDocType} key={subDocType} value={subDocType}>{subDocType}</option>
@@ -61,13 +68,22 @@ class HomeComponent extends Component {
     return selectOptions;
   }
 
-  buildBeginLink = _ => {
-    let toString = "/Document/" + docTypeRoute(this.state.documentTypes, this.state.selectedDocType)
-    let linkText = "Begin " + this.state.selectedDocType + " Creation"
+  buildLinkAddress = _ => {
+    var docTypeRouteResult = jsonQuery('documentTypes[name=' + this.state.selectedDocType + '].route', {
+            data: documentTypeData
+        })
+    let linkAddress = "/Document/" + docTypeRouteResult.value
     if (this.state.activeSubDocTypeDropDown) {
-      toString += '/' + this.state.selectedSubDocType
+      linkAddress += '/' + this.state.selectedSubDocType
+    }else{
+      linkAddress += '/Default'
     }
-    return <Link to={toString}>{linkText}</Link>
+    return linkAddress
+  }
+
+  buildBeginLink = _ => {   
+    let linkText = "Begin " + this.state.selectedDocType + " Creation"
+    return <Link to={this.buildLinkAddress()}>{linkText}</Link>
   }
 
   updateSubDocTypeDropDownOptions = _ => {
@@ -118,7 +134,6 @@ class HomeComponent extends Component {
 
   documentTypeSelection = (e) => {
     const newSelectedDocType = this.refs.docType.value;
-    console.log(newSelectedDocType)
     this.setState({
       selectedDocType: newSelectedDocType
     }, this.updateSubDocTypeDropDownOptions.bind(this))

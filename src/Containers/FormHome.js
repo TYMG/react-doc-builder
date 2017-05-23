@@ -47,15 +47,30 @@ class FormHomeComponent extends Component {
     }
 
     buildDocTypeSectionList = _ => {
-        return this.props.documentTypeSections.map((section, index) => {
+        return this.filterDocTypeSections().map((section, index) => {
+            if(this.checkForActiveFormStep(section)){
             const sectionNameUrl = section.name.replace(/ /g, '')
             return (
                 <li key={index}>
                     <Link to={`${this.props.match.url}/${sectionNameUrl}`} onClick={_ => this.props.jumpToSection(index)}>{section.name}</Link>
                 </li>
-            )
+            )}
         })
     }
+
+    filterDocTypeSections = _ => (
+    this.props.documentTypeSections.filter(section => (
+      this.checkForActiveFormStep(section)
+    ))
+  )
+
+  checkForActiveFormStep = (section) => {
+    let activeSectionForm = true
+    let inputFields = section.input.filter((field) => {
+      return field.active
+    })
+    return inputFields.length > 0
+  }
 
 
 
@@ -78,7 +93,6 @@ class FormHomeComponent extends Component {
     render = _ => {
         console.log(this.props.documentTypeSections)
         const { match, location, history, beginFormFlow, docTypeSelection } = this.props
-        let docTypeSectionList = this.buildDocTypeSectionList
         return (
             <div className="form__home-main-content">
                 <div className="form__home-title">

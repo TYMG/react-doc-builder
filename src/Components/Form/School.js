@@ -57,24 +57,7 @@ class SchoolComponent extends Component {
         this.props.history.replace(path,{}) // <= THIS LINE IS TO PUSH THE NEW URL TO THE HISTORY SO THE ROUTE CAN UPDATE
         //this.props.nextFlowStep(formNavigationIndex)
     }
-
-    buildBeginLink = (section) => {
-
-        let firstSection = this.props.documentTypeSections[0].name
-        let href = this.props.match.url + '/' + firstSection
-        let linkText = "the " + firstSection + " link"
-        return <Link to={href} onClick={this.props.beginFormFlow}>{linkText}</Link>
-    }
-
-    testInputFields = _ => {
-        let inputFields = this.props.section.input.filter((field) => {
-            return field.active
-        })
-        return inputFields.map(field => (
-            <li key={field.ref}>{field.name}</li>
-        ))
-    }
-
+    
     calculateBackLink = _ => {
         let docTypeSections = this.props.docTypeSections
         let hrefParams = this.props.match.params
@@ -82,12 +65,12 @@ class SchoolComponent extends Component {
         let homeHref = '/Document/' + hrefParams.doc + '/' + hrefParams.subDoc
         if (formNavigationIndex <= 0) // Index out bounds
         {
-            return <Link to={homeHref} onClick={ event=> this.props.returnHomeFromFlow(formNavigationIndex, event)}>Home</Link>
+            return <Link className="btn" to={homeHref} onClick={ event=> this.props.returnHomeFromFlow(formNavigationIndex, event)}>Home</Link>
         } else {
             // Calculate the back link
             let prevSection = docTypeSections[formNavigationIndex - 1]
             const prevSectionName = prevSection.name.replace(/ /g, '')
-            return <Link to={homeHref + '/' + prevSectionName} onClick={ event => this.props.backOneFlowStep(formNavigationIndex,event)}>{prevSection.name}</Link>
+            return <Link className="btn" to={homeHref + '/' + prevSectionName} onClick={ event => this.props.backOneFlowStep(formNavigationIndex,event)}>{prevSection.name}</Link>
         }
     }
 
@@ -99,14 +82,14 @@ class SchoolComponent extends Component {
         if (formNavigationIndex + 1 >= docTypeSections.length) // Index out bounds
         {
             //return <Link to={nextStepHref + 'Review'} onClick={ event => this.props.nextFlowStep(formNavigationIndex,event)}>Review</Link>
-            return <button type="submit">Review</button>
+            return <button className="btn" type="submit">Review</button>
                 
     } else {
             // Calculate the back link
             let nextSection = docTypeSections[formNavigationIndex + 1]
             const nextSectionName = nextSection.name.replace(/ /g, '')
             // return <Link to={nextStepHref +  nextSectionName} onClick={ event => this.submitSectionForm(formNavigationIndex,event)}>{nextSection.name}</Link>
-            return <button type="submit">{nextSection.name}</button>
+            return <button className="btn" type="submit">{nextSection.name}</button>
         }
     }
 
@@ -137,45 +120,18 @@ class SchoolComponent extends Component {
             return firstLetter+restOfStringNoSpace
         }
 
-        renderInputFields = section => (
-            section.input.map(field =>
-                (<Field key={field.ref} name={field.ref} type="text" component={FormField} label={field.name} />)
-            )
-        )
-
-        createIAMARadioButton = _ => {
-            return (
-                {"label":"IAMA",
-                 "field":"iama",
-                 "option1":"US Citizen",
-                 "value1":"US",
-                 "option2":"Foreign Born",
-                 "value2":"Foreign Born"
-                }
-            )
-        }
-        /**
-         * Split the Input List
-         * 
-         * List 1: IAMA, Name, DOB, SSN, Citzenship Status, Alien Registration, Drivers License State, Drivers License Number
-         * 
-         * List 2: Address Line 1, Address Line 2, City, State, Zipcode, Phone Number
-         * 
-         * List 3: Mailing Address Line 1, Mailing Address Line 2, Mailing Address City, Mailing Address State, Mailing Address Zipcode
-         * 
-         */
         render() {
             const { match, section, docTypeSections, form } = this.props
-            const inputFieldsList = this.testInputFields()
              const formNavigationIndex = this.props.formNavigator
 
             return (
                 <div className="employer__form-main flexbox-column flex-1">
-                    <h3>Input Fields</h3>
+                    <h1 className="form-header">{this.props.section.name}</h1>
+                    <hr/>
                     <div className="school__form flexbox-column">
                         <form name="sectionForm" onSubmit={ e => this.handleSubmit(e)}>
                             <FormSection name={this.calculateFormSectionName()}>
-                               <div className="reference1__form-section-1 flex-2">
+                               <div className="reference1__form-section-1 margin-btm-2">
                                    <Field key="name" name="name" type="text" component={FormField} label="Name" />
                                    <Field key="longName" name="longName" type="text" component={FormField} label="Long School Name" />
                                    <Field key="address1" name="address1" type="text" component={FormField} label="School Address" />
@@ -188,13 +144,15 @@ class SchoolComponent extends Component {
                                 </div>
                             </FormSection>
                             <div className="flexbox-row flex-1">
+                                  <div className="flex-2"/>
                                 <div className="flex-1">
                                     {this.calculateBackLink()}
                                 </div>
-                               <div className="flex-1">
+                                <div className="flex-1"/>
+                                <div className="flex-1">
                                     {this.renderForwardLink()}
                                 </div>
-                                <div className="flex-3"/>
+                                 <div className="flex-2"/>
                             </div>       
                         </form>
                     </div>

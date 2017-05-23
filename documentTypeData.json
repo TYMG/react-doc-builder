@@ -722,12 +722,12 @@
                  {"ref":"zipCode","name":"Zipcode","active":false},
                  {"ref":"phoneNumber","name":"Phone Number","active":false}
               ]},
-              {"name":"Reason","ref":"DeclinedReasonss","input":[
-                  {"ref":"reason1","name":"Reason 1"},
-                    {"ref":"reason2","name":"Reason 2"},
-                      {"ref":"reason3","name":"Reason 3"},
-                        {"ref":"reason4","name":"Reason 4"},
-                          {"ref":"reason5","name":"Reason 5"}
+              {"name":"Declined Reason","formId":3,"ref":"DeclinedReasons","input":[
+                  {"ref":"reason1","name":"Reason 1","active":true},
+                        {"ref":"reason2","name":"Reason 2","active":true},
+                          {"ref":"reason3","name":"Reason 3","active":true},
+                            {"ref":"reason4","name":"Reason 4","active":true},
+                              {"ref":"reason5","name":"Reason 5","active":true}
               ]}
             ]
           },{
@@ -793,12 +793,12 @@
                  {"ref":"zipCode","name":"Zipcode","active":false},
                  {"ref":"phoneNumber","name":"Phone Number","active":false}
               ]},
-              {"name":"DeclineReasons","formId":3,"ref":"DeclinedReasons","input":[
-                  {"ref":"reason1","name":"Reason 1"},
-                    {"ref":"reason2","name":"Reason 2"},
-                      {"ref":"reason3","name":"Reason 3"},
-                        {"ref":"reason4","name":"Reason 4"},
-                          {"ref":"reason5","name":"Reason 5"}
+              {"name":"Declined Reasons","formId":3,"ref":"DeclinedReasons","input":[
+                  {"ref":"reason1","name":"Reason 1","active":true},
+                        {"ref":"reason2","name":"Reason 2","active":true},
+                          {"ref":"reason3","name":"Reason 3","active":true},
+                            {"ref":"reason4","name":"Reason 4","active":true},
+                              {"ref":"reason5","name":"Reason 5","active":true}
               ]}
             ]
           },{
@@ -1056,12 +1056,12 @@
                      {"ref":"zipCode","name":"Zipcode","active":false},
                      {"ref":"phoneNumber","name":"Phone Number","active":false}
                   ]},
-                  {"name":"DeclinedReasons","formId":3,"ref":"DeclinedReasons","input":[
-                      {"ref":"reason1","name":"Reason 1"},
-                        {"ref":"reason2","name":"Reason 2"},
-                          {"ref":"reason3","name":"Reason 3"},
-                            {"ref":"reason4","name":"Reason 4"},
-                              {"ref":"reason5","name":"Reason 5"}
+                  {"name":"Declined Reasons","formId":3,"ref":"DeclinedReasons","input":[
+                      {"ref":"reason1","name":"Reason 1","active":true},
+                        {"ref":"reason2","name":"Reason 2","active":true},
+                          {"ref":"reason3","name":"Reason 3","active":true},
+                            {"ref":"reason4","name":"Reason 4","active":true},
+                              {"ref":"reason5","name":"Reason 5","active":true}
                   ]}
             ]
           }

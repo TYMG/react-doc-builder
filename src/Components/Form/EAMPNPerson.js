@@ -82,12 +82,12 @@ class EAMPNPersonFormComponent extends Component {
         let homeHref = '/Document/' + hrefParams.doc + '/' + hrefParams.subDoc
         if (formNavigationIndex <= 0) // Index out bounds
         {
-            return <Link to={homeHref} onClick={event => this.props.returnHomeFromFlow(formNavigationIndex, event)}>Home</Link>
+            return <Link className="btn" to={homeHref} onClick={event => this.props.returnHomeFromFlow(formNavigationIndex, event)}>Home</Link>
         } else {
             // Calculate the back link
             let prevSection = docTypeSections[formNavigationIndex - 1]
             const prevSectionName = prevSection.name.replace(/ /g, '')
-            return <Link to={homeHref + '/' + prevSectionName} onClick={event => this.props.backOneFlowStep(formNavigationIndex, event)}>{prevSection.name}</Link>
+            return <Link className="btn" to={homeHref + '/' + prevSectionName} onClick={event => this.props.backOneFlowStep(formNavigationIndex, event)}>{prevSection.name}</Link>
         }
     }
 
@@ -99,14 +99,14 @@ class EAMPNPersonFormComponent extends Component {
         if (formNavigationIndex + 1 >= docTypeSections.length) // Index out bounds
         {
             //return <Link to={nextStepHref + 'Review'} onClick={ event => this.props.nextFlowStep(formNavigationIndex,event)}>Review</Link>
-            return <button type="submit">Review</button>
+            return <button className="btn" type="submit">Review</button>
 
         } else {
             // Calculate the back link
             let nextSection = docTypeSections[formNavigationIndex + 1]
             const nextSectionName = nextSection.name.replace(/ /g, '')
             // return <Link to={nextStepHref +  nextSectionName} onClick={ event => this.submitSectionForm(formNavigationIndex,event)}>{nextSection.name}</Link>
-            return <button type="submit">{nextSection.name}</button>
+            return <button className="btn" type="submit">{nextSection.name}</button>
         }
     }
 
@@ -143,18 +143,6 @@ class EAMPNPersonFormComponent extends Component {
         )
     )
 
-    createIAMARadioButton = _ => {
-        return (
-            {
-                "label": "IAMA",
-                "field": "iama",
-                "option1": "US Citizen",
-                "value1": "US",
-                "option2": "Foreign Born",
-                "value2": "Foreign Born"
-            }
-        )
-    }
     /**
      * Split the Input List
      * 
@@ -172,47 +160,53 @@ class EAMPNPersonFormComponent extends Component {
 
         return (
             <div className="eaMpn__form-main flexbox-column flex-1">
-                <h1>{this.props.section.name}</h1>
+                <h1 className="form-header">{this.props.section.name}</h1>
+                <hr/>
                 <div className="eaMpn__form flex-2">
                     <form name="sectionForm" onSubmit={e => this.handleSubmit(e)}>
-                        <FormSection name={this.calculateFormSectionName()}>
-                            <div className="flexbox-row">
-                                <div className="eaMpn__form-section-1 flex-1">
-                                    <Field key="IAMA" name="IAMA" type="text" component={FormField} label="IAMA" />
-                                    <Field key="name" name="name" type="text" component={FormField} label="Name" />
-                                    <Field key="dob" name="dob" type="text" component={FormField} label="DOB" />
-                                    <Field key="ssn" name="ssn" type="text" component={FormField} label="SSN" />
-                                    <Field key="alienReg" name="alienReg" type="text" component={FormField} label="Alien Registration" />
-                                    <Field key="dlState" name="dlState" type="text" component={FormField} label="Driver's License State" />
-                                    <Field key="dlNum" name="dlNum" type="text" component={FormField} label="Driver's License Number" />
-                                </div>
-                                <div className="eaMpn__form-section-2 flex-1">
-                                    <Field key="addressLine1" name="addressLine1" type="text" component={FormField} label="Address Line 1" />
-                                    <Field key="addressLine2" name="addressLine2" type="text" component={FormField} label="Address Line 2" />
-                                    <Field key="city" name="city" type="text" component={FormField} label="City" />
-                                    <Field key="state" name="state" type="text" component={FormField} label="State" />
-                                    <Field key="zipCode" name="zipCode" type="text" component={FormField} label="Zip Code" />
-                                    <Field key="phoneNumber" name="phoneNumber" type="text" component={FormField} label="Phone Number" />
-                                    <Field key="email" name="email" type="text" component={FormField} label="Email" />
-                                </div>
-                                <div className="eaMpn__form-section-3 flex-1">
-                                    <Field key="mailingAddressLine1" name="mailingAddressLine1" type="text" component={FormField} label="Mailing Address Line 1" />
-                                    <Field key="mailingAddressLine2" name="mailingAddressLine2" type="text" component={FormField} label="Mailing Address Line 2" />
-                                    <Field key="mailingCity" name="mailingCity" type="text" component={FormField} label="Mailing City" />
-                                    <Field key="mailingState" name="mailingState" type="text" component={FormField} label="Mailing State" />
-                                    <Field key="mailingZipCode" name="mailingZipCode" type="text" component={FormField} label="Mailing Zip Code" />
-                                </div>
-                            </div>
-                        </FormSection>
-                         <div className="flexbox-row flex-1">
+                        <div className="flexbox-column">
                             <div className="flex-1">
-                                {this.calculateBackLink()}
+                                <FormSection name={this.calculateFormSectionName()}>
+                                    <div className="flexbox-column">
+                                        <div className="eaMpn__form-section-1 flex-1 margin-btm-1">
+                                            <Field key="IAMA" name="IAMA" type="text" component={FormField} label="IAMA" />
+                                            <Field key="name" name="name" type="text" component={FormField} label="Name" />
+                                            <Field key="dob" name="dob" type="text" component={FormField} label="DOB" />
+                                            <Field key="ssn" name="ssn" type="text" component={FormField} label="SSN" />
+                                            <Field key="alienReg" name="alienReg" type="text" component={FormField} label="Alien Registration" />
+                                            <Field key="dlState" name="dlState" type="text" component={FormField} label="Driver's License State" />
+                                            <Field key="dlNum" name="dlNum" type="text" component={FormField} label="Driver's License Number" />
+                                        </div>
+                                        <div className="eaMpn__form-section-2 flex-1 margin-btm-1">
+                                            <Field key="addressLine1" name="addressLine1" type="text" component={FormField} label="Address Line 1" />
+                                            <Field key="addressLine2" name="addressLine2" type="text" component={FormField} label="Address Line 2" />
+                                            <Field key="city" name="city" type="text" component={FormField} label="City" />
+                                            <Field key="state" name="state" type="text" component={FormField} label="State" />
+                                            <Field key="zipCode" name="zipCode" type="text" component={FormField} label="Zip Code" />
+                                            <Field key="phoneNumber" name="phoneNumber" type="text" component={FormField} label="Phone Number" />
+                                            <Field key="email" name="email" type="text" component={FormField} label="Email" />
+                                        </div>
+                                        <div className="eaMpn__form-section-3 flex-1 margin-btm-2">
+                                            <Field key="mailingAddressLine1" name="mailingAddressLine1" type="text" component={FormField} label="Mailing Address Line 1" />
+                                            <Field key="mailingAddressLine2" name="mailingAddressLine2" type="text" component={FormField} label="Mailing Address Line 2" />
+                                            <Field key="mailingCity" name="mailingCity" type="text" component={FormField} label="Mailing City" />
+                                            <Field key="mailingState" name="mailingState" type="text" component={FormField} label="Mailing State" />
+                                            <Field key="mailingZipCode" name="mailingZipCode" type="text" component={FormField} label="Mailing Zip Code" />
+                                        </div>
+                                    </div>
+                                </FormSection>
                             </div>
-                            <div className="flex-1">
-
-                                {this.renderForwardLink()}
+                            <div className="flexbox-row flex-1">
+                                 <div className="flex-2"/>
+                                <div className="flex-1">
+                                    {this.calculateBackLink()}
+                                </div>
+                                <div className="flex-1"/>
+                                <div className="flex-1">
+                                    {this.renderForwardLink()}
+                                </div>
+                                 <div className="flex-2"/>
                             </div>
-                            <div className="flex-3" />
                         </div>
                     </form>
                 </div>

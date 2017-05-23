@@ -58,23 +58,6 @@ class CorrespondenceInfoFormComponent extends Component {
         //this.props.nextFlowStep(formNavigationIndex)
     }
 
-    buildBeginLink = (section) => {
-
-        let firstSection = this.props.documentTypeSections[0].name
-        let href = this.props.match.url + '/' + firstSection
-        let linkText = "the " + firstSection + " link"
-        return <Link to={href} onClick={this.props.beginFormFlow}>{linkText}</Link>
-    }
-
-    testInputFields = _ => {
-        let inputFields = this.props.section.input.filter((field) => {
-            return field.active
-        })
-        return inputFields.map(field => (
-            <li key={field.ref}>{field.name}</li>
-        ))
-    }
-
     calculateBackLink = _ => {
         let docTypeSections = this.props.docTypeSections
         let hrefParams = this.props.match.params
@@ -82,12 +65,12 @@ class CorrespondenceInfoFormComponent extends Component {
         let homeHref = '/Document/' + hrefParams.doc + '/' + hrefParams.subDoc
         if (formNavigationIndex <= 0) // Index out bounds
         {
-            return <Link to={homeHref} onClick={event => this.props.returnHomeFromFlow(formNavigationIndex, event)}>Home</Link>
+            return <Link className="btn" to={homeHref} onClick={event => this.props.returnHomeFromFlow(formNavigationIndex, event)}>Home</Link>
         } else {
             // Calculate the back link
             let prevSection = docTypeSections[formNavigationIndex - 1]
             const prevSectionName = prevSection.name.replace(/ /g, '')
-            return <Link to={homeHref + '/' + prevSectionName} onClick={event => this.props.backOneFlowStep(formNavigationIndex, event)}>{prevSection.name}</Link>
+            return <Link className="btn" to={homeHref + '/' + prevSectionName} onClick={event => this.props.backOneFlowStep(formNavigationIndex, event)}>{prevSection.name}</Link>
         }
     }
 
@@ -99,14 +82,14 @@ class CorrespondenceInfoFormComponent extends Component {
         if (formNavigationIndex + 1 >= docTypeSections.length) // Index out bounds
         {
             //return <Link to={nextStepHref + 'Review'} onClick={ event => this.props.nextFlowStep(formNavigationIndex,event)}>Review</Link>
-            return <button type="submit">Review</button>
+            return <button className="btn" type="submit">Review</button>
 
         } else {
             // Calculate the back link
             let nextSection = docTypeSections[formNavigationIndex + 1]
             const nextSectionName = nextSection.name.replace(/ /g, '')
             // return <Link to={nextStepHref +  nextSectionName} onClick={ event => this.submitSectionForm(formNavigationIndex,event)}>{nextSection.name}</Link>
-            return <button type="submit">{nextSection.name}</button>
+            return <button className="btn" type="submit">{nextSection.name}</button>
         }
     }
 
@@ -145,16 +128,16 @@ class CorrespondenceInfoFormComponent extends Component {
 
     render() {
         const { match, section, docTypeSections, form } = this.props
-        const inputFieldsList = this.testInputFields()
         const formNavigationIndex = this.props.formNavigator
 
         return (
             <div>
-                <h3>Input Fields</h3>
+                <h1 className="form-header">{this.props.section.name}</h1>
+                <hr/>
                 <div>
                     <form name="sectionForm" onSubmit={e => this.handleSubmit(e)}>
                         <FormSection name="correspondenceInfo">
-                            <div className="reference1__form-section-1">
+                            <div className="reference1__form-section-1 margin-btm-2">
                                 <Field key="requestDate" name="requestDate" type="text" component={FormField} label="Request Date" />
                                 <Field key="accountNumber" name="accountNumber" type="text" component={FormField} label="Account Number" />
                                 <Field key="awardId" name="awardId" type="text" component={FormField} label="Award Id" />
@@ -163,14 +146,16 @@ class CorrespondenceInfoFormComponent extends Component {
                                 <Field key="accountNumberUnmasked" name="accountNumberUnmasked" type="text" component={FormField} label="Account Number Unmasked" />
                             </div>
                         </FormSection>
-                        <div>
-                            <div>
-                                {this.calculateBackLink()}
-                            </div>
-                            <div>
-
-                                {this.renderForwardLink()}
-                            </div>
+                        <div className="flexbox-row flex-1">
+                              <div className="flex-2"/>
+                                <div className="flex-1">
+                                    {this.calculateBackLink()}
+                                </div>
+                                <div className="flex-1"/>
+                                <div className="flex-1">
+                                    {this.renderForwardLink()}
+                                </div>
+                                 <div className="flex-2"/>
                         </div>
                     </form>
                 </div>
