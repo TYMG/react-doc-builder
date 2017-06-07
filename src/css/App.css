@@ -150,7 +150,7 @@ li.float-left {
 a.header__link {
     color: white;
     font-size:3rem;
-    margin-right:25%; 
+    margin-left:25%; 
 }
 
 a.header__link:hover {

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 
 import { calculateLinksInFlow } from '../../Library/DocumentTypeParser'
 import { nextFormSection, updateBackupForm } from '../../actions'
-import { required } from './FieldValidators'
 
 import FormField from './Fields/FormField'
 import RadioButton from './Fields/RadioButton'
@@ -39,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-class EAMPNPersonFormComponent extends Component {
+class BorrowerComponent extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -138,88 +137,56 @@ class EAMPNPersonFormComponent extends Component {
         return firstLetter + restOfStringNoSpace
     }
 
+    renderFormTitle = _ => {
+        console.log(this.props)
+    }
+
     renderInputFields = section => (
         section.input.map(field =>
             (<Field key={field.ref} name={field.ref} type="text" component={FormField} label={field.name} />)
         )
     )
 
-     renderField = ({input, label, type, meta: {touched, error, warning}}) => (
-        <div>
-            <label>{label}</label>
-            <div>
-            <input {...input} placeholder={label} type={type} />
-            {touched &&
-                ((error && <span>{error}</span>) ||
-                (warning && <span>{warning}</span>))}
-            </div>
-        </div>
-        )
-
-    /**
-     * Split the Input List
-     * 
-     * List 1: IAMA, Name, DOB, SSN, Citzenship Status, Alien Registration, Drivers License State, Drivers License Number
-     * 
-     * List 2: Address Line 1, Address Line 2, City, State, Zipcode, Phone Number
-     * 
-     * List 3: Mailing Address Line 1, Mailing Address Line 2, Mailing Address City, Mailing Address State, Mailing Address Zipcode
-     * 
-     */
     render() {
         const { match, section, docTypeSections, form } = this.props
         const inputFieldsList = this.testInputFields()
         const formNavigationIndex = this.props.formNavigator
 
         return (
-            <div className="eaMpn__form-main flexbox-column flex-1">
+            <div className="borrower-form-main flexbox-column flex-1">
                 <h1 className="form-header">{this.props.section.name}</h1>
-                <hr/>
-                <div className="eaMpn__form flex-2">
+                <hr />
+                <div className="borrower-form flexbox-column flex-2">
                     <form name="sectionForm" onSubmit={e => this.handleSubmit(e)}>
-                        <div className="flexbox-column">
+                        <FormSection name={this.calculateFormSectionName()}>
+                            <div className="borrower__form-section-1 flex-2 margin-btm-2">
+                                <Field key="name" name="name" type="text" component={FormField} label="Name" />
+                                <Field key="dob" name="dob" type="text" component={FormField} label="DOB" />
+                                <Field key="ssn" name="ssn" type="text" component={FormField} label="SSN" />
+                                <Field key="addressLine1" name="addressLine1" type="text" component={FormField} label="Address Line 1" />
+                                <Field key="addressLine2" name="addressLine2" type="text" component={FormField} label="Address Line 2" />
+                                <Field key="city" name="city" type="text" component={FormField} label="City" />
+                                <Field key="state" name="state" type="text" component={FormField} label="State" />
+                                <Field key="zipCode" name="zipCode" type="text" component={FormField} label="Zip Code" />
+                                <Field key="phoneNumber" name="phoneNumber" type="text" component={FormField} label="Phone Number" />
+                                <Field key="directPLUSLoanAmount" name="directPLUSLoanAmount" type="text" component={FormField} label="Direct PLUS Loan Amount" />
+                                <Field key="borrowerPhoneNumber" name="borrowerPhoneNumber" type="text" component={FormField} label="Borrower Phone Number" />
+                                <Field key="schoolName" name="schoolName" type="text" component={FormField} label="School Name" />
+                                <Field key="schoolAddress" name="schoolAddress" type="text" component={FormField} label="School Address" />
+                                <Field key="schoolCityStateZip" name="schoolCityStateZip" type="text" component={FormField} label="School City, State, and Zip Code" />
+                                <Field key="loanIdentificationNumber" name="loanIdentificationNumber" type="text" component={FormField} label="Loan Identification Number" />
+                            </div>
+                        </FormSection>
+                        <div className="flexbox-row flex-1">
+                            <div className="flex-2" />
                             <div className="flex-1">
-                                <FormSection name={this.calculateFormSectionName()}>
-                                    <div className="flexbox-column">
-                                        <div className="eaMpn__form-section-1 flex-1 margin-btm-1">
-                                            <Field key="IAMA" name="IAMA" type="text" component={FormField} label="IAMA" validate={required}/>
-                                            <Field key="name" name="name" type="text" component={FormField} label="Name" />
-                                            <Field key="dob" name="dob" type="text" component={FormField} label="DOB" />
-                                            <Field key="ssn" name="ssn" type="text" component={FormField} label="SSN" />
-                                            <Field key="alienReg" name="alienReg" type="text" component={FormField} label="Alien Registration" />
-                                            <Field key="dlState" name="dlState" type="text" component={FormField} label="Driver's License State" />
-                                            <Field key="dlNum" name="dlNum" type="text" component={FormField} label="Driver's License Number" />
-                                        </div>
-                                        <div className="eaMpn__form-section-2 flex-1 margin-btm-1">
-                                            <Field key="addressLine1" name="addressLine1" type="text" component={FormField} label="Address Line 1" />
-                                            <Field key="addressLine2" name="addressLine2" type="text" component={FormField} label="Address Line 2" />
-                                            <Field key="city" name="city" type="text" component={FormField} label="City" />
-                                            <Field key="state" name="state" type="text" component={FormField} label="State" />
-                                            <Field key="zipCode" name="zipCode" type="text" component={FormField} label="Zip Code" />
-                                            <Field key="phoneNumber" name="phoneNumber" type="text" component={FormField} label="Phone Number" />
-                                            <Field key="email" name="email" type="text" component={FormField} label="Email" />
-                                        </div>
-                                        <div className="eaMpn__form-section-3 flex-1 margin-btm-2">
-                                            <Field key="mailingAddressLine1" name="mailingAddressLine1" type="text" component={FormField} label="Mailing Address Line 1" />
-                                            <Field key="mailingAddressLine2" name="mailingAddressLine2" type="text" component={FormField} label="Mailing Address Line 2" />
-                                            <Field key="mailingCity" name="mailingCity" type="text" component={FormField} label="Mailing City" />
-                                            <Field key="mailingState" name="mailingState" type="text" component={FormField} label="Mailing State" />
-                                            <Field key="mailingZipCode" name="mailingZipCode" type="text" component={FormField} label="Mailing Zip Code" />
-                                        </div>
-                                    </div>
-                                </FormSection>
+                                {this.calculateBackLink()}
                             </div>
-                            <div className="flexbox-row flex-1">
-                                 <div className="flex-2"/>
-                                <div className="flex-1">
-                                    {this.calculateBackLink()}
-                                </div>
-                                <div className="flex-1"/>
-                                <div className="flex-1">
-                                    {this.renderForwardLink()}
-                                </div>
-                                 <div className="flex-2"/>
+                            <div className="flex-1" />
+                            <div className="flex-1">
+                                {this.renderForwardLink()}
                             </div>
+                            <div className="flex-2" />
                         </div>
                     </form>
                 </div>
@@ -228,15 +195,15 @@ class EAMPNPersonFormComponent extends Component {
     }
 }
 
-const EAMPNPerson = withRouter(connect(
+const Borrower = withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(EAMPNPersonFormComponent))
+)(BorrowerComponent))
 
 
 export default reduxForm({
     form: 'documentCreationForm',
     destroyOnUnmount: false
-})(EAMPNPerson)
+})(Borrower)
 
 

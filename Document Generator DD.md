@@ -225,11 +225,11 @@ FormSection : props - section, docTypeSections,  state props - form, formNavigat
 
 * Should contain the forward and back buttons, also should contain the 
 
-​	Form - Will contain the reduxForm; props: section 
+  ​Form - Will contain the reduxForm; props: section 
 
-​		Also the Form will determine the name of the section
+  ​	Also the Form will determine the name of the section
 
-​		Loop through the sections building FormFields		
+  ​	Loop through the sections building FormFields		
 
 ```html
 <div>
@@ -268,9 +268,9 @@ Also it seems to be used to in FormHome.js as well as a key for each List Item i
 ~~Since the ref doesnt have a specific purpose, they will be repurposed to be used to determine which form component will be used. The values and the form component mappings are as follows (Note: The 'form' suffix may need to be removed from the exported name to ease in match):~~
 
 *  Mapping Value : Component
-* ~~"CorrespondenceInfo" : CorrespondenceInfo{Form}~~
-* ~~"CreditBureau" : CreditBureau{Form}~~
-* ~~"EAMPNPerson" : EAMPNPerson <-- FKA EAMPNBorrower~~
+*  ~~"CorrespondenceInfo" : CorrespondenceInfo{Form}~~
+*  ~~"CreditBureau" : CreditBureau{Form}~~
+*  ~~"EAMPNPerson" : EAMPNPerson <-- FKA EAMPNBorrower~~
 
 #### Update: 
 
@@ -309,8 +309,8 @@ For the most part, the createFormStepRoutes can stay the same, but there will ne
 - [ ] Blocking the transition when the a user changes the Document Type while in the middle of the flow
 - [ ] Remembering the values inputted if the user goes backwards
 - [ ] Breadcrumbs
-- [ ] Create a Form Component for each subset of Form Data, Endorser, Employer Etc
-- [ ] STYLE!!!
+- [x] Create a Form Component for each subset of Form Data, Endorser, Employer Etc
+- [x] STYLE!!!
 - [ ] Form Validation 
 
 ------

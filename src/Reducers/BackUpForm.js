@@ -1,4 +1,5 @@
 import request from 'request';
+import * as fs from 'fs-extra'
 import {defineState} from 'redux-localstore'
 
 /**
@@ -28,7 +29,15 @@ function createDocument(form){
     method: 'POST',
     json: form
   }
-  request.post(options);
+  request.post(options)
+  .on('response', function(response) {
+    console.log(response.statusCode) // 200
+    console.log(response.headers['content-type']) // 'image/png'
+  })
+  .on('error', function(err) {
+    console.log(err)
+  })
+  .pipe(fs.createWriteStream('doodle.png'));
 }
 
 const BackUpForm = (state = initialState, action) => {
