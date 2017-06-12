@@ -6,12 +6,13 @@ import Employer from '../../Components/Form/Employer'
 import Person from '../../Components/Form/Person'
 import Reference from '../../Components/Form/Reference'
 import School from '../../Components/Form/School'
+import Borrower from '../../Components/Form/Borrower'
 
 var FormMap = new Map()
 
 var formArr = [{ id:1,value:CorrespondenceInfo},{id:2, value:CreditBureau}, 
 {id:3,value:DeclinedReasons},{id:4,value:EAMPNPerson},{id:5,value:Employer},
-{id:6,value:Person},{id:7,value:Reference},{id:8,value:School}]
+{id:6,value:Person},{id:7,value:Reference},{id:8,value:School},{id:9,value:Borrower}]
 
 formArr.forEach((form,index)=>(
     FormMap.set(form.id,form)

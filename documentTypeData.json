@@ -28,27 +28,22 @@
              {"ref":"mailingState","name": "Mailing Address State","active":true},
              {"ref":"mailingZipCode","name":"Mailing Address Zipcode","active":true}
              ]}
-             ,{"name":"Borrower","formId":4,"ref":"EAMPNPerson","input":[
-               {"ref":"selfID","name":"IAMA","active":false},
+             ,{"name":"Borrower","formId":9,"ref":"Borrower","input":[
                   {"ref":"name","name":"Name","active":true},
                   {"ref":"dob","name":"DOB","active":true},
                   {"ref":"ssn","name":"SSN","active":true},
-                  {"ref":"citizenshipStatus","name":"Citizenship Status","active":false},
-                  {"ref":"alienReg","name":"Alien Registration","active":false},
                   {"ref":"addressLine1" ,"name": "Address Line 1","active":true},
                   {"ref":"addressLine2","name": "Address Line 2","active":true},
                   {"ref":"city","name": "City","active":true},
                   {"ref":"state","name": "State","active":true},
                   {"ref":"zipCode","name":"Zipcode","active":true},
                   {"ref":"phoneNumber","name":"Phone Number","active":true},
-                  {"ref":"email","name":"Email","active":true},
-                  {"ref":"dlState","name":"Driver's License State","active":false},
-                  {"ref":"dlNum","name":"Driver's License Number","active":false},
-                  {"ref":"mailingAddressLine1","name":"Mailing Address Line 1","active":true},
-                  {"ref":"mailingAddressLine2","name":"Mailing Address Line 2","active":true},
-                  {"ref":"mailingCity","name": "Mailing Address City","active":true},
-                  {"ref":"mailingState","name": "Mailing Address State","active":true},
-                  {"ref":"mailingZipCode","name":"Mailing Address Zipcode","active":true}
+                  {"ref":"directPLUSLoanAmount","name":"Direct PLUS Loan Amount","active":true},
+                  {"ref":"borrowerPhoneNumber","name":"Borrower Phone Number","active":true},
+                  {"ref":"schoolName","name":"School Name","active":true},
+                  {"ref":"schoolAddress","name": "School Address","active":true},
+                  {"ref":"schoolCityStateZip","name": "School City State & Zip Code","active":true},
+                  {"ref":"loanIdentificationNumber","name":"Loan Identification Number","active":true}
                ]},
                {"name":"Reference 1","formId":7, "ref":"Reference","input":[
                   {"ref":"name","name":"Name","active":true},

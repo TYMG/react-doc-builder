@@ -1,7 +1,10 @@
+
 React Doc Builder
 ======
+
 A Form Wizard React App 
 ------
+
 This project was built using:
 * React
 * React-Redux
